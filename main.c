@@ -23,6 +23,10 @@
 #define LCD_LINE_3_ADDRESS lcdInst(11000000)
 #define LCD_LINE_4_ADDRESS 0x60
 
+
+
+
+
 void set_time(void);
 void get_time(unsigned char *);
 void startMotor(int dir);
@@ -30,8 +34,6 @@ void stopMotor(void);
 void readADC(char channel);
 void motorMove(unsigned char *);
 void sort(int tap, int noLabel, int tin);
-
-
 
 const char timeSetter[7] = {  0x00, // Seconds
                         0x19, // Minutes
@@ -48,12 +50,19 @@ unsigned char passed_time;
 unsigned char Count;
 const char keys[] = "123A456B789C*0#D";
 
+int tap = 0;
+int tin = 0;
+int noLabel = 0;
 
 int count = 0;
 int tapPop = 0;
 int noLabelSoup = 0;
 int labelSoup = 0;
 int noTapCan = 0;
+
+
+
+
 
 int en1 = 0;
 int en2 = 0;
@@ -96,12 +105,22 @@ void motorMove( unsigned char dir[]){
     LATCbits.LATC0 = 0;
     LATCbits.LATC1 = 0;
     LATCbits.LATC3 = 1;
-    LATCbits.LATC4 = 1; 
+    LATCbits.LATC4 = 1;
   }
 }
 
 void switchControl( unsigned char dir[]){
 }
+
+void servo(){
+  for (int i = 0; i < 500;i++){
+    LATCbits.LATC1 = 1;
+    delay(500);
+    LATCbits.LATC1 = 0;
+    delay(500);
+  }
+}
+
 
 void sort (int tap, int noLabel, int tin){
     count++;
@@ -160,6 +179,11 @@ void interrupt keypressed(void){
 }
 
 void main(void) {
+
+    TRISA = 0XFF; //All input mode
+    TRISC = 0x11100110; // RC1 = PWM
+
+
     TRISC = 0x11100110;
     TRISD = 0x00;   //All output mode
     TRISB = 0xFF;   //All input mode
@@ -237,33 +261,36 @@ void main(void) {
             printf("Press 1/2/A to stop");
             get_time(start_time);
             __lcd_home();
-            int tap = 1;
-            int tin = 1;
-            int noLabel = 1;
 
-            while(1){
-  
-              readADC(2);
-              if(PORTBbits.RB0 != 1){
 
-                if(ADRESH > 0X30){
-                   LATCbits.LATC1 = 1; 
-                }
-          
+            int tap = 0;
+            int tin = 0;
+            int noLabel = 0;
+            //1 = yes, 0 = no
 
-                if(ADRESH == 0x00){
-                  LATC=0x00;
-                }
-              //sort(tap, tin, noLabel);
 
-                if (mode == 3){
-                  break;
-                }
+            readADC(0); // side
+            if(ADRESH ==0XFF){
+              noLabel = 1;
+            }
+
+            readADC(1);// tap
+            if(ADRESH ==0XFF){
+              tap = 1;
+            }
+
+            if(PORTAbits.RA2 == 1){
+              tin = 1;
+            }
+
+            if (mode == 3){
+              break;
+            }
               }
 
             }
         }
-        
+
         else if (mode==3){
             __lcd_clear();
             __delay_ms(10);
