@@ -1,21 +1,23 @@
 # AER201
 ## Pin Assignment
-2 Analog Input 
-- pull tab 
-- side 
+2 Analog Input
+- pull tab
+- side
 1 Digital Input
-- Switch 
+- Switch
 Outputs
-- Loading Motor 
-- Slide Motor 
-- Gate Motor 
-- Solonoid 
+- Loading Motor
+- Slide Motor
+- Gate Motor
+- Solonoid
 - 2 PWM
 
 ## Logic
 - Sorting Start
-- Loading Motor 
-- Sensing Motor 
-- Gate Open 
+- Loading Motor
+- Sensing Motor
+- Gate Open
 - Gate Close
-- Sensing Begin 
+- Sensing Begin
+
+## Todo List
