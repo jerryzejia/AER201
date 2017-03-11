@@ -13,8 +13,9 @@ Outputs
 - 2 PWM
 
 ## Logic
-Sorting Start
-Loading Motor 
-Sensing Motor 
-Gate Open 
-Gate Close
+- Sorting Start
+- Loading Motor 
+- Sensing Motor 
+- Gate Open 
+- Gate Close
+- Sensing Begin 
