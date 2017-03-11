@@ -34,6 +34,8 @@ void stopMotor(void);
 void readADC(char channel);
 void motorMove(unsigned char *);
 void sort(int tap, int noLabel, int tin);
+void servo_control();
+
 
 const char timeSetter[7] = {  0x00, // Seconds
                         0x19, // Minutes
@@ -112,12 +114,14 @@ void motorMove( unsigned char dir[]){
 void switchControl( unsigned char dir[]){
 }
 
-void servo(){
-  for (int i = 0; i < 500;i++){
-    LATCbits.LATC1 = 1;
-    delay(500);
-    LATCbits.LATC1 = 0;
-    delay(500);
+void servo_control(){
+  int i;
+  for (i = 0; i < 500;i++){
+    LATCbits.LATC0 = 1;
+    __delay_ms(1);
+
+    LATCbits.LATC0 = 0;
+    __delay_ms(19);
   }
 }
 
@@ -166,6 +170,9 @@ void interrupt keypressed(void){
                 mode = 1;
             }
         }
+        else if(keypress == 0x2){
+            mode = 99;
+        }
         else if(keypress == 0x3){ //sort
             if(mode==0){
                 mode = 2;}
@@ -206,14 +213,6 @@ void main(void) {
     mode = 0;
     ei();           //Enable all interrupts
 
-    OSCCON = OSCCON|0b01110000;
-    OSCTUNEbits.PLLEN = 1;
-
-    set_PWM_freq (3100);
-
-
-    PWM1_Start();
-    set_PWM1_duty(256);
     while(1){
         if(mode == 0){
             __lcd_clear();
@@ -286,10 +285,8 @@ void main(void) {
             if (mode == 3){
               break;
             }
-              }
-
-            }
         }
+
 
         else if (mode==3){
             __lcd_clear();
@@ -301,6 +298,10 @@ void main(void) {
             printf("Count: %02x", Count);
             while(mode==3){
             }
+        }
+
+        else if (mode == 99){
+            servo_control(150, 150);
         }
     }
     return;
