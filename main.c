@@ -36,8 +36,9 @@ void stopMotor(void);
 void readADC(char channel);
 void motorMove(unsigned char *);
 void move_can(int can_type);
-void servo_control();
+void servo_control(int uptime, int downtime);
 int sense_can();
+void delay_ms(unsigned int milliseconds);
 
 const char timeSetter[7] = {
     0x00, // Seconds
@@ -94,7 +95,7 @@ void get_time(unsigned char datime[7]) {
   I2C_Master_Write(0x00);       // Set memory pointer to seconds
   I2C_Master_Stop();            // Stop condition
 }
-
+/*
 void motorMove(unsigned char dir[]) {
   if (dir == "right") {
     LATCbits.LATC0 = 1;
@@ -111,22 +112,32 @@ void motorMove(unsigned char dir[]) {
 }
 
 void switchControl(unsigned char dir[]) {}
+*/
 
-void servo_control() {
+void servo_control(int uptime, int downtime) {
   int i;
   for (i = 0; i < 500; i++) {
-    LATCbits.LATC0 = 1;
-    __delay_ms(1);
+    LATAbits.LATA2 = 1;
+    delay_ms(uptime);
 
-    LATCbits.LATC0 = 0;
-    __delay_ms(19);
+    LATAbits.LATA2 = 0;
+    delay_ms(downtime);
+  }
+}
+
+void delay_ms(unsigned int milliseconds) {
+  while (milliseconds > 0) {
+    __delay_ms(1);
+    milliseconds--;
   }
 }
 
 void move_can(int can_type) {
   count++;
+  int i = 0;
   if (can_type == POP_TAB) {
     tapPop++;
+
   } else if (can_type == POP_NOTAB) {
     noTapCan++;
   } else if (can_type == TIN_NOLAB) {
@@ -215,7 +226,7 @@ void interrupt keypressed(void) {
 void main(void) {
   int flag = 0; // Temporary Counter, remove after having microswitchers
 
-  TRISA = 0XFF;       // All input mode
+  TRISA = 0b11111011; // All input mode
   TRISC = 0x11100110; // RC1 = PWM
 
   TRISC = 0x11100110;
@@ -297,20 +308,21 @@ void main(void) {
         if (PORTBbits.RB2 == 1) {
           // Everything here should be activated by a switch
           LATDbits.LATD0 = 1;
-          int can = sense_can();
-          // move_can(sense_can());
-
-          __delay_ms(200);
-          move_can(can);
+          __delay_ms(500);
 
           if (flag == 0) {
             __lcd_home();
             __lcd_newline();
+            int can = sense_can();
+            move_can(can);
             printf("%d", can);
             flag++;
           }
+        } else {
+          // move_can(sense_can());
           LATDbits.LATD0 = 0;
-          __delay_ms(200);
+          __delay_ms(500);
+          flag = 0;
         }
 
         // return_servo() to return the servo to starting position!! so we can
@@ -327,6 +339,7 @@ void main(void) {
       __lcd_newline();
       printf("Count: %02x", Count);
       flag = 0;
+      LATDbits.LATD0 = 0;
       while (mode == 3) {
       }
     }
