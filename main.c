@@ -213,7 +213,7 @@ void interrupt keypressed(void) {
 }
 
 void main(void) {
-  int aaabbb = 0; // Temporary Counter, remove after having microswitchers
+  int flag = 0; // Temporary Counter, remove after having microswitchers
 
   TRISA = 0XFF;       // All input mode
   TRISC = 0x11100110; // RC1 = PWM
@@ -294,20 +294,24 @@ void main(void) {
       int noLabel = 0;
       // 1 = yes, 0 = no
       while (mode == 2) {
-        LATDbits.LATD0 = 1;
-        int can = sense_can();
-        // move_can(sense_can());
-        __delay_ms(200);
-        move_can(can);
+        if (PORTBbits.RB2 == 1) {
+          // Everything here should be activated by a switch
+          LATDbits.LATD0 = 1;
+          int can = sense_can();
+          // move_can(sense_can());
 
-        if (aaabbb == 0) {
-          __lcd_home();
-          __lcd_newline();
-          printf("%d", can);
-          aaabbb++;
+          __delay_ms(200);
+          move_can(can);
+
+          if (flag == 0) {
+            __lcd_home();
+            __lcd_newline();
+            printf("%d", can);
+            flag++;
+          }
+          LATDbits.LATD0 = 0;
+          __delay_ms(200);
         }
-        LATDbits.LATD0 = 0;
-        __delay_ms(200);
 
         // return_servo() to return the servo to starting position!! so we can
         // sense the new can
@@ -322,7 +326,7 @@ void main(void) {
       printf("Time used: %d s", i);
       __lcd_newline();
       printf("Count: %02x", Count);
-      aaabbb = 0;
+      flag = 0;
       while (mode == 3) {
       }
     }
