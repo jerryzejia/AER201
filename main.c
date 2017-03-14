@@ -36,9 +36,9 @@ void stopMotor(void);
 void readADC(char channel);
 void motorMove(unsigned char *);
 void move_can(int can_type);
-void servo_control(int uptime, int downtime);
 int sense_can();
 void delay_ms(unsigned int milliseconds);
+void servo_control();
 
 const char timeSetter[7] = {
     0x00, // Seconds
@@ -113,14 +113,35 @@ void motorMove(unsigned char dir[]) {
 
 void switchControl(unsigned char dir[]) {}
 */
+void servo_control() {
+  int i;
+  for (i = 0; i < 500; i++) {
+    LATAbits.LATA2 = 1;
+    __delay_ms(1);
 
-void servo_control(int uptime, int downtime) {
+    LATAbits.LATA2 = 0;
+    __delay_ms(19);
+  }
+}
+
+void main_servo_control(int uptime, int downtime) {
   int i;
   for (i = 0; i < 500; i++) {
     LATAbits.LATA2 = 1;
     delay_ms(uptime);
 
     LATAbits.LATA2 = 0;
+    delay_ms(downtime);
+  }
+}
+
+void side_servo_control(int uptime, int downtime) {
+  int i;
+  for (i = 0; i < 500; i++) {
+    LATAbits.LATA3 = 1;
+    delay_ms(uptime);
+
+    LATAbits.LATA3 = 0;
     delay_ms(downtime);
   }
 }
@@ -137,13 +158,22 @@ void move_can(int can_type) {
   int i = 0;
   if (can_type == POP_TAB) {
     tapPop++;
-
+    main_servo_control(2, 18);
+    side_servo_control(1, 19);
   } else if (can_type == POP_NOTAB) {
     noTapCan++;
+    main_servo_control(2, 18);
+    side_servo_control(2, 18);
+
   } else if (can_type == TIN_NOLAB) {
     noLabelSoup++;
+    main_servo_control(1, 19);
+    side_servo_control(1, 19);
+
   } else if (can_type == TIN_LAB) {
     labelSoup++;
+    main_servo_control(1, 19);
+    side_servo_control(2, 18);
   }
   return;
 }
@@ -216,6 +246,7 @@ void interrupt keypressed(void) {
 
     else if (keypress == 0x1) { // back
       mode = 0;
+
     } else if (keypress == 0x2) {
       mode = 99;
     }
@@ -226,7 +257,7 @@ void interrupt keypressed(void) {
 void main(void) {
   int flag = 0; // Temporary Counter, remove after having microswitchers
 
-  TRISA = 0b11111011; // All input mode
+  TRISA = 0b11110011; // All input mode
   TRISC = 0x11100110; // RC1 = PWM
 
   TRISC = 0x11100110;
@@ -235,7 +266,7 @@ void main(void) {
   LATB = 0x00;
   LATC = 0b00000000;
   ADCON0 = 0x00;
-  ADCON1 = 0x0C;
+  ADCON1 = 0x0D;
   ADFM = 0;
 
   initLCD();
@@ -345,7 +376,7 @@ void main(void) {
     }
 
     else if (mode == 99) {
-      servo_control(150, 150);
+      servo_control();
     }
   }
   return;
