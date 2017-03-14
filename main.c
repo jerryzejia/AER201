@@ -24,11 +24,10 @@
 #define LCD_LINE_3_ADDRESS lcdInst(11000000)
 #define LCD_LINE_4_ADDRESS 0x60
 
-#define TIN_LAB         1
-#define TIN_NOLAB       2
-#define POP_TAB         3
-#define POP_NOTAB       4
-
+#define TIN_LAB 1
+#define TIN_NOLAB 2
+#define POP_TAB 3
+#define POP_NOTAB 4
 
 void set_time(void);
 void get_time(unsigned char *);
@@ -146,53 +145,49 @@ void move_can(int can_type) {
   }
   return;
 }
-int sense_can(){
-  
+int sense_can() {
+
   int H_max = 0;
   /* First, check if it is a tin or pop can */
-  
-  if (PORTBbits.RB1 == 1){    // This might be wrong - assuming B1 is connected to a switch that is 1 when it is a tin can
-  /* TIN CAN */
 
-      for (int i = 0; i < 5000; i++){ // Check a bunch of times, see if MAX is FF
-        /* Read ADC */
-        readADC(0); // Channel 0 for label detector?
-        if (ADRESH > H_max){ 
-          H_max = ADRESH;
-        }
-      }
+  if (PORTBbits.RB1 == 1) { // This might be wrong - assuming B1 is connected to
+                            // a switch that is 1 when it is a tin can
+                            /* TIN CAN */
 
-      if (H_max == 0xFF0){   // Is this the max?
-        /* No Label */
-        return TIN_NOLAB;
+    for (int i = 0; i < 5000; i++) { // Check a bunch of times, see if MAX is FF
+      /* Read ADC */
+      readADC(0); // Channel 0 for label detector?
+      if (ADRESH > H_max) {
+        H_max = ADRESH;
       }
-      else {
-        /* Label */
-        return TIN_LAB;
-      }
+    }
 
+    if (H_max == 0xFF0) { // Is this the max?
+      /* No Label */
+      return TIN_NOLAB;
+    } else {
+      /* Label */
+      return TIN_LAB;
+    }
+
+  } else {
+    for (int i = 0; i < 5000; i++) { // Check a bunch of times, see if MAX is FF
+      /* Read ADC */
+      readADC(1); // Channel 0 for label detector?
+      if (ADRESH > H_max) {
+        H_max = ADRESH;
+      }
+    }
+
+    if (H_max == 0xFF0) { // Is this the max?
+      /* Tab */
+      return POP_TAB;
+    } else {
+      /* No Tab */
+      return POP_NOTAB;
+    }
   }
-  else {
-    for (int i = 0; i < 5000; i++){ // Check a bunch of times, see if MAX is FF
-        /* Read ADC */
-        readADC(1); // Channel 0 for label detector?
-        if (ADRESH > H_max){ 
-          H_max = ADRESH;
-        }
-      }
-
-      if (H_max == 0xFF0){   // Is this the max?
-        /* Tab */
-        return POP_TAB;
-      }
-      else {
-        /* No Tab */
-        return POP_NOTAB;
-      }
-  }
-
 }
-
 
 void interrupt keypressed(void) {
 
@@ -305,35 +300,36 @@ void main(void) {
       int noLabel = 0;
       // 1 = yes, 0 = no
 
-      while (1) {
-      /*
-        int t = 0;
-        ADCON0 = 0x00;
-        while (t < 2) {
-          readADC(0);
-          __lcd_home();
-          printf("%x%x", ADRESH, ADRESL);
-          __delay_ms(500);
-          t++;
-        }
+      while (mode == 2) {
+        LATDbits.LATD0 = 1;
+        /*
+          int t = 0;
+          ADCON0 = 0x00;
+          while (t < 2) {
+            readADC(0);
+            __lcd_home();
+            printf("%x%x", ADRESH, ADRESL);
+            __delay_ms(500);
+            t++;
+          }
 
-        ADCON0 = 0x00;
+          ADCON0 = 0x00;
 
-        t = 0;
-        while (t < 2) {
-          readADC(1);
-          __lcd_newline();
-          printf("%x%x", ADRESH, ADRESL);
-          __delay_ms(500);
-          t++;
-        } */
+          t = 0;
+          while (t < 2) {
+            readADC(1);
+            __lcd_newline();
+            printf("%x%x", ADRESH, ADRESL);
+            __delay_ms(500);
+            t++;
+          } */
 
         move_can(sense_can());
+        LATDbits.LATD0 = 1;
 
-        // return_servo() to return the servo to starting position!! so we can sense the new can
-
-
-      } 
+        // return_servo() to return the servo to starting position!! so we can
+        // sense the new can
+      }
     }
 
     else if (mode == 3) {
