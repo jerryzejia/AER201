@@ -125,32 +125,24 @@ void servo_control() {
 
 void move_can(int can_type) {
   count++;
-  if (POP_TAB) {
+  if (can_type == POP_TAB) {
     tapPop++;
-    motorMove("right");
-    switchControl("right");
-  } else if (POP_NOTAB) {
+  } else if (can_type == POP_NOTAB) {
     noTapCan++;
-    motorMove("right");
-    switchControl("left");
-  } else if (TIN_NOLAB) {
+  } else if (can_type == TIN_NOLAB) {
     noLabelSoup++;
-    motorMove("left");
-    switchControl("left");
-
-  } else if (TIN_LAB) {
+  } else if (can_type == TIN_LAB) {
     labelSoup++;
-    motorMove("left");
-    switchControl("right");
   }
   return;
 }
+
 int sense_can() {
 
   int H_max = 0;
   /* First, check if it is a tin or pop can */
 
-  if (PORTBbits.RB1 == 1) { // This might be wrong - assuming B1 is connected to
+  if (PORTBbits.RB0 == 1) { // This might be wrong - assuming B1 is connected to
                             // a switch that is 1 when it is a tin can
                             /* TIN CAN */
 
@@ -162,15 +154,16 @@ int sense_can() {
       }
     }
 
-    if (H_max == 0xFF0) { // Is this the max?
+    if (H_max == 0xFF) { // Is this the max?
       /* No Label */
       return TIN_NOLAB;
     } else {
       /* Label */
       return TIN_LAB;
     }
+  }
 
-  } else {
+  else {
     for (int i = 0; i < 5000; i++) { // Check a bunch of times, see if MAX is FF
       /* Read ADC */
       readADC(1); // Channel 0 for label detector?
@@ -178,8 +171,7 @@ int sense_can() {
         H_max = ADRESH;
       }
     }
-
-    if (H_max == 0xFF0) { // Is this the max?
+    if (H_max == 0xFF) { // Is this the max?
       /* Tab */
       return POP_TAB;
     } else {
@@ -190,7 +182,6 @@ int sense_can() {
 }
 
 void interrupt keypressed(void) {
-
   if (INT1IF) {
     __lcd_newline();
     unsigned char keypress = (PORTB & 0xF0) >> 4;
@@ -200,12 +191,12 @@ void interrupt keypressed(void) {
       passed_time =
           (end_time[1] - start_time[1]) * 60 + (end_time[0] - start_time[0]);
       mode = 3;
+
     } else if (keypress == 0x0) { // display time
       if (mode == 0) {
         mode = 1;
       }
-    } else if (keypress == 0x2) {
-      mode = 99;
+
     } else if (keypress == 0x3) { // sort
       if (mode == 0) {
         mode = 2;
@@ -214,12 +205,15 @@ void interrupt keypressed(void) {
 
     else if (keypress == 0x1) { // back
       mode = 0;
+    } else if (keypress == 0x2) {
+      mode = 99;
     }
   }
   INT1IF = 0; // Clear flag bit
 }
 
 void main(void) {
+  int aaabbb = 0; // Temporary Counter, remove after having microswitchers
 
   TRISA = 0XFF;       // All input mode
   TRISC = 0x11100110; // RC1 = PWM
@@ -299,33 +293,21 @@ void main(void) {
       int tin = 0;
       int noLabel = 0;
       // 1 = yes, 0 = no
-
       while (mode == 2) {
         LATDbits.LATD0 = 1;
-        /*
-          int t = 0;
-          ADCON0 = 0x00;
-          while (t < 2) {
-            readADC(0);
-            __lcd_home();
-            printf("%x%x", ADRESH, ADRESL);
-            __delay_ms(500);
-            t++;
-          }
+        int can = sense_can();
+        // move_can(sense_can());
+        __delay_ms(200);
+        move_can(can);
 
-          ADCON0 = 0x00;
-
-          t = 0;
-          while (t < 2) {
-            readADC(1);
-            __lcd_newline();
-            printf("%x%x", ADRESH, ADRESL);
-            __delay_ms(500);
-            t++;
-          } */
-
-        move_can(sense_can());
-        LATDbits.LATD0 = 1;
+        if (aaabbb == 0) {
+          __lcd_home();
+          __lcd_newline();
+          printf("%d", can);
+          aaabbb++;
+        }
+        LATDbits.LATD0 = 0;
+        __delay_ms(200);
 
         // return_servo() to return the servo to starting position!! so we can
         // sense the new can
@@ -340,6 +322,7 @@ void main(void) {
       printf("Time used: %d s", i);
       __lcd_newline();
       printf("Count: %02x", Count);
+      aaabbb = 0;
       while (mode == 3) {
       }
     }
