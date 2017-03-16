@@ -39,7 +39,6 @@ void move_can(int can_type);
 int sense_can();
 void delay_ms(unsigned int milliseconds);
 void servo_control();
-
 const char timeSetter[7] = {
     0x00, // Seconds
     0x19, // Minutes
