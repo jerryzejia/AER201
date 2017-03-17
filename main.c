@@ -4,6 +4,7 @@
  *
  * Created on July 18, 2016, 12:11 PM
  */
+#include "main.h"
 #include "I2C.h"
 #include "configBits.h"
 #include "constants.h"
@@ -13,16 +14,6 @@
 #include <stdio.h>
 #include <xc.h>
 
-void set_time(void);
-void get_time(unsigned char *);
-void startMotor(int dir);
-void stopMotor(void);
-void readADC(char channel);
-void motorMove(unsigned char *);
-void move_can(int can_type);
-int sense_can();
-void delay_ms(unsigned int milliseconds);
-void servo_control();
 const char timeSetter[7] = {
     0x00, // Seconds
     0x19, // Minutes
@@ -32,8 +23,7 @@ const char timeSetter[7] = {
     0x01, // January
     0x17  // 2017
 };
-unsigned char mode =
-    0; // Variable that tells what message should be displayed on the lcd
+unsigned char mode = 0;
 unsigned char start_time[7];
 unsigned char end_time[7];
 unsigned char passed_time;
