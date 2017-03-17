@@ -1,3 +1,11 @@
+#include "I2C.h"
+#include "configBits.h"
+#include "constants.h"
+#include "lcd.h"
+#include "macros.h"
+#include "pwm.h"
+#include <stdio.h>
+#include <xc.h>
 
 void set_time(void);
 void get_time(unsigned char *);

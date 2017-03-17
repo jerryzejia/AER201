@@ -5,14 +5,6 @@
  * Created on July 18, 2016, 12:11 PM
  */
 #include "main.h"
-#include "I2C.h"
-#include "configBits.h"
-#include "constants.h"
-#include "lcd.h"
-#include "macros.h"
-#include "pwm.h"
-#include <stdio.h>
-#include <xc.h>
 
 const char timeSetter[7] = {
     0x00, // Seconds
