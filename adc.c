@@ -103,3 +103,36 @@ int sense_can() {
     }
   }
 }
+
+int load_can(){
+  int i = 0;
+  int avg = 0;
+  int numTrial = 1;
+  readADC(4);
+  for (i = 0; i < 5000; i++){
+    avg = avg + (ADRESH<<8) + ADRESL;
+    avg = avg / numTrial;
+    numTrial ++;
+ }
+ if(avg > ){
+   return 1;
+ }
+ else{
+   return 0;
+ }
+
+
+}
+
+
+
+
+
+  }
+
+
+
+
+
+
+}

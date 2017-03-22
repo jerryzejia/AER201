@@ -1,16 +1,12 @@
 # AER201
 ## Pin Assignment
-2 Analog Input
-- pull tab
-- side
-1 Digital Input
-- Switch
-Outputs
-- Loading Motor
-- Slide Motor
-- Gate Motor
-- Solonoid
-- 2 PWM
+### ADC
+- RA0: Tap sensing
+- RA1: Can type sensing
+- RE0: Loading Can Sensing
+
+
+
 
 ## Logic
 - Sorting Start
