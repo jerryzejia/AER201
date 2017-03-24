@@ -99,7 +99,7 @@ int sense_can() {
   }
 }
 
-int canON(){
+int canOn(){
     int H_max = 0; 
     for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
         if (ADRESH > H_max) {

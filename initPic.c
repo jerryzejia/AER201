@@ -40,7 +40,9 @@ void initPIC() {
   LATB = 0x00;
   LATC = 0b00000000;
   ADCON0 = 0x00;
-  ADCON1 = 0x0D;
+  ADCON1 = 0x09;
+  
+  
   ADFM = 0;
   INT1IE = 1;
 
@@ -51,4 +53,16 @@ void initPIC() {
   I2C_Master_Write(0x00);       // Set memory pointer to seconds
   I2C_Master_Stop();
   ei();
+  
+  TMR0IE = 1; // Enable Timer0 interrupts
+  PEIE = 1; // Set peripheral interrupt enable bit (YOU MUST DO THIS IF YOU
+              // DIDN'T SET INTERRUPT PRIORITIES (i.e. if IPEN=0)
+  ei(); // Enable all interrupts for now
+
+  T0CON = 0b00010111;
+  TMR0H = 0b10000101;
+  TMR0L = 0b11101110;
+  T0CON = T0CON | 0b10000000;
+
+  
 }

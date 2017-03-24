@@ -33,8 +33,11 @@ void welcome() {
   }
 }
 
-void debug() {}
-
+void debug() {
+    __lcd_home();
+    int i = canOn();
+    printf("%d", i);
+}
 void sort() {
 
   int tap = 0;
