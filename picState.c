@@ -4,10 +4,19 @@
 #include "lcd.h"
 #include "macros.h"
 #include "pwm.h"
+#include "function.h"
 #include <stdio.h>
 #include <xc.h>
 
-extern int mode;
+extern char mode;
+extern int flag;
+extern unsigned char start_time[7];
+extern unsigned char end_time[7];
+extern unsigned char passed_time; 
+extern unsigned char time[7];
+
+
+
 
 void welcome() {
   __lcd_clear();
@@ -24,8 +33,11 @@ void welcome() {
   }
 }
 
-void debug() {}
-
+void debug() {
+    __lcd_home();
+    int i = canOn();
+    printf("%d", i);
+}
 void sort() {
 
   int tap = 0;
@@ -36,6 +48,7 @@ void sort() {
   printf("Sorting Started");
   __lcd_newline();
   printf("Press 1/2/A to stop");
+  
   get_time(start_time);
   __lcd_home();
   // 1 = yes, 0 = no
@@ -64,7 +77,8 @@ void sort() {
 }
 
 void display_time() {
-  _lcd_clear();
+    
+  __lcd_clear();
   __delay_ms(300);
   while (mode == 1) {
     I2C_Master_Start();
@@ -92,7 +106,7 @@ void display_time() {
   while (mode == 3) {
   }
 }
-}
+
 
 void display_sorting_time() {
   __lcd_clear();
@@ -101,7 +115,7 @@ void display_sorting_time() {
   int i = passed_time;
   printf("Time used: %d s", i);
   __lcd_newline();
-  printf("Count: %02x", Count);
+
   flag = 0;
   LATDbits.LATD0 = 0;
 }
