@@ -34,35 +34,46 @@ void initPIC() {
   TRISA = 0b11110011; // All input mode
   TRISC = 0x11100110; // RC1 = PWM
 
-  TRISC = 0x11100110;
+  TRISC = 0x11100100;
   TRISD = 0x00; // All output mode
-  TRISB = 0xFF; // All input mode
-  LATB = 0x00;
-  LATC = 0b00000000;
+  TRISB = 0b11111011; // All input mode
+  
+  
+  //Set all output to low
+  LATA = 0x00; // output low
+  LATB = 0x00; // output low
+  LATC = 0x00; // output low
+  LATD = 0x00; // output low
+  LATE = 0x00; // output low
+  
   ADCON0 = 0x00;
   ADCON1 = 0x09;
   
-  
-  ADFM = 0;
+// Disable A/D conversion interrupts (important for readADC())
+  ADCON2 = 0b00110001; // Left  justify A/D result, 16TAD, FOSC/8 clock
   INT1IE = 1;
 
   initLCD();
+  //initSortTimer();
   I2C_Master_Init(10000);
   I2C_Master_Start();           // Start condition
   I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
   I2C_Master_Write(0x00);       // Set memory pointer to seconds
   I2C_Master_Stop();
-  ei();
+  main_servo_control(NEUTRAL);
+  side_servo_control(NEUTRAL);
   
+  
+  ei();
+  /*
   TMR0IE = 1; // Enable Timer0 interrupts
   PEIE = 1; // Set peripheral interrupt enable bit (YOU MUST DO THIS IF YOU
               // DIDN'T SET INTERRUPT PRIORITIES (i.e. if IPEN=0)
-  ei(); // Enable all interrupts for now
 
   T0CON = 0b00010111;
   TMR0H = 0b10000101;
   TMR0L = 0b11101110;
   T0CON = T0CON | 0b10000000;
-
+  */
   
 }

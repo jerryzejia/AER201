@@ -89,6 +89,11 @@ void readADC(char channel);
 void move_can(int can_type);
 int sense_can();
 int canOn();
+void gate();
+
+
+void blocker();
+void shaker();
 
 
 
@@ -117,4 +122,4 @@ void side_servo_control(int dir);
 
 #define NEUTRAL 0
 #define RIGHT 1
-#define Left 2 
+#define LEFT 2 

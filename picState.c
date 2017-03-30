@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <xc.h>
 
-extern char mode;
+char mode;
 extern int flag;
 extern unsigned char start_time[7];
 extern unsigned char end_time[7];
@@ -17,11 +17,11 @@ extern unsigned char time[7];
 
 
 
-
 void welcome() {
   __lcd_clear();
   __lcd_home();
   __delay_ms(200);
+  
   printf("Welcome!");
   printf("            ");
   printf("2 Back to start menu");
@@ -29,15 +29,68 @@ void welcome() {
   printf("1 Time");
   printf("              ");
   printf("A Sorting");
+  LATDbits.LATD0 = 0;
+  LATCbits.LATC1 = 0;
+
+  //main_servo_control(NEUTRAL);
+  //side_servo_control(NEUTRAL);
+
   while (mode == 0) {
   }
 }
 
 void debug() {
-    __lcd_home();
-    int i = canOn();
-    printf("%d", i);
+   //side_servo_control(NEUTRAL);
+    //main_servo_control(NEUTRAL);
+    //LATDbits.LATD0 = 1;
+    //int i = sense_can();
+    //printf("%d", i);
+    /*int i = 0; 
+    while(i < 50){
+        __lcd_home();
+        //int i = readLightSensor();
+        readADC(5);
+
+        printf("%x%x", ADRESH,ADRESL);
+        __delay_ms(5);
+        i++;
+    }
+    */ 
+    
+    int H_max = 0;
+    int i = 0;
+    while(1){
+        __lcd_home();
+        //int i = readLightSensor();
+        readADC(0);
+        printf("%x%x", ADRESH, ADRESL);
+
+        /*if (ADRESH > H_max) {
+            H_max = ADRESH;
+        }
+        printf("%x", ADRESH);
+        __delay_ms(5);
+        i++;
+    }
+    
+    if(H_max >= 0x50){
+       __lcd_home();
+       printf("HI HI %x", H_max);
+       __delay_ms(500);
+    }
+    else{
+       __lcd_home();
+       printf("LO LO %x",H_max);
+       __delay_ms(500);
+
+  */
+    }
+    
+    
+    //gate();
+
 }
+
 void sort() {
 
   int tap = 0;
@@ -48,29 +101,32 @@ void sort() {
   printf("Sorting Started");
   __lcd_newline();
   printf("Press 1/2/A to stop");
-  
   get_time(start_time);
   __lcd_home();
   // 1 = yes, 0 = no
-
   while (mode == 2) {
-    if (PORTBbits.RB2 == 1) {
+    if (readLightSensor() == 1) {
       // Everything here should be activated by a switch
       LATDbits.LATD0 = 1;
-      __delay_ms(500);
-
-      if (flag == 0) {
+      main_servo_control(NEUTRAL);
+      __delay_ms(1000);
+     
         __lcd_home();
         __lcd_newline();
         int can = sense_can();
+        LATDbits.LATD0 = 0;
         move_can(can);
         printf("%d", can);
         flag++;
-      }
+      
     } else {
       // move_can(sense_can());
+      shaker();
+      main_servo_control(NEUTRAL);
       LATDbits.LATD0 = 0;
-      __delay_ms(500);
+      __delay_ms(500);      
+      gate();
+      
       flag = 0;
     }
   }
@@ -103,8 +159,6 @@ void display_time() {
     __delay_ms(990);
     __lcd_home();
   }
-  while (mode == 3) {
-  }
 }
 
 
@@ -115,7 +169,7 @@ void display_sorting_time() {
   int i = passed_time;
   printf("Time used: %d s", i);
   __lcd_newline();
-
+  __delay_ms(500);
   flag = 0;
   LATDbits.LATD0 = 0;
 }

@@ -15,7 +15,6 @@
 #include "function.h"
 
 
-
 //Channel 0 = RA0
 //Channel 1 = RA1
 //Channel 2 = RA2
@@ -28,40 +27,12 @@ void readADC(char channel){
 
 }
 
-void move_can(int can_type) {
- /*
-  count++;
-  int i = 0;
-  if (can_type == POP_TAB) {
-    tapPop++;
-    main_servo_control(2,18);
-    side_servo_control(1,19); 
-  } else if (can_type == POP_NOTAB) {
-    noTapCan++;
-    main_servo_control(2,18);
-    side_servo_control(2,18); 
-
-  } else if (can_type == TIN_NOLAB) {
-    noLabelSoup++;
-    main_servo_control(1,19);
-    side_servo_control(1,19); 
-
-  } else if (can_type == TIN_LAB) {
-    labelSoup++;
-    main_servo_control(1,19);
-    side_servo_control(2,18); 
-
-  }
-  * */
-  return;
-}
-
 int sense_can() {
 
   int H_max = 0;
   /* First, check if it is a tin or pop can */
 
-  if (PORTBbits.RB0 == 1) { // This might be wrong - assuming B1 is connected to
+  if (PORTBbits.RB0 == 1){ // This might be wrong - assuming B1 is connected to
                             // a switch that is 1 when it is a tin can
                             /* TIN CAN */
     for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
@@ -72,7 +43,7 @@ int sense_can() {
       }
     }
 
-    if (H_max == 0xFF) { // Is this the max?
+    if (H_max >= 0x4) { // Is this the max?
       /* No Label */
       return TIN_NOLAB;
     } else {
@@ -99,17 +70,26 @@ int sense_can() {
   }
 }
 
-int canOn(){
-    int H_max = 0; 
-    for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
+int readLightSensor(){
+   int H_max = 0;
+    int i = 0;
+    while(i < 50){
+        __lcd_home();
+        //int i = readLightSensor();
+        readADC(5);
         if (ADRESH > H_max) {
             H_max = ADRESH;
-      }
+        }
+        printf("%x", ADRESH);
+        __delay_ms(5);
+        i++;
     }
-    if(H_max > 0xC00){
-        return 1; 
+    
+    if(H_max >= 0x50){
+        return 0;
     }
     else{
-        return 0;
+        return 1;
+ 
     }
 }
