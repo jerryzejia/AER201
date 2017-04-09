@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/main.c</file>
+            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/countCan.c</file>
+            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/motor.c</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/function.h</file>
+            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/main.c</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c</file>
+            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/I2C.c</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/adc.c</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/servo.c</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/picState.c</file>
+            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/I2C.h</file>
+            <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/lcd.c</file>
         </group>
     </open-files>
 </project-private>

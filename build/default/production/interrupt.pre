@@ -3859,6 +3859,7 @@ mode = 1;
 
 } else if (keypress == 0x3) {
 if (mode == 0) {
+get_time(end_time);
 mode = 2;
 }
 }
@@ -3872,6 +3873,6 @@ mode = 99;
 }
 INT1IF = 0;
 
-# 70
+# 71
 }
 

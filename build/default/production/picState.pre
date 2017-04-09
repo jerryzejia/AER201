@@ -3866,28 +3866,26 @@ while (mode == 0) {
 
 void debug() {
 
-# 60
-int H_max = 0;
+# 49
 int i = 0;
 while(1){
 lcdInst(0b10000000);;
-
-readADC(0);
-printf("%x%x", ADRESH, ADRESL);
-
-# 87
+readADC(2);
+printf("%x %x", ADRESH,ADRESL);
+_delay((unsigned long)((50)*(8000000/4000.0)));
+i++;
 }
 
-
-
-
+# 79
 }
 
+# 86
 void sort() {
 
 int tap = 0;
 int tin = 0;
 int noLabel = 0;
+
 lcdInst(0x01);;
 _delay((unsigned long)((100)*(8000000/4000.0)));
 printf("Sorting Started");
@@ -3896,29 +3894,37 @@ printf("Press 1/2/A to stop");
 get_time(start_time);
 lcdInst(0b10000000);;
 
-while (mode == 2) {
+while (mode == 2){
+main_servo_control(0);
+side_servo_control(0);
+
 if (readLightSensor() == 1) {
 
 LATDbits.LATD0 = 1;
-main_servo_control(0);
-_delay((unsigned long)((1000)*(8000000/4000.0)));
+
 
 lcdInst(0b10000000);;
 lcdInst(0b11000000);;
 int can = sense_can();
+
+
 LATDbits.LATD0 = 0;
-move_can(can);
+
+
+for (int x = 0; x< 10; x++){
+main_servo_control(0);
+side_servo_control(0);
+_delay((unsigned long)((100)*(8000000/4000.0)));
+}
+
 printf("%d", can);
 flag++;
-
 } else {
 
 shaker();
-main_servo_control(0);
 LATDbits.LATD0 = 0;
 _delay((unsigned long)((500)*(8000000/4000.0)));
 gate();
-
 flag = 0;
 }
 }

@@ -16,89 +16,99 @@
 
 void main_servo_control(int dir){
   int i;
-  if( dir == 0){ 
+  if( dir == NEUTRAL){ 
     for (i = 0; i < 10; i++) {
-        LATAbits.LATA2 = 1;
-        __delay_ms(1);
+        LATEbits.LATE0 = 1;
+        __delay_ms(1.5);
 
-        LATAbits.LATA2 = 0;
-        __delay_ms(19);
+        LATEbits.LATE0 = 0;
+        __delay_ms(18.5);
     }    
   }
-  else if(dir == 1){
+  else if(dir == RIGHT){
       for (i = 0; i < 10; i++) {
-        LATAbits.LATA2 = 1;
-        __delay_ms(2.5);
+        LATEbits.LATE0 = 1;
+        __delay_ms(3);
 
-        LATAbits.LATA2 = 0;
-        __delay_ms(17.5);
+        LATEbits.LATE0 = 0;
+        __delay_ms(17);
     }
   }
-  else if (dir == 2){
+  else if (dir == LEFT){
       for (i = 0; i < 10; i++) {
-        LATAbits.LATA2 = 1;
-        __delay_ms(1);
+        LATEbits.LATE0 = 1;
+        __delay_ms(0.15);
 
-        LATAbits.LATA2 = 0;
-        __delay_ms(19);
+        LATEbits.LATE0 = 0;
+        __delay_ms(19.85);
     }
   }
 }
 
 void side_servo_control(int dir){
   int i;
-  if( dir == 0){ 
+  if( dir == NEUTRAL){ 
     for (i = 0; i < 10; i++) {
         LATAbits.LATA3 = 1;
-        __delay_ms(1);
+        __delay_ms(1.5);
 
         LATAbits.LATA3 = 0;
-        __delay_ms(19);
+        __delay_ms(18.5);
     }    
   }
-  else if(dir == 1){
+  else if(dir == RIGHT){
       for (i = 0; i < 10; i++) {
         LATAbits.LATA3 = 1;
         __delay_ms(2);
 
         LATAbits.LATA3 = 0;
-        __delay_ms(18);
+        __delay_ms(118);
     }
   }
-  else if (dir == 2){
+  else if (dir == LEFT){
       for (i = 0; i < 10; i++) {
         LATAbits.LATA3 = 1;
-        __delay_ms(0.5);
+        __delay_ms(1.3);
 
         LATAbits.LATA3 = 0;
-        __delay_ms(19.5);
+        __delay_ms(18.7);
     }
   }
 }
 
 void move_can(int canType){
-    if(canType == 1){
+    if(canType == TIN_NOLAB){
         side_servo_control(RIGHT);
+        __delay_ms(2000);
         main_servo_control(RIGHT);
+        __delay_ms(2000);
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
     }
-    else if(canType == 2){
+    else if(canType == TIN_LAB){
         side_servo_control(LEFT);
+        __delay_ms(2000);
+
         main_servo_control(RIGHT);
+        __delay_ms(2000);
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
 
     }
-    else if (canType == 3){
-        main_servo_control(LEFT);
+    else if (canType == POP_TAB){
+       
         side_servo_control(LEFT);
+         __delay_ms(2000);
+        main_servo_control(LEFT);
+        __delay_ms(2000);
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
     }
-    else{
+    else if(canType == POP_NOTAB){
         side_servo_control(RIGHT);
+        __delay_ms(2000);
         main_servo_control(LEFT);
+        __delay_ms(2000);
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
     }
@@ -106,22 +116,21 @@ void move_can(int canType){
 
 void gate(){
     int i;
-    for (i = 0; i < 20; i++) {
-        if(PORTBbits.RB3 == 1){
-                LATCbits.LATC2 = 1;
-                __delay_ms(1.67);
-                LATCbits.LATC2 = 0;
-                __delay_ms(18.33);
+    while(PORTBbits.RB3 == 1) {
+        LATCbits.LATC2 = 1;
+        __delay_ms(1.68);
+        LATCbits.LATC2 = 0;
+        __delay_ms(18.32);
             
-        }
-        else{
+    }
+    while(PORTBbits.RB3 != 1){
             LATCbits.LATC2 = 1;
             __delay_ms(1.68);
 
             LATCbits.LATC2 = 0;
             __delay_ms(18.32);
         }
-    }
+    
     
         
 }

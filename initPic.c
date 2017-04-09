@@ -31,13 +31,13 @@ unsigned char passed_time;
 int flag = 0;
 
 void initPIC() {
-  TRISA = 0b11110011; // All input mode
+  TRISA = 0b11100111; 
   TRISC = 0x11100110; // RC1 = PWM
 
   TRISC = 0x11100100;
   TRISD = 0x00; // All output mode
   TRISB = 0b11111011; // All input mode
-  
+  TRISE = 0x00;
   
   //Set all output to low
   LATA = 0x00; // output low
@@ -47,7 +47,7 @@ void initPIC() {
   LATE = 0x00; // output low
   
   ADCON0 = 0x00;
-  ADCON1 = 0x09;
+  ADCON1 = 0x0C;
   
 // Disable A/D conversion interrupts (important for readADC())
   ADCON2 = 0b00110001; // Left  justify A/D result, 16TAD, FOSC/8 clock

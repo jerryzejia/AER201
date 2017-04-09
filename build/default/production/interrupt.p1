@@ -2941,51 +2941,54 @@ Version 3.2 HI-TECH Software Intermediate Code
 "42
 [e $ ! == -> _mode `i -> 0 `i 274  ]
 {
-[; ;interrupt.c: 43: mode = 2;
+[; ;interrupt.c: 43: get_time(end_time);
 "43
-[e = _mode -> -> 2 `i `uc ]
+[e ( _get_time (1 &U _end_time ]
+[; ;interrupt.c: 44: mode = 2;
 "44
-}
-[e :U 274 ]
+[e = _mode -> -> 2 `i `uc ]
 "45
 }
-[; ;interrupt.c: 44: }
+[e :U 274 ]
+"46
+}
 [; ;interrupt.c: 45: }
+[; ;interrupt.c: 46: }
 [e $U 275  ]
-"47
+"48
 [e :U 273 ]
-[; ;interrupt.c: 47: else if (keypress == 0x1) {
+[; ;interrupt.c: 48: else if (keypress == 0x1) {
 [e $ ! == -> _keypress `i -> 1 `i 276  ]
 {
-[; ;interrupt.c: 48: mode = 0;
-"48
+[; ;interrupt.c: 49: mode = 0;
+"49
 [e = _mode -> -> 0 `i `uc ]
-"50
+"51
 }
-[; ;interrupt.c: 50: }else if (keypress == 0x2) {
+[; ;interrupt.c: 51: }else if (keypress == 0x2) {
 [e $U 277  ]
 [e :U 276 ]
 [e $ ! == -> _keypress `i -> 2 `i 278  ]
 {
-[; ;interrupt.c: 51: mode = 99;
-"51
-[e = _mode -> -> 99 `i `uc ]
+[; ;interrupt.c: 52: mode = 99;
 "52
+[e = _mode -> -> 99 `i `uc ]
+"53
 }
 [e :U 278 ]
-"53
+"54
 [e :U 277 ]
 [e :U 275 ]
 [e :U 272 ]
 [e :U 269 ]
 }
 [e :U 267 ]
-[; ;interrupt.c: 52: }
 [; ;interrupt.c: 53: }
-[; ;interrupt.c: 54: INT1IF = 0;
-"54
+[; ;interrupt.c: 54: }
+[; ;interrupt.c: 55: INT1IF = 0;
+"55
 [e = _INT1IF -> -> 0 `i `b ]
-[; ;interrupt.c: 70: }
-"70
+[; ;interrupt.c: 71: }
+"71
 [e :UE 266 ]
 }

@@ -39,21 +39,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _get_time `(v ~T0 @X0 0 ef1`*uc ]
 "13 picState.c
 [v _start_time `uc ~T0 @X0 -> 0 `x e ]
-"108
-[v _readLightSensor `(i ~T0 @X0 0 ef ]
 "100 function.h
 [v _main_servo_control `(v ~T0 @X0 0 ef1`i ]
-"90
+"101
+[v _side_servo_control `(v ~T0 @X0 0 ef1`i ]
+"104 picState.c
+[v _readLightSensor `(i ~T0 @X0 0 ef ]
+"90 function.h
 [v _sense_can `(i ~T0 @X0 0 ef ]
-"89
-[v _move_can `(v ~T0 @X0 0 ef1`i ]
 "12 picState.c
 [v _flag `i ~T0 @X0 0 e ]
 "96 function.h
 [v _shaker `(v ~T0 @X0 0 ef ]
 "92
 [v _gate `(v ~T0 @X0 0 ef ]
-"140 picState.c
+"141 picState.c
 [v _I2C_Master_Start `(i ~T0 @X0 0 ef ]
 "2 I2C.h
 [v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
@@ -2969,291 +2969,314 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;picState.c: 42: void debug() {
 [e :U _debug ]
 [f ]
-"60
-[v _H_max `i ~T0 @X0 1 a ]
-[; ;picState.c: 60: int H_max = 0;
-[e = _H_max -> 0 `i ]
-"61
+"49
 [v _i `i ~T0 @X0 1 a ]
-[; ;picState.c: 61: int i = 0;
+[; ;picState.c: 49: int i = 0;
 [e = _i -> 0 `i ]
-[; ;picState.c: 62: while(1){
-"62
+[; ;picState.c: 50: while(1){
+"50
 [e :U 272 ]
 {
-[; ;picState.c: 63: lcdInst(0b10000000);;
-"63
+[; ;picState.c: 51: lcdInst(0b10000000);;
+"51
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;picState.c: 65: readADC(0);
-"65
-[e ( _readADC (1 -> -> 0 `i `uc ]
-[; ;picState.c: 66: printf("%x%x", ADRESH, ADRESL);
-"66
+[; ;picState.c: 52: readADC(2);
+"52
+[e ( _readADC (1 -> -> 2 `i `uc ]
+[; ;picState.c: 53: printf("%x %x", ADRESH,ADRESL);
+"53
 [e ( _printf , , (. :s 7C -> _ADRESH `i -> _ADRESL `i ]
-"87
+[; ;picState.c: 54: _delay((unsigned long)((50)*(8000000/4000.0)));
+"54
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 55: i++;
+"55
+[e ++ _i -> 1 `i ]
+"56
 }
 [e :U 271 ]
-"62
+"50
 [e $U 272  ]
 [e :U 273 ]
-[; ;picState.c: 87: }
-[; ;picState.c: 92: }
-"92
+[; ;picState.c: 56: }
+[; ;picState.c: 79: }
+"79
 [e :UE 270 ]
 }
-"94
+"86
 [v _sort `(v ~T0 @X0 1 ef ]
 {
-[; ;picState.c: 94: void sort() {
+[; ;picState.c: 86: void sort() {
 [e :U _sort ]
 [f ]
-"96
+"88
 [v _tap `i ~T0 @X0 1 a ]
-[; ;picState.c: 96: int tap = 0;
+[; ;picState.c: 88: int tap = 0;
 [e = _tap -> 0 `i ]
-"97
+"89
 [v _tin `i ~T0 @X0 1 a ]
-[; ;picState.c: 97: int tin = 0;
+[; ;picState.c: 89: int tin = 0;
 [e = _tin -> 0 `i ]
-"98
+"90
 [v _noLabel `i ~T0 @X0 1 a ]
-[; ;picState.c: 98: int noLabel = 0;
+[; ;picState.c: 90: int noLabel = 0;
 [e = _noLabel -> 0 `i ]
-[; ;picState.c: 99: lcdInst(0x01);;
-"99
+[; ;picState.c: 92: lcdInst(0x01);;
+"92
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
-[; ;picState.c: 100: _delay((unsigned long)((100)*(8000000/4000.0)));
-"100
+[; ;picState.c: 93: _delay((unsigned long)((100)*(8000000/4000.0)));
+"93
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 101: printf("Sorting Started");
-"101
+[; ;picState.c: 94: printf("Sorting Started");
+"94
 [e ( _printf :s 8C ]
-[; ;picState.c: 102: lcdInst(0b11000000);;
-"102
+[; ;picState.c: 95: lcdInst(0b11000000);;
+"95
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;picState.c: 103: printf("Press 1/2/A to stop");
-"103
+[; ;picState.c: 96: printf("Press 1/2/A to stop");
+"96
 [e ( _printf :s 9C ]
-[; ;picState.c: 104: get_time(start_time);
-"104
+[; ;picState.c: 97: get_time(start_time);
+"97
 [e ( _get_time (1 &U _start_time ]
-[; ;picState.c: 105: lcdInst(0b10000000);;
-"105
+[; ;picState.c: 98: lcdInst(0b10000000);;
+"98
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;picState.c: 107: while (mode == 2) {
-"107
+[; ;picState.c: 100: while (mode == 2){
+"100
 [e $U 275  ]
 [e :U 276 ]
 {
-[; ;picState.c: 108: if (readLightSensor() == 1) {
-"108
+[; ;picState.c: 101: main_servo_control(0);
+"101
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;picState.c: 102: side_servo_control(0);
+"102
+[e ( _side_servo_control (1 -> 0 `i ]
+[; ;picState.c: 104: if (readLightSensor() == 1) {
+"104
 [e $ ! == ( _readLightSensor ..  -> 1 `i 278  ]
 {
-[; ;picState.c: 110: LATDbits.LATD0 = 1;
-"110
+[; ;picState.c: 106: LATDbits.LATD0 = 1;
+"106
 [e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;picState.c: 111: main_servo_control(0);
-"111
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;picState.c: 112: _delay((unsigned long)((1000)*(8000000/4000.0)));
-"112
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 114: lcdInst(0b10000000);;
-"114
+[; ;picState.c: 109: lcdInst(0b10000000);;
+"109
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;picState.c: 115: lcdInst(0b11000000);;
-"115
+[; ;picState.c: 110: lcdInst(0b11000000);;
+"110
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-"116
+"111
 [v _can `i ~T0 @X0 1 a ]
-[; ;picState.c: 116: int can = sense_can();
+[; ;picState.c: 111: int can = sense_can();
 [e = _can ( _sense_can ..  ]
-[; ;picState.c: 117: LATDbits.LATD0 = 0;
-"117
+[; ;picState.c: 114: LATDbits.LATD0 = 0;
+"114
 [e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;picState.c: 118: move_can(can);
+[; ;picState.c: 117: for (int x = 0; x< 10; x++){
+"117
+{
+[v _x `i ~T0 @X0 1 a ]
+[e = _x -> 0 `i ]
+[e $ < _x -> 10 `i 279  ]
+[e $U 280  ]
+[e :U 279 ]
+{
+[; ;picState.c: 118: main_servo_control(0);
 "118
-[e ( _move_can (1 _can ]
-[; ;picState.c: 119: printf("%d", can);
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;picState.c: 119: side_servo_control(0);
 "119
-[e ( _printf , (. :s 10C _can ]
-[; ;picState.c: 120: flag++;
+[e ( _side_servo_control (1 -> 0 `i ]
+[; ;picState.c: 120: _delay((unsigned long)((100)*(8000000/4000.0)));
 "120
-[e ++ _flag -> 1 `i ]
-"122
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"121
 }
-[; ;picState.c: 122: } else {
-[e $U 279  ]
+"117
+[e ++ _x -> 1 `i ]
+[e $ < _x -> 10 `i 279  ]
+[e :U 280 ]
+"121
+}
+[; ;picState.c: 121: }
+[; ;picState.c: 123: printf("%d", can);
+"123
+[e ( _printf , (. :s 10C _can ]
+[; ;picState.c: 124: flag++;
+"124
+[e ++ _flag -> 1 `i ]
+"125
+}
+[; ;picState.c: 125: } else {
+[e $U 282  ]
 [e :U 278 ]
 {
-[; ;picState.c: 124: shaker();
-"124
-[e ( _shaker ..  ]
-[; ;picState.c: 125: main_servo_control(0);
-"125
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;picState.c: 126: LATDbits.LATD0 = 0;
-"126
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;picState.c: 127: _delay((unsigned long)((500)*(8000000/4000.0)));
+[; ;picState.c: 127: shaker();
 "127
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 128: gate();
+[e ( _shaker ..  ]
+[; ;picState.c: 128: LATDbits.LATD0 = 0;
 "128
-[e ( _gate ..  ]
-[; ;picState.c: 130: flag = 0;
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;picState.c: 129: _delay((unsigned long)((500)*(8000000/4000.0)));
+"129
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 130: gate();
 "130
-[e = _flag -> 0 `i ]
+[e ( _gate ..  ]
+[; ;picState.c: 131: flag = 0;
 "131
-}
-[e :U 279 ]
+[e = _flag -> 0 `i ]
 "132
 }
+[e :U 282 ]
+"133
+}
 [e :U 275 ]
-"107
+"100
 [e $ == -> _mode `i -> 2 `i 276  ]
 [e :U 277 ]
-[; ;picState.c: 131: }
 [; ;picState.c: 132: }
 [; ;picState.c: 133: }
-"133
+[; ;picState.c: 134: }
+"134
 [e :UE 274 ]
 }
-"135
+"136
 [v _display_time `(v ~T0 @X0 1 ef ]
 {
-[; ;picState.c: 135: void display_time() {
+[; ;picState.c: 136: void display_time() {
 [e :U _display_time ]
 [f ]
-[; ;picState.c: 137: lcdInst(0x01);;
-"137
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[; ;picState.c: 138: _delay((unsigned long)((300)*(8000000/4000.0)));
+[; ;picState.c: 138: lcdInst(0x01);;
 "138
-[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 139: while (mode == 1) {
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[; ;picState.c: 139: _delay((unsigned long)((300)*(8000000/4000.0)));
 "139
-[e $U 281  ]
-[e :U 282 ]
-{
-[; ;picState.c: 140: I2C_Master_Start();
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 140: while (mode == 1) {
 "140
-[e ( _I2C_Master_Start ..  ]
-[; ;picState.c: 141: I2C_Master_Write(0b11010001);
+[e $U 284  ]
+[e :U 285 ]
+{
+[; ;picState.c: 141: I2C_Master_Start();
 "141
-[e ( _I2C_Master_Write (1 -> -> 209 `i `ui ]
-[; ;picState.c: 142: for (unsigned char i = 0; i < 0x06; i++) {
+[e ( _I2C_Master_Start ..  ]
+[; ;picState.c: 142: I2C_Master_Write(0b11010001);
 "142
+[e ( _I2C_Master_Write (1 -> -> 209 `i `ui ]
+[; ;picState.c: 143: for (unsigned char i = 0; i < 0x06; i++) {
+"143
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 284  ]
-[e $U 285  ]
-[e :U 284 ]
+[e $ < -> _i `i -> 6 `i 287  ]
+[e $U 288  ]
+[e :U 287 ]
 {
-[; ;picState.c: 143: time[i] = I2C_Master_Read(1);
-"143
+[; ;picState.c: 144: time[i] = I2C_Master_Read(1);
+"144
 [e = *U + &U _time * -> _i `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 1 `i `uc ]
-"144
-}
-"142
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 284  ]
-[e :U 285 ]
-"144
-}
-[; ;picState.c: 144: }
-[; ;picState.c: 145: time[6] = I2C_Master_Read(0);
 "145
-[e = *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 0 `i `uc ]
-[; ;picState.c: 146: I2C_Master_Stop();
+}
+"143
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 287  ]
+[e :U 288 ]
+"145
+}
+[; ;picState.c: 145: }
+[; ;picState.c: 146: time[6] = I2C_Master_Read(0);
 "146
-[e ( _I2C_Master_Stop ..  ]
-[; ;picState.c: 147: lcdInst(0b10000000);;
+[e = *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 0 `i `uc ]
+[; ;picState.c: 147: I2C_Master_Stop();
 "147
-[e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;picState.c: 148: printf("%02x/%02x/%02x", time[6], time[5],
-[; ;picState.c: 149: time[4]);
-"149
-[e ( _printf , , , (. :s 11C -> *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 5 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 4 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
-[; ;picState.c: 150: lcdInst(0b11000000);;
-"150
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;picState.c: 151: printf("%02x:%02x:%02x", time[2], time[1],
-[; ;picState.c: 152: time[0]);
-"152
-[e ( _printf , , , (. :s 12C -> *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 1 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 0 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
-[; ;picState.c: 154: I2C_Master_Start();
-"154
-[e ( _I2C_Master_Start ..  ]
-[; ;picState.c: 155: I2C_Master_Write(0b11010000);
-"155
-[e ( _I2C_Master_Write (1 -> -> 208 `i `ui ]
-[; ;picState.c: 156: I2C_Master_Write(0x00);
-"156
-[e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
-[; ;picState.c: 157: I2C_Master_Stop();
-"157
 [e ( _I2C_Master_Stop ..  ]
-[; ;picState.c: 159: _delay((unsigned long)((990)*(8000000/4000.0)));
-"159
-[e ( __delay (1 -> * -> -> 990 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 160: lcdInst(0b10000000);;
-"160
+[; ;picState.c: 148: lcdInst(0b10000000);;
+"148
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
+[; ;picState.c: 149: printf("%02x/%02x/%02x", time[6], time[5],
+[; ;picState.c: 150: time[4]);
+"150
+[e ( _printf , , , (. :s 11C -> *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 5 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 4 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
+[; ;picState.c: 151: lcdInst(0b11000000);;
+"151
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;picState.c: 152: printf("%02x:%02x:%02x", time[2], time[1],
+[; ;picState.c: 153: time[0]);
+"153
+[e ( _printf , , , (. :s 12C -> *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 1 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 0 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
+[; ;picState.c: 155: I2C_Master_Start();
+"155
+[e ( _I2C_Master_Start ..  ]
+[; ;picState.c: 156: I2C_Master_Write(0b11010000);
+"156
+[e ( _I2C_Master_Write (1 -> -> 208 `i `ui ]
+[; ;picState.c: 157: I2C_Master_Write(0x00);
+"157
+[e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
+[; ;picState.c: 158: I2C_Master_Stop();
+"158
+[e ( _I2C_Master_Stop ..  ]
+[; ;picState.c: 160: _delay((unsigned long)((990)*(8000000/4000.0)));
+"160
+[e ( __delay (1 -> * -> -> 990 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 161: lcdInst(0b10000000);;
 "161
-}
-[e :U 281 ]
-"139
-[e $ == -> _mode `i -> 1 `i 282  ]
-[e :U 283 ]
-[; ;picState.c: 161: }
-[; ;picState.c: 162: }
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
 "162
-[e :UE 280 ]
 }
-"165
+[e :U 284 ]
+"140
+[e $ == -> _mode `i -> 1 `i 285  ]
+[e :U 286 ]
+[; ;picState.c: 162: }
+[; ;picState.c: 163: }
+"163
+[e :UE 283 ]
+}
+"166
 [v _display_sorting_time `(v ~T0 @X0 1 ef ]
 {
-[; ;picState.c: 165: void display_sorting_time() {
+[; ;picState.c: 166: void display_sorting_time() {
 [e :U _display_sorting_time ]
 [f ]
-[; ;picState.c: 166: lcdInst(0x01);;
-"166
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[; ;picState.c: 167: _delay((unsigned long)((10)*(8000000/4000.0)));
+[; ;picState.c: 167: lcdInst(0x01);;
 "167
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 168: LATCbits.LATC1 = 0;
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[; ;picState.c: 168: _delay((unsigned long)((10)*(8000000/4000.0)));
 "168
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 169: LATCbits.LATC1 = 0;
 "169
-[v _i `i ~T0 @X0 1 a ]
-[; ;picState.c: 169: int i = passed_time;
-[e = _i -> _passed_time `i ]
-[; ;picState.c: 170: printf("Time used: %d s", i);
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
 "170
-[e ( _printf , (. :s 13C _i ]
-[; ;picState.c: 171: lcdInst(0b11000000);;
+[v _i `i ~T0 @X0 1 a ]
+[; ;picState.c: 170: int i = passed_time;
+[e = _i -> _passed_time `i ]
+[; ;picState.c: 171: printf("Time used: %d s", i);
 "171
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;picState.c: 172: _delay((unsigned long)((500)*(8000000/4000.0)));
+[e ( _printf , (. :s 13C _i ]
+[; ;picState.c: 172: lcdInst(0b11000000);;
 "172
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 173: flag = 0;
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;picState.c: 173: _delay((unsigned long)((500)*(8000000/4000.0)));
 "173
-[e = _flag -> 0 `i ]
-[; ;picState.c: 174: LATDbits.LATD0 = 0;
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 174: flag = 0;
 "174
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;picState.c: 175: }
+[e = _flag -> 0 `i ]
+[; ;picState.c: 175: LATDbits.LATD0 = 0;
 "175
-[e :UE 287 ]
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;picState.c: 176: }
+"176
+[e :UE 290 ]
 }
 [p f _printf 12615812 ]
 [a 12C 37 48 50 120 58 37 48 50 120 58 37 48 50 120 0 ]
 [a 11C 37 48 50 120 47 37 48 50 120 47 37 48 50 120 0 ]
-[a 7C 37 120 37 120 0 ]
+[a 7C 37 120 32 37 120 0 ]
 [a 3C 50 32 66 97 99 107 32 116 111 32 115 116 97 114 116 32 109 101 110 117 0 ]
 [a 13C 84 105 109 101 32 117 115 101 100 58 32 37 100 32 115 0 ]
 [a 9C 80 114 101 115 115 32 49 47 50 47 65 32 116 111 32 115 116 111 112 0 ]

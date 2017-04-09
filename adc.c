@@ -19,6 +19,7 @@
 //Channel 1 = RA1
 //Channel 2 = RA2
 void readADC(char channel){
+    ADCON0 = 0x00;
     ADCON0 = (ADCON0 & 0X3C)|((channel & 0x0F)<<2);
     ADON = 1;
     ADCON0bits.GO = 1;
@@ -32,42 +33,48 @@ int sense_can() {
   int H_max = 0;
   /* First, check if it is a tin or pop can */
 
-  if (PORTBbits.RB0 == 1){ // This might be wrong - assuming B1 is connected to
+  
+  /*
+  if (0 == 0){ // This might be wrong - assuming B1 is connected to
                             // a switch that is 1 when it is a tin can
-                            /* TIN CAN */
-    for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
-      /* Read ADC */
+    for (int i = 0; i < 10000; i++) { // Check a bunch of times, see if MAX is FF
       readADC(0); // Channel 0 for label detector?
       if (ADRESH > H_max) {
         H_max = ADRESH;
       }
+      
+      if (ADRESH > 30){
+          return TIN_NOLAB;
+      }
     }
-
-    if (H_max >= 0x4) { // Is this the max?
-      /* No Label */
+     
+    if (H_max >= 0xA0) { // Is this the max?
       return TIN_NOLAB;
     } else {
-      /* Label */
       return TIN_LAB;
     }
   }
-
-  else {
-    for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
-      /* Read ADC */
+*/
+  
+  if (0 == 0) {
+    for (int i = 0; i < 10000; i++) { // Check a bunch of times, see if MAX is FF
+      
       readADC(1); // Channel 0 for label detector?
       if (ADRESH > H_max) {
         H_max = ADRESH;
       }
+      if (ADRESH > 30){
+          return POP_TAB;
+      }
     }
-    if (H_max == 0xFF) { // Is this the max?
-      /* Tab */
+    if (H_max >= 0xA0) { // Is this the max?
       return POP_TAB;
     } else {
-      /* No Tab */
       return POP_NOTAB;
     }
   }
+  
+
 }
 
 int readLightSensor(){
@@ -76,16 +83,19 @@ int readLightSensor(){
     while(i < 50){
         __lcd_home();
         //int i = readLightSensor();
-        readADC(5);
+        readADC(2);
         if (ADRESH > H_max) {
             H_max = ADRESH;
+        }
+        if (ADRESH < 0x20){
+            return 1;
         }
         printf("%x", ADRESH);
         __delay_ms(5);
         i++;
     }
     
-    if(H_max >= 0x50){
+    if(H_max >= 0x20){
         return 0;
     }
     else{

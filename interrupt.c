@@ -40,6 +40,7 @@ void interrupt interrupt_handler(void) {
 
     } else if (keypress == 0x3) { // sort
       if (mode == 0) {
+        get_time(end_time);
         mode = 2;
       }
     }

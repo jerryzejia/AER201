@@ -3850,13 +3850,13 @@ unsigned char passed_time;
 int flag = 0;
 
 void initPIC() {
-TRISA = 0b11110011;
+TRISA = 0b11100111;
 TRISC = 0x11100110;
 
 TRISC = 0x11100100;
 TRISD = 0x00;
 TRISB = 0b11111011;
-
+TRISE = 0x00;
 
 
 LATA = 0x00;
@@ -3866,7 +3866,7 @@ LATD = 0x00;
 LATE = 0x00;
 
 ADCON0 = 0x00;
-ADCON1 = 0x09;
+ADCON1 = 0x0C;
 
 
 ADCON2 = 0b00110001;

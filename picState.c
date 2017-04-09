@@ -40,31 +40,23 @@ void welcome() {
 }
 
 void debug() {
-   //side_servo_control(NEUTRAL);
-    //main_servo_control(NEUTRAL);
+
+    
+    
     //LATDbits.LATD0 = 1;
     //int i = sense_can();
     //printf("%d", i);
-    /*int i = 0; 
-    while(i < 50){
-        __lcd_home();
-        //int i = readLightSensor();
-        readADC(5);
-
-        printf("%x%x", ADRESH,ADRESL);
-        __delay_ms(5);
-        i++;
-    }
-    */ 
-    
-    int H_max = 0;
-    int i = 0;
+    int i = 0; 
     while(1){
         __lcd_home();
-        //int i = readLightSensor();
-        readADC(0);
-        printf("%x%x", ADRESH, ADRESL);
-
+        readADC(2);
+        printf("%x %x", ADRESH,ADRESL);
+        __delay_ms(50);
+        i++;
+    }
+     
+    //__delay_ms(500);
+    //gate();
         /*if (ADRESH > H_max) {
             H_max = ADRESH;
         }
@@ -89,13 +81,14 @@ void debug() {
     
     //gate();
 
-}
+
 
 void sort() {
 
   int tap = 0;
   int tin = 0;
   int noLabel = 0;
+  
   __lcd_clear();
   __delay_ms(100);
   printf("Sorting Started");
@@ -104,29 +97,37 @@ void sort() {
   get_time(start_time);
   __lcd_home();
   // 1 = yes, 0 = no
-  while (mode == 2) {
+  while (mode == 2){
+    main_servo_control(NEUTRAL);
+    side_servo_control(NEUTRAL);
+
     if (readLightSensor() == 1) {
       // Everything here should be activated by a switch
       LATDbits.LATD0 = 1;
-      main_servo_control(NEUTRAL);
-      __delay_ms(1000);
+      
      
         __lcd_home();
         __lcd_newline();
         int can = sense_can();
+       
+
         LATDbits.LATD0 = 0;
-        move_can(can);
+       // move_can(can);
+        
+        for (int x = 0; x< 10; x++){
+        main_servo_control(NEUTRAL);
+        side_servo_control(NEUTRAL);
+        __delay_ms(100);
+        }
+
         printf("%d", can);
         flag++;
-      
     } else {
       // move_can(sense_can());
       shaker();
-      main_servo_control(NEUTRAL);
       LATDbits.LATD0 = 0;
       __delay_ms(500);      
       gate();
-      
       flag = 0;
     }
   }
