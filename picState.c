@@ -9,13 +9,14 @@
 #include <xc.h>
 
 char mode;
-extern int flag;
 extern unsigned char start_time[7];
 extern unsigned char end_time[7];
-extern unsigned char passed_time; 
+extern unsigned int passed_time; 
 extern unsigned char time[7];
 
-
+int displayFlag = 0; 
+int int_end_time[7];
+int int_start_time[7];
 
 void welcome() {
   __lcd_clear();
@@ -40,55 +41,27 @@ void welcome() {
 }
 
 void debug() {
-
-    
-    
-    //LATDbits.LATD0 = 1;
-    //int i = sense_can();
-    //printf("%d", i);
-    int i = 0; 
-    while(1){
-        __lcd_home();
-        readADC(2);
-        printf("%x %x", ADRESH,ADRESL);
-        __delay_ms(50);
-        i++;
+    /*__lcd_home();
+    get_time(start_time);
+    printf("%02x/%02x/%02x", start_time[6], start_time[5],
+           start_time[4]); // Print date in YY/MM/DD
+    __lcd_newline();
+    printf("%02x:%02x:%02x", start_time[2], start_time[1],
+           start_time[0]);
     }
-     
-    //__delay_ms(500);
-    //gate();
-        /*if (ADRESH > H_max) {
-            H_max = ADRESH;
-        }
-        printf("%x", ADRESH);
-        __delay_ms(5);
-        i++;
-    }
+     */
+    get_time(end_time);
+    printf("%02x/%02x/%02x", end_time[6], end_time[5],
+           end_time[4]); // Print date in YY/MM/DD
+    __lcd_newline();
+    printf("%02x:%02x:%02x", end_time[2], end_time[1],
+           end_time[0]);
     
-    if(H_max >= 0x50){
-       __lcd_home();
-       printf("HI HI %x", H_max);
-       __delay_ms(500);
-    }
-    else{
-       __lcd_home();
-       printf("LO LO %x",H_max);
-       __delay_ms(500);
-
-  */
-    }
-    
-    
-    //gate();
-
-
-
+}
 void sort() {
-
   int tap = 0;
   int tin = 0;
   int noLabel = 0;
-  
   __lcd_clear();
   __delay_ms(100);
   printf("Sorting Started");
@@ -104,37 +77,24 @@ void sort() {
     if (readLightSensor() == 1) {
       // Everything here should be activated by a switch
       LATDbits.LATD0 = 1;
-      
-     
         __lcd_home();
         __lcd_newline();
         int can = sense_can();
-       
-
         LATDbits.LATD0 = 0;
-       // move_can(can);
-        
-        for (int x = 0; x< 10; x++){
-        main_servo_control(NEUTRAL);
-        side_servo_control(NEUTRAL);
-        __delay_ms(100);
-        }
+        move_can(can);
 
         printf("%d", can);
-        flag++;
     } else {
       // move_can(sense_can());
       shaker();
       LATDbits.LATD0 = 0;
       __delay_ms(500);      
       gate();
-      flag = 0;
     }
   }
 }
 
 void display_time() {
-    
   __lcd_clear();
   __delay_ms(300);
   while (mode == 1) {
@@ -162,15 +122,25 @@ void display_time() {
   }
 }
 
-
 void display_sorting_time() {
-  __lcd_clear();
-  __delay_ms(10);
+    int int_end_time[7];
+    int int_start_time[7];
+    __lcd_clear();
+
+    get_time(end_time);
+    for(int i = 0; i < 7; i++){
+        int_end_time[i] = __bcd_to_num(end_time[i]);
+    }
+    for(int i = 0; i < 7; i++){
+        int_start_time[i] = __bcd_to_num(start_time[i]);
+    }
+    if(displayFlag == 0){
+        passed_time = (int_end_time[1] - int_start_time[1]) * 60 + (int_end_time[0] - int_start_time[0]);
+        displayFlag++;
+    }
+
   LATCbits.LATC1 = 0;
-  int i = passed_time;
-  printf("Time used: %d s", i);
-  __lcd_newline();
+  printf("Time used: %d s", passed_time);
   __delay_ms(500);
-  flag = 0;
   LATDbits.LATD0 = 0;
 }

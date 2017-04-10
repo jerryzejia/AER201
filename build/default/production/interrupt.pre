@@ -3832,47 +3832,42 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 17 "interrupt.c"
+# 18 "interrupt.c"
 extern char mode;
 const char keys[] = "123A456B789C*0#D";
 extern unsigned char start_time[7];
 extern unsigned char end_time[7];
-extern unsigned char passed_time;
-
+extern unsigned int passed_time;
+extern int displayFlag;
 void interrupt interrupt_handler(void) {
+
+# 31
 if (INT1IF) {
 lcdInst(0b11000000);;
 unsigned char keypress = (PORTB & 0xF0) >> 4;
 putch(keys[keypress]);
+
+# 41
 if (mode == 2) {
-get_time(end_time);
-passed_time =
-(end_time[1] - start_time[1]) * 60 + (end_time[0] - start_time[0]);
 mode = 3;
-
-
-
 } else if (keypress == 0x0) {
 if (mode == 0) {
 mode = 1;
 }
-
 } else if (keypress == 0x3) {
-if (mode == 0) {
-get_time(end_time);
+get_time(start_time);
 mode = 2;
 }
-}
-
 else if (keypress == 0x1) {
 mode = 0;
-
 }else if (keypress == 0x2) {
-mode = 99;
+mode = 4;
 }
+
+
 }
 INT1IF = 0;
 
-# 71
+# 79
 }
 

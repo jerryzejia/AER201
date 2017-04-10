@@ -31,7 +31,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _initLCD `(v ~T0 @X0 0 ef ]
 "1 I2C.h
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
-"59 initPic.c
+"61 initPic.c
 [v _I2C_Master_Start `(i ~T0 @X0 0 ef ]
 "2 I2C.h
 [v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
@@ -2894,26 +2894,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 "18
 -> -> 0 `i `uc
 "19
--> -> 25 `i `uc
+-> -> 7 `i `uc
 "20
--> -> 21 `i `uc
+-> -> 3 `i `uc
 "21
--> -> 4 `i `uc
+-> -> 2 `i `uc
 "22
--> -> 37 `i `uc
+-> -> 16 `i `uc
 "23
--> -> 1 `i `uc
+-> -> 4 `i `uc
 "25
 -> -> 23 `i `uc
 ..
 ]
 [; ;initPic.c: 17: const char timeSetter[7] = {
 [; ;initPic.c: 18: 0x00,
-[; ;initPic.c: 19: 0x19,
-[; ;initPic.c: 20: 0x15,
-[; ;initPic.c: 21: 0x04,
-[; ;initPic.c: 22: 0x25,
-[; ;initPic.c: 23: 0x01,
+[; ;initPic.c: 19: 0x07,
+[; ;initPic.c: 20: 0x03,
+[; ;initPic.c: 21: 0x02,
+[; ;initPic.c: 22: 0x10,
+[; ;initPic.c: 23: 0x04,
 [; ;initPic.c: 24: 0x17
 [; ;initPic.c: 25: };
 "27
@@ -2926,93 +2926,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _end_time `uc ~T0 @X0 -> 7 `i e ]
 [; ;initPic.c: 29: unsigned char end_time[7];
 "30
-[v _passed_time `uc ~T0 @X0 1 e ]
-[; ;initPic.c: 30: unsigned char passed_time;
-"31
-[v _flag `i ~T0 @X0 1 e ]
-[i _flag
--> 0 `i
-]
-[; ;initPic.c: 31: int flag = 0;
-"33
+[v _passed_time `ui ~T0 @X0 1 e ]
+[; ;initPic.c: 30: unsigned int passed_time;
+"35
 [v _initPIC `(v ~T0 @X0 1 ef ]
 {
-[; ;initPic.c: 33: void initPIC() {
+[; ;initPic.c: 35: void initPIC() {
 [e :U _initPIC ]
 [f ]
-[; ;initPic.c: 34: TRISA = 0b11100111;
-"34
+[; ;initPic.c: 36: TRISA = 0b11100111;
+"36
 [e = _TRISA -> -> 231 `i `uc ]
-[; ;initPic.c: 35: TRISC = 0x11100110;
-"35
-[e = _TRISC -> -> 286261520 `l `uc ]
-[; ;initPic.c: 37: TRISC = 0x11100100;
+[; ;initPic.c: 37: TRISC = 0x11100110;
 "37
-[e = _TRISC -> -> 286261504 `l `uc ]
-[; ;initPic.c: 38: TRISD = 0x00;
-"38
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;initPic.c: 39: TRISB = 0b11111011;
+[e = _TRISC -> -> 286261520 `l `uc ]
+[; ;initPic.c: 39: TRISC = 0x11100100;
 "39
-[e = _TRISB -> -> 251 `i `uc ]
-[; ;initPic.c: 40: TRISE = 0x00;
+[e = _TRISC -> -> 286261504 `l `uc ]
+[; ;initPic.c: 40: TRISD = 0x00;
 "40
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;initPic.c: 41: TRISB = 0b11111011;
+"41
+[e = _TRISB -> -> 251 `i `uc ]
+[; ;initPic.c: 42: TRISE = 0x00;
+"42
 [e = _TRISE -> -> 0 `i `uc ]
-[; ;initPic.c: 43: LATA = 0x00;
-"43
-[e = _LATA -> -> 0 `i `uc ]
-[; ;initPic.c: 44: LATB = 0x00;
-"44
-[e = _LATB -> -> 0 `i `uc ]
-[; ;initPic.c: 45: LATC = 0x00;
+[; ;initPic.c: 45: LATA = 0x00;
 "45
-[e = _LATC -> -> 0 `i `uc ]
-[; ;initPic.c: 46: LATD = 0x00;
+[e = _LATA -> -> 0 `i `uc ]
+[; ;initPic.c: 46: LATB = 0x00;
 "46
-[e = _LATD -> -> 0 `i `uc ]
-[; ;initPic.c: 47: LATE = 0x00;
+[e = _LATB -> -> 0 `i `uc ]
+[; ;initPic.c: 47: LATC = 0x00;
 "47
-[e = _LATE -> -> 0 `i `uc ]
-[; ;initPic.c: 49: ADCON0 = 0x00;
+[e = _LATC -> -> 0 `i `uc ]
+[; ;initPic.c: 48: LATD = 0x00;
+"48
+[e = _LATD -> -> 0 `i `uc ]
+[; ;initPic.c: 49: LATE = 0x00;
 "49
+[e = _LATE -> -> 0 `i `uc ]
+[; ;initPic.c: 51: ADCON0 = 0x00;
+"51
 [e = _ADCON0 -> -> 0 `i `uc ]
-[; ;initPic.c: 50: ADCON1 = 0x0C;
-"50
+[; ;initPic.c: 52: ADCON1 = 0x0C;
+"52
 [e = _ADCON1 -> -> 12 `i `uc ]
-[; ;initPic.c: 53: ADCON2 = 0b00110001;
-"53
+[; ;initPic.c: 55: ADCON2 = 0b00110001;
+"55
 [e = _ADCON2 -> -> 49 `i `uc ]
-[; ;initPic.c: 54: INT1IE = 1;
-"54
-[e = _INT1IE -> -> 1 `i `b ]
-[; ;initPic.c: 56: initLCD();
+[; ;initPic.c: 56: INT1IE = 1;
 "56
-[e ( _initLCD ..  ]
-[; ;initPic.c: 58: I2C_Master_Init(10000);
+[e = _INT1IE -> -> 1 `i `b ]
+[; ;initPic.c: 58: initLCD();
 "58
-[e ( _I2C_Master_Init (1 -> -> -> 10000 `i `l `ul ]
-[; ;initPic.c: 59: I2C_Master_Start();
-"59
-[e ( _I2C_Master_Start ..  ]
-[; ;initPic.c: 60: I2C_Master_Write(0b11010000);
+[e ( _initLCD ..  ]
+[; ;initPic.c: 60: I2C_Master_Init(10000);
 "60
-[e ( _I2C_Master_Write (1 -> -> 208 `i `ui ]
-[; ;initPic.c: 61: I2C_Master_Write(0x00);
+[e ( _I2C_Master_Init (1 -> -> -> 10000 `i `l `ul ]
+[; ;initPic.c: 61: I2C_Master_Start();
 "61
-[e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
-[; ;initPic.c: 62: I2C_Master_Stop();
+[e ( _I2C_Master_Start ..  ]
+[; ;initPic.c: 62: I2C_Master_Write(0b11010000);
 "62
-[e ( _I2C_Master_Stop ..  ]
-[; ;initPic.c: 63: main_servo_control(0);
+[e ( _I2C_Master_Write (1 -> -> 208 `i `ui ]
+[; ;initPic.c: 63: I2C_Master_Write(0x00);
 "63
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;initPic.c: 64: side_servo_control(0);
+[e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
+[; ;initPic.c: 64: I2C_Master_Stop();
 "64
-[e ( _side_servo_control (1 -> 0 `i ]
-[; ;initPic.c: 67: (INTCONbits.GIE = 1);
+[e ( _I2C_Master_Stop ..  ]
+[; ;initPic.c: 66: main_servo_control(0);
+"66
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;initPic.c: 67: side_servo_control(0);
 "67
+[e ( _side_servo_control (1 -> 0 `i ]
+[; ;initPic.c: 68: (INTCONbits.GIE = 1);
+"68
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;initPic.c: 79: }
-"79
+[; ;initPic.c: 80: }
+"80
 [e :UE 266 ]
 }

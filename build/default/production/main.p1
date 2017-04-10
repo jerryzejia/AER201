@@ -1,18 +1,18 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"22 main.c
+"24 main.c
 [v _initPIC `(i ~T0 @X0 0 ef ]
 "16
 [v _mode `uc ~T0 @X0 0 e ]
-"25
+"27
 [v _welcome `(i ~T0 @X0 0 ef ]
-"28
+"30
 [v _display_time `(i ~T0 @X0 0 ef ]
-"32
+"34
 [v _sort `(i ~T0 @X0 0 ef ]
-"36
+"38
 [v _display_sorting_time `(i ~T0 @X0 0 ef ]
-"40
+"42
 [v _debug `(i ~T0 @X0 0 ef ]
 [; ;I2C.h: 1: void I2C_Master_Init(const unsigned long c);
 [; ;I2C.h: 2: void I2C_Master_Write(unsigned d);
@@ -2856,85 +2856,85 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 21: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 22: initPIC();
-"22
+[; ;main.c: 24: initPIC();
+"24
 [e ( _initPIC ..  ]
-[; ;main.c: 23: while (1) {
-"23
+[; ;main.c: 25: while (1) {
+"25
 [e :U 268 ]
 {
-[; ;main.c: 24: if (mode == 0) {
-"24
+[; ;main.c: 26: if (mode == 0) {
+"26
 [e $ ! == -> _mode `i -> 0 `i 270  ]
 {
-[; ;main.c: 25: welcome();
-"25
-[e ( _welcome ..  ]
+[; ;main.c: 27: welcome();
 "27
+[e ( _welcome ..  ]
+"29
 }
-[; ;main.c: 27: } else if (mode == 1) {
+[; ;main.c: 29: } else if (mode == 1) {
 [e $U 271  ]
 [e :U 270 ]
 [e $ ! == -> _mode `i -> 1 `i 272  ]
 {
-[; ;main.c: 28: display_time();
-"28
+[; ;main.c: 30: display_time();
+"30
 [e ( _display_time ..  ]
-"29
-}
-[; ;main.c: 29: }
-[e $U 273  ]
 "31
+}
+[; ;main.c: 31: }
+[e $U 273  ]
+"33
 [e :U 272 ]
-[; ;main.c: 31: else if (mode == 2) {
+[; ;main.c: 33: else if (mode == 2) {
 [e $ ! == -> _mode `i -> 2 `i 274  ]
 {
-[; ;main.c: 32: sort();
-"32
+[; ;main.c: 34: sort();
+"34
 [e ( _sort ..  ]
-"33
-}
-[; ;main.c: 33: }
-[e $U 275  ]
 "35
+}
+[; ;main.c: 35: }
+[e $U 275  ]
+"37
 [e :U 274 ]
-[; ;main.c: 35: else if (mode == 3) {
+[; ;main.c: 37: else if (mode == 3) {
 [e $ ! == -> _mode `i -> 3 `i 276  ]
 {
-[; ;main.c: 36: display_sorting_time();
-"36
+[; ;main.c: 38: display_sorting_time();
+"38
 [e ( _display_sorting_time ..  ]
-"37
-}
-[; ;main.c: 37: }
-[e $U 277  ]
 "39
-[e :U 276 ]
-[; ;main.c: 39: else if (mode == 99) {
-[e $ ! == -> _mode `i -> 99 `i 278  ]
-{
-[; ;main.c: 40: debug();
-"40
-[e ( _debug ..  ]
+}
+[; ;main.c: 39: }
+[e $U 277  ]
 "41
+[e :U 276 ]
+[; ;main.c: 41: else if (mode == 4) {
+[e $ ! == -> _mode `i -> 4 `i 278  ]
+{
+[; ;main.c: 42: debug();
+"42
+[e ( _debug ..  ]
+"43
 }
 [e :U 278 ]
-"42
+"44
 [e :U 277 ]
 [e :U 275 ]
 [e :U 273 ]
 [e :U 271 ]
 }
 [e :U 267 ]
-"23
+"25
 [e $U 268  ]
 [e :U 269 ]
-[; ;main.c: 41: }
-[; ;main.c: 42: }
-[; ;main.c: 43: return;
-"43
-[e $UE 266  ]
+[; ;main.c: 43: }
 [; ;main.c: 44: }
-"44
+[; ;main.c: 45: return;
+"45
+[e $UE 266  ]
+[; ;main.c: 46: }
+"46
 [e :UE 266 ]
 }

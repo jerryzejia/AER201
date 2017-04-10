@@ -3839,13 +3839,26 @@ int soup_can_label = 0;
 int soup_can_no_label = 0;
 int total_count = 0;
 
-
+# 28
 void count(int canType) {
-if(canType = 1){
-
+if(canType == 1){
+soup_can_label++;
+}
+else if(canType == 2){
+soup_can_no_label++;
+}
+else if(canType == 3){
+pop_can_tap++;
+}
+else if(canType == 4){
+pop_can_no_tap++;
 }
 }
 
-void ensureTotalCan(int total_count){
-
+int ensureTotalCan(int total_count){
+total_count = soup_can_label + soup_can_no_label + pop_can_tap +
+pop_can_no_tap;
+if(total_count > 12){
+return 1;
+}
 }

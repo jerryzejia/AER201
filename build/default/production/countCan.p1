@@ -2861,33 +2861,91 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;countCan.c: 20: int total_count = 0;
-"23
+"28
 [v _count `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;countCan.c: 23: void count(int canType) {
+[; ;countCan.c: 28: void count(int canType) {
 [e :U _count ]
 [v _canType `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;countCan.c: 24: if(canType = 1){
-"24
-[e $ ! != = _canType -> 1 `i -> 0 `i 267  ]
+[; ;countCan.c: 29: if(canType == 1){
+"29
+[e $ ! == _canType -> 1 `i 267  ]
 {
-"26
+[; ;countCan.c: 30: soup_can_label++;
+"30
+[e ++ _soup_can_label -> 1 `i ]
+"31
 }
+[; ;countCan.c: 31: }
+[e $U 268  ]
+"32
 [e :U 267 ]
-[; ;countCan.c: 26: }
-[; ;countCan.c: 27: }
-"27
+[; ;countCan.c: 32: else if(canType == 2){
+[e $ ! == _canType -> 2 `i 269  ]
+{
+[; ;countCan.c: 33: soup_can_no_label++;
+"33
+[e ++ _soup_can_no_label -> 1 `i ]
+"34
+}
+[; ;countCan.c: 34: }
+[e $U 270  ]
+"35
+[e :U 269 ]
+[; ;countCan.c: 35: else if(canType == 3){
+[e $ ! == _canType -> 3 `i 271  ]
+{
+[; ;countCan.c: 36: pop_can_tap++;
+"36
+[e ++ _pop_can_tap -> 1 `i ]
+"37
+}
+[; ;countCan.c: 37: }
+[e $U 272  ]
+"38
+[e :U 271 ]
+[; ;countCan.c: 38: else if(canType == 4){
+[e $ ! == _canType -> 4 `i 273  ]
+{
+[; ;countCan.c: 39: pop_can_no_tap++;
+"39
+[e ++ _pop_can_no_tap -> 1 `i ]
+"40
+}
+[e :U 273 ]
+"41
+[e :U 272 ]
+[e :U 270 ]
+[e :U 268 ]
+[; ;countCan.c: 40: }
+[; ;countCan.c: 41: }
 [e :UE 266 ]
 }
-"29
-[v _ensureTotalCan `(v ~T0 @X0 1 ef1`i ]
+"43
+[v _ensureTotalCan `(i ~T0 @X0 1 ef1`i ]
 {
-[; ;countCan.c: 29: void ensureTotalCan(int total_count){
+[; ;countCan.c: 43: int ensureTotalCan(int total_count){
 [e :U _ensureTotalCan ]
 [v _total_count `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;countCan.c: 31: }
-"31
-[e :UE 268 ]
+[; ;countCan.c: 44: total_count = soup_can_label + soup_can_no_label + pop_can_tap +
+[; ;countCan.c: 45: pop_can_no_tap;
+"45
+[e = _total_count + + + _soup_can_label _soup_can_no_label _pop_can_tap _pop_can_no_tap ]
+[; ;countCan.c: 46: if(total_count > 12){
+"46
+[e $ ! > _total_count -> 12 `i 275  ]
+{
+[; ;countCan.c: 47: return 1;
+"47
+[e ) -> 1 `i ]
+[e $UE 274  ]
+"48
+}
+[e :U 275 ]
+[; ;countCan.c: 48: }
+[; ;countCan.c: 49: }
+"49
+[e :UE 274 ]
 }

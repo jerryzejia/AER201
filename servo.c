@@ -28,10 +28,10 @@ void main_servo_control(int dir){
   else if(dir == RIGHT){
       for (i = 0; i < 10; i++) {
         LATEbits.LATE0 = 1;
-        __delay_ms(3);
+        __delay_ms(3.5);
 
         LATEbits.LATE0 = 0;
-        __delay_ms(17);
+        __delay_ms(16.5);
     }
   }
   else if (dir == LEFT){
@@ -62,7 +62,7 @@ void side_servo_control(int dir){
         __delay_ms(2);
 
         LATAbits.LATA3 = 0;
-        __delay_ms(118);
+        __delay_ms(18);
     }
   }
   else if (dir == LEFT){
@@ -80,8 +80,13 @@ void move_can(int canType){
     if(canType == TIN_NOLAB){
         side_servo_control(RIGHT);
         __delay_ms(2000);
-        main_servo_control(RIGHT);
-        __delay_ms(2000);
+        
+        for (int i = 0; i<5; i++){        //do the loop to keep main servo angled
+            side_servo_control(RIGHT);
+            main_servo_control(RIGHT);
+            __delay_ms(10);
+        }
+        
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
     }
@@ -89,8 +94,13 @@ void move_can(int canType){
         side_servo_control(LEFT);
         __delay_ms(2000);
 
-        main_servo_control(RIGHT);
-        __delay_ms(2000);
+        for (int i = 0; i<5; i++){        //do the loop to keep main servo angled
+            side_servo_control(LEFT);
+            main_servo_control(RIGHT);
+            __delay_ms(10);
+        }
+        
+        
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
 
@@ -99,16 +109,22 @@ void move_can(int canType){
        
         side_servo_control(LEFT);
          __delay_ms(2000);
-        main_servo_control(LEFT);
-        __delay_ms(2000);
+         for (int i = 0; i<5; i++){        //do the loop to keep main servo angled
+            side_servo_control(LEFT);
+             main_servo_control(LEFT);
+            __delay_ms(10);
+        }
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
     }
     else if(canType == POP_NOTAB){
         side_servo_control(RIGHT);
         __delay_ms(2000);
-        main_servo_control(LEFT);
-        __delay_ms(2000);
+         for (int i = 0; i<5; i++){        //do the loop to keep main servo angled
+            side_servo_control(RIGHT);
+             main_servo_control(LEFT);
+            __delay_ms(10);
+        }
         main_servo_control(NEUTRAL);
         side_servo_control(NEUTRAL);
     }

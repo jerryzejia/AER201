@@ -3834,13 +3834,14 @@ extern int printf(const char *, ...);
 
 # 11 "picState.c"
 char mode;
-extern int flag;
 extern unsigned char start_time[7];
 extern unsigned char end_time[7];
-extern unsigned char passed_time;
+extern unsigned int passed_time;
 extern unsigned char time[7];
 
-
+int displayFlag = 0;
+int int_end_time[7];
+int int_start_time[7];
 
 void welcome() {
 lcdInst(0x01);;
@@ -3866,26 +3867,19 @@ while (mode == 0) {
 
 void debug() {
 
-# 49
-int i = 0;
-while(1){
-lcdInst(0b10000000);;
-readADC(2);
-printf("%x %x", ADRESH,ADRESL);
-_delay((unsigned long)((50)*(8000000/4000.0)));
-i++;
-}
+# 53
+get_time(end_time);
+printf("%02x/%02x/%02x", end_time[6], end_time[5],
+end_time[4]);
+lcdInst(0b11000000);;
+printf("%02x:%02x:%02x", end_time[2], end_time[1],
+end_time[0]);
 
-# 79
 }
-
-# 86
 void sort() {
-
 int tap = 0;
 int tin = 0;
 int noLabel = 0;
-
 lcdInst(0x01);;
 _delay((unsigned long)((100)*(8000000/4000.0)));
 printf("Sorting Started");
@@ -3901,37 +3895,24 @@ side_servo_control(0);
 if (readLightSensor() == 1) {
 
 LATDbits.LATD0 = 1;
-
-
 lcdInst(0b10000000);;
 lcdInst(0b11000000);;
 int can = sense_can();
-
-
 LATDbits.LATD0 = 0;
-
-
-for (int x = 0; x< 10; x++){
-main_servo_control(0);
-side_servo_control(0);
-_delay((unsigned long)((100)*(8000000/4000.0)));
-}
+move_can(can);
 
 printf("%d", can);
-flag++;
 } else {
 
 shaker();
 LATDbits.LATD0 = 0;
 _delay((unsigned long)((500)*(8000000/4000.0)));
 gate();
-flag = 0;
 }
 }
 }
 
 void display_time() {
-
 lcdInst(0x01);;
 _delay((unsigned long)((300)*(8000000/4000.0)));
 while (mode == 1) {
@@ -3959,15 +3940,25 @@ lcdInst(0b10000000);;
 }
 }
 
-
 void display_sorting_time() {
+int int_end_time[7];
+int int_start_time[7];
 lcdInst(0x01);;
-_delay((unsigned long)((10)*(8000000/4000.0)));
+
+get_time(end_time);
+for(int i = 0; i < 7; i++){
+int_end_time[i] = (end_time[i] & 0x0F) + ((end_time[i] & 0xF0)>>4)*10;
+}
+for(int i = 0; i < 7; i++){
+int_start_time[i] = (start_time[i] & 0x0F) + ((start_time[i] & 0xF0)>>4)*10;
+}
+if(displayFlag == 0){
+passed_time = (int_end_time[1] - int_start_time[1]) * 60 + (int_end_time[0] - int_start_time[0]);
+displayFlag++;
+}
+
 LATCbits.LATC1 = 0;
-int i = passed_time;
-printf("Time used: %d s", i);
-lcdInst(0b11000000);;
+printf("Time used: %d s", passed_time);
 _delay((unsigned long)((500)*(8000000/4000.0)));
-flag = 0;
 LATDbits.LATD0 = 0;
 }

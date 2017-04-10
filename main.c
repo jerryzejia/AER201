@@ -19,6 +19,8 @@ extern unsigned char end_time[7];
 extern unsigned char passed_time; 
 
 void main(void) {
+  
+    
   initPIC();
   while (1) {
     if (mode == 0) {
@@ -36,7 +38,7 @@ void main(void) {
       display_sorting_time();
     }
 
-    else if (mode == 99) {
+    else if (mode == 4) {
       debug();
     }
   }

@@ -23,18 +23,6 @@ extern unsigned char time[7];
 extern char mode;
 
 
-void set_time(void) {           // This program only has to be written once
-  I2C_Master_Init(10000); //Initialize I2C Master with 100KHz clock
-  di();
-  I2C_Master_Start();           // Start condition
-  I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
-  I2C_Master_Write(0x00);       // Set memory pointer to seconds
-  for (char i = 0; i < 7; i++) {
-    I2C_Master_Write(timeSetter[i]);
-  }
-  I2C_Master_Stop(); // Stop condition
-  ei();
-}
 
 void get_time(unsigned char datime[7]) {
     I2C_Master_Start(); //Start condition
@@ -47,15 +35,9 @@ void get_time(unsigned char datime[7]) {
     I2C_Master_Write(0b11010001); //7 bit RTC address + Read (1 LSB)
     for(int i = 0; i < 6; i++){
         datime[i] = I2C_Master_Read(1);
-        datime[i] = __bcd_to_num(time[i]);
-
     }
     datime[6] = I2C_Master_Read(0);
     I2C_Master_Stop();
-    I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
-    I2C_Master_Write(0x00);       // Set memory pointer to seconds
-    I2C_Master_Stop();            // Stop condition
-
 }
 /*
 void initSortTimer(void){
@@ -84,7 +66,6 @@ void getSortTime(void){
     unsigned int start_sec = start_time[0] + start_time[1]*60 + start_time[2]*3600;
     unsigned int cur_sec = end_time[0] + end_time[1]*60 + end_time[2]*3600;
     unsigned int timeDiff = cur_sec - start_sec;
-    
     unsigned int total_time = timeDiff;
     
     if(timeDiff >= 180){

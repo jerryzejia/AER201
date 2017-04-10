@@ -7,15 +7,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "16 /Applications/microchip/xc8/v1.41/include/conio.h
 [v _putch `(v ~T0 @X0 0 ef1`uc ]
-"17 interrupt.c
+"18 interrupt.c
 [v _mode `uc ~T0 @X0 0 e ]
 "80 function.h
 [v _get_time `(v ~T0 @X0 0 ef1`*uc ]
 "20 interrupt.c
-[v _end_time `uc ~T0 @X0 -> 0 `x e ]
-"21
-[v _passed_time `uc ~T0 @X0 0 e ]
-"19
 [v _start_time `uc ~T0 @X0 -> 0 `x e ]
 [; ;I2C.h: 1: void I2C_Master_Init(const unsigned long c);
 [; ;I2C.h: 2: void I2C_Master_Write(unsigned d);
@@ -2849,8 +2845,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-[; ;interrupt.c: 17: extern char mode;
-"18 interrupt.c
+[; ;interrupt.c: 18: extern char mode;
+"19 interrupt.c
 [v _keys `Cuc ~T0 @X0 -> 0 `x e ]
 [i _keys
 :U ..
@@ -2873,122 +2869,108 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-[; ;interrupt.c: 18: const char keys[] = "123A456B789C*0#D";
-[; ;interrupt.c: 19: extern unsigned char start_time[7];
-[; ;interrupt.c: 20: extern unsigned char end_time[7];
-[; ;interrupt.c: 21: extern unsigned char passed_time;
-[v F3086 `(v ~T0 @X0 1 tf ]
-"23
-[v _interrupt_handler `IF3086 ~T0 @X0 1 e ]
+[; ;interrupt.c: 19: const char keys[] = "123A456B789C*0#D";
+[; ;interrupt.c: 20: extern unsigned char start_time[7];
+[; ;interrupt.c: 21: extern unsigned char end_time[7];
+[; ;interrupt.c: 22: extern unsigned int passed_time;
+[; ;interrupt.c: 23: extern int displayFlag;
+[v F3087 `(v ~T0 @X0 1 tf ]
+"24
+[v _interrupt_handler `IF3087 ~T0 @X0 1 e ]
 {
-[; ;interrupt.c: 23: void interrupt interrupt_handler(void) {
+[; ;interrupt.c: 24: void interrupt interrupt_handler(void) {
 [e :U _interrupt_handler ]
 [f ]
-[; ;interrupt.c: 24: if (INT1IF) {
-"24
+[; ;interrupt.c: 31: if (INT1IF) {
+"31
 [e $ ! _INT1IF 267  ]
 {
-[; ;interrupt.c: 25: lcdInst(0b11000000);;
-"25
+[; ;interrupt.c: 32: lcdInst(0b11000000);;
+"32
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-"26
+"33
 [v _keypress `uc ~T0 @X0 1 a ]
-[; ;interrupt.c: 26: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[; ;interrupt.c: 33: unsigned char keypress = (PORTB & 0xF0) >> 4;
 [e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;interrupt.c: 27: putch(keys[keypress]);
-"27
+[; ;interrupt.c: 34: putch(keys[keypress]);
+"34
 [e ( _putch (1 *U + &U _keys * -> _keypress `ux -> -> # *U &U _keys `ui `ux ]
-[; ;interrupt.c: 28: if (mode == 2) {
-"28
+[; ;interrupt.c: 41: if (mode == 2) {
+"41
 [e $ ! == -> _mode `i -> 2 `i 268  ]
 {
-[; ;interrupt.c: 29: get_time(end_time);
-"29
-[e ( _get_time (1 &U _end_time ]
-[; ;interrupt.c: 30: passed_time =
-[; ;interrupt.c: 31: (end_time[1] - start_time[1]) * 60 + (end_time[0] - start_time[0]);
-"31
-[e = _passed_time -> + * - -> *U + &U _end_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _end_time `ui `ux `i -> *U + &U _start_time * -> -> -> 1 `i `ui `ux -> -> # *U &U _start_time `ui `ux `i -> 60 `i - -> *U + &U _end_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _end_time `ui `ux `i -> *U + &U _start_time * -> -> -> 0 `i `ui `ux -> -> # *U &U _start_time `ui `ux `i `uc ]
-[; ;interrupt.c: 32: mode = 3;
-"32
+[; ;interrupt.c: 42: mode = 3;
+"42
 [e = _mode -> -> 3 `i `uc ]
-"36
+"43
 }
-[; ;interrupt.c: 36: } else if (keypress == 0x0) {
+[; ;interrupt.c: 43: } else if (keypress == 0x0) {
 [e $U 269  ]
 [e :U 268 ]
 [e $ ! == -> _keypress `i -> 0 `i 270  ]
 {
-[; ;interrupt.c: 37: if (mode == 0) {
-"37
+[; ;interrupt.c: 44: if (mode == 0) {
+"44
 [e $ ! == -> _mode `i -> 0 `i 271  ]
 {
-[; ;interrupt.c: 38: mode = 1;
-"38
+[; ;interrupt.c: 45: mode = 1;
+"45
 [e = _mode -> -> 1 `i `uc ]
-"39
+"46
 }
 [e :U 271 ]
-"41
+"47
 }
-[; ;interrupt.c: 39: }
-[; ;interrupt.c: 41: } else if (keypress == 0x3) {
+[; ;interrupt.c: 46: }
+[; ;interrupt.c: 47: } else if (keypress == 0x3) {
 [e $U 272  ]
 [e :U 270 ]
 [e $ ! == -> _keypress `i -> 3 `i 273  ]
 {
-[; ;interrupt.c: 42: if (mode == 0) {
-"42
-[e $ ! == -> _mode `i -> 0 `i 274  ]
-{
-[; ;interrupt.c: 43: get_time(end_time);
-"43
-[e ( _get_time (1 &U _end_time ]
-[; ;interrupt.c: 44: mode = 2;
-"44
-[e = _mode -> -> 2 `i `uc ]
-"45
-}
-[e :U 274 ]
-"46
-}
-[; ;interrupt.c: 45: }
-[; ;interrupt.c: 46: }
-[e $U 275  ]
+[; ;interrupt.c: 48: get_time(start_time);
 "48
-[e :U 273 ]
-[; ;interrupt.c: 48: else if (keypress == 0x1) {
-[e $ ! == -> _keypress `i -> 1 `i 276  ]
-{
-[; ;interrupt.c: 49: mode = 0;
+[e ( _get_time (1 &U _start_time ]
+[; ;interrupt.c: 49: mode = 2;
 "49
-[e = _mode -> -> 0 `i `uc ]
-"51
+[e = _mode -> -> 2 `i `uc ]
+"50
 }
-[; ;interrupt.c: 51: }else if (keypress == 0x2) {
-[e $U 277  ]
-[e :U 276 ]
-[e $ ! == -> _keypress `i -> 2 `i 278  ]
+[; ;interrupt.c: 50: }
+[e $U 274  ]
+"51
+[e :U 273 ]
+[; ;interrupt.c: 51: else if (keypress == 0x1) {
+[e $ ! == -> _keypress `i -> 1 `i 275  ]
 {
-[; ;interrupt.c: 52: mode = 99;
+[; ;interrupt.c: 52: mode = 0;
 "52
-[e = _mode -> -> 99 `i `uc ]
+[e = _mode -> -> 0 `i `uc ]
 "53
 }
-[e :U 278 ]
-"54
-[e :U 277 ]
+[; ;interrupt.c: 53: }else if (keypress == 0x2) {
+[e $U 276  ]
 [e :U 275 ]
+[e $ ! == -> _keypress `i -> 2 `i 277  ]
+{
+[; ;interrupt.c: 54: mode = 4;
+"54
+[e = _mode -> -> 4 `i `uc ]
+"55
+}
+[e :U 277 ]
+"58
+[e :U 276 ]
+[e :U 274 ]
 [e :U 272 ]
 [e :U 269 ]
 }
 [e :U 267 ]
-[; ;interrupt.c: 53: }
-[; ;interrupt.c: 54: }
-[; ;interrupt.c: 55: INT1IF = 0;
-"55
+[; ;interrupt.c: 55: }
+[; ;interrupt.c: 58: }
+[; ;interrupt.c: 59: INT1IF = 0;
+"59
 [e = _INT1IF -> -> 0 `i `b ]
-[; ;interrupt.c: 71: }
-"71
+[; ;interrupt.c: 79: }
+"79
 [e :UE 266 ]
 }

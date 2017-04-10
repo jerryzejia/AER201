@@ -3835,19 +3835,21 @@ extern int printf(const char *, ...);
 # 17 "initPic.c"
 const char timeSetter[7] = {
 0x00,
-0x19,
-0x15,
+0x07,
+0x03,
+0x02,
+0x10,
 0x04,
-0x25,
-0x01,
 0x17
 };
 
 unsigned char time[7];
 unsigned char start_time[7];
 unsigned char end_time[7];
-unsigned char passed_time;
-int flag = 0;
+unsigned int passed_time;
+
+
+
 
 void initPIC() {
 TRISA = 0b11100111;
@@ -3879,11 +3881,10 @@ I2C_Master_Start();
 I2C_Master_Write(0b11010000);
 I2C_Master_Write(0x00);
 I2C_Master_Stop();
+
 main_servo_control(0);
 side_servo_control(0);
-
-
 (INTCONbits.GIE = 1);
 
-# 79
+# 80
 }

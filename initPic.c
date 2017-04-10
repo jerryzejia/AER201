@@ -16,19 +16,21 @@
 
 const char timeSetter[7] = {
     0x00, // Seconds
-    0x19, // Minutes
-    0x15, // hour mode, set to 23:00
-    0x04, // Wednesday
-    0x25, // 25th
-    0x01, // January
+    0x07, // Minutes
+    0x03, // hour mode, set to 23:00
+    0x02, // Wednesday
+    0x10, // 25th
+    0x04, // April
     0x17  // 2017
 };
 
 unsigned char time[7];
 unsigned char start_time[7];
 unsigned char end_time[7];
-unsigned char passed_time; 
-int flag = 0;
+unsigned int passed_time; 
+
+
+
 
 void initPIC() {
   TRISA = 0b11100111; 
@@ -55,15 +57,14 @@ void initPIC() {
 
   initLCD();
   //initSortTimer();
-  I2C_Master_Init(10000);
+  I2C_Master_Init(10000);      
   I2C_Master_Start();           // Start condition
   I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
   I2C_Master_Write(0x00);       // Set memory pointer to seconds
   I2C_Master_Stop();
+  
   main_servo_control(NEUTRAL);
   side_servo_control(NEUTRAL);
-  
-  
   ei();
   /*
   TMR0IE = 1; // Enable Timer0 interrupts

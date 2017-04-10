@@ -5,5 +5,6 @@ pwm.h  \
 I2C.h  \
 function.h  \
 lcd.h  \
+macros.h  \
 constants.h  \
 configBits.h 

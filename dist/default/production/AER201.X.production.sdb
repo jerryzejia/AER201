@@ -39,7 +39,7 @@
 [v _readADC readADC `(v  1 e 1 0 ]
 "31
 [v _sense_can sense_can `(i  1 e 2 0 ]
-"80
+"155
 [v _readLightSensor readLightSensor `(i  1 e 2 0 ]
 "13 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
@@ -58,9 +58,9 @@
 "53
 [v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
 [v i2_I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
-"33 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
+"35 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
 [v _initPIC initPIC `(i  1 e 2 0 ]
-"23 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
+"24 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
 [v _interrupt_handler interrupt_handler `II(v  1 e 1 0 ]
 "14 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
 [v _initLCD initLCD `(v  1 e 1 0 ]
@@ -77,28 +77,30 @@
 [v _main main `(v  1 e 1 0 ]
 "18 /Users/jerryjia/MPLABXProjects/AER201.X/motor.c
 [v _shaker shaker `(v  1 e 1 0 ]
-"20 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+"21 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _welcome welcome `(i  1 e 2 0 ]
-"42
+"43
 [v _debug debug `(i  1 e 2 0 ]
-"86
+"61
 [v _sort sort `(i  1 e 2 0 ]
-"136
+"97
 [v _display_time display_time `(i  1 e 2 0 ]
-"166
+"125
 [v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
 "17 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
 [v _main_servo_control main_servo_control `(v  1 e 1 0 ]
 "48
 [v _side_servo_control side_servo_control `(v  1 e 1 0 ]
-"117
+"79
+[v _move_can move_can `(v  1 e 1 0 ]
+"133
 [v _gate gate `(v  1 e 1 0 ]
-"39 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
+"27 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
 [v _get_time get_time `(v  1 e 1 0 ]
 [v i2_get_time get_time `(v  1 e 1 0 ]
 "185 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S473 . 1 `uc 1 RB0 1 0 :1:0 
+[s S222 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -108,7 +110,7 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "226
-[s S482 . 1 `uc 1 INT0 1 0 :1:0 
+[s S231 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -117,7 +119,7 @@
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S491 . 1 `uc 1 AN12 1 0 :1:0 
+[s S240 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -126,14 +128,14 @@
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S500 . 1 `uc 1 . 1 0 :3:0 
+[s S249 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S503 . 1 `S473 1 . 1 0 `S482 1 . 1 0 `S491 1 . 1 0 `S500 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES503  1 e 1 @3969 ]
+[u S252 . 1 `S222 1 . 1 0 `S231 1 . 1 0 `S240 1 . 1 0 `S249 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES252  1 e 1 @3969 ]
 "872
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-[s S411 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S521 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -143,7 +145,7 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "899
-[s S420 . 1 `uc 1 LA0 1 0 :1:0 
+[s S530 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -152,11 +154,11 @@
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S429 . 1 `S411 1 . 1 0 `S420 1 . 1 0 ]
-[v _LATAbits LATAbits `VES429  1 e 1 @3977 ]
+[u S539 . 1 `S521 1 . 1 0 `S530 1 . 1 0 ]
+[v _LATAbits LATAbits `VES539  1 e 1 @3977 ]
 "983
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
-[s S694 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S737 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -166,7 +168,7 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "1010
-[s S703 . 1 `uc 1 LB0 1 0 :1:0 
+[s S746 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -175,11 +177,11 @@
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S712 . 1 `S694 1 . 1 0 `S703 1 . 1 0 ]
-[v _LATBbits LATBbits `VES712  1 e 1 @3978 ]
+[u S755 . 1 `S737 1 . 1 0 `S746 1 . 1 0 ]
+[v _LATBbits LATBbits `VES755  1 e 1 @3978 ]
 "1094
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S272 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S383 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -189,7 +191,7 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "1121
-[s S281 . 1 `uc 1 LC0 1 0 :1:0 
+[s S392 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -198,8 +200,8 @@
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S290 . 1 `S272 1 . 1 0 `S281 1 . 1 0 ]
-[v _LATCbits LATCbits `VES290  1 e 1 @3979 ]
+[u S401 . 1 `S383 1 . 1 0 `S392 1 . 1 0 ]
+[v _LATCbits LATCbits `VES401  1 e 1 @3979 ]
 "1205
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
 [s S61 . 1 `uc 1 LATD0 1 0 :1:0 
@@ -225,17 +227,17 @@
 [v _LATDbits LATDbits `VES79  1 e 1 @3980 ]
 "1316
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
-[s S389 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S499 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "1333
-[s S393 . 1 `uc 1 LE0 1 0 :1:0 
+[s S503 . 1 `uc 1 LE0 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S397 . 1 `S389 1 . 1 0 `S393 1 . 1 0 ]
-[v _LATEbits LATEbits `VES397  1 e 1 @3981 ]
+[u S507 . 1 `S499 1 . 1 0 `S503 1 . 1 0 ]
+[v _LATEbits LATEbits `VES507  1 e 1 @3981 ]
 "1367
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "1588
@@ -284,8 +286,6 @@
 ]
 [u S180 . 1 `S151 1 . 1 0 `S154 1 . 1 0 `S158 1 . 1 0 `S165 1 . 1 0 `S168 1 . 1 0 `S171 1 . 1 0 `S174 1 . 1 0 `S177 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES180  1 e 1 @4034 ]
-"4598
-[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "4604
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
 "4610
@@ -298,7 +298,7 @@
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
 "4966
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-[s S589 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S665 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -308,7 +308,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6298
-[s S598 . 1 `uc 1 . 1 0 :1:0 
+[s S674 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -317,12 +317,12 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S607 . 1 `uc 1 . 1 0 :6:0 
+[s S683 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S611 . 1 `S589 1 . 1 0 `S598 1 . 1 0 `S607 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES611  1 e 1 @4082 ]
+[u S687 . 1 `S665 1 . 1 0 `S674 1 . 1 0 `S683 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES687  1 e 1 @4082 ]
 "6604
 [v _ACKDT ACKDT `VEb  1 e 0 @32301 ]
 "6606
@@ -349,107 +349,135 @@
 [v _dpowers dpowers `C[5]ui  1 s 10 dpowers ]
 "362
 [v _hexpowers hexpowers `C[4]ui  1 s 8 hexpowers ]
-"17 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
-[v _timeSetter timeSetter `C[7]uc  1 e 7 0 ]
-"27
+"16 /Users/jerryjia/MPLABXProjects/AER201.X/countCan.c
+[v _pop_can_tap pop_can_tap `i  1 e 2 0 ]
+"17
+[v _pop_can_no_tap pop_can_no_tap `i  1 e 2 0 ]
+"18
+[v _soup_can_label soup_can_label `i  1 e 2 0 ]
+"19
+[v _soup_can_no_label soup_can_no_label `i  1 e 2 0 ]
+"27 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
 [v _time time `[7]uc  1 e 7 0 ]
 "28
 [v _start_time start_time `[7]uc  1 e 7 0 ]
 "29
 [v _end_time end_time `[7]uc  1 e 7 0 ]
 "30
-[v _passed_time passed_time `uc  1 e 1 0 ]
-"31
-[v _flag flag `i  1 e 2 0 ]
-"18 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
+[v _passed_time passed_time `ui  1 e 2 0 ]
+"19 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
 [v _keys keys `C[17]uc  1 e 17 0 ]
 "11 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _mode mode `uc  1 e 1 0 ]
+"17
+[v _displayFlag displayFlag `i  1 e 2 0 ]
 "21 /Users/jerryjia/MPLABXProjects/AER201.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"44
+"46
 } 0
-"20 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+"21 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _welcome welcome `(i  1 e 2 0 ]
 {
-"40
+"41
 } 0
-"86
+"61
 [v _sort sort `(i  1 e 2 0 ]
 {
-"117
-[v sort@x x `i  1 a 2 10 ]
-"111
-[v sort@can can `i  1 a 2 8 ]
-"90
-[v sort@noLabel noLabel `i  1 a 2 6 ]
-"89
-[v sort@tin tin `i  1 a 2 4 ]
-"88
-[v sort@tap tap `i  1 a 2 2 ]
-"134
+"82
+[v sort@can can `i  1 a 2 73 ]
+"64
+[v sort@noLabel noLabel `i  1 a 2 71 ]
+"63
+[v sort@tin tin `i  1 a 2 69 ]
+"62
+[v sort@tap tap `i  1 a 2 67 ]
+"95
 } 0
 "18 /Users/jerryjia/MPLABXProjects/AER201.X/motor.c
 [v _shaker shaker `(v  1 e 1 0 ]
 {
 "19
-[v shaker@i i `i  1 a 2 25 ]
+[v shaker@i i `i  1 a 2 23 ]
 "37
 } 0
 "31 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
 [v _sense_can sense_can `(i  1 e 2 0 ]
 {
-"60
-[v sense_can@i i `i  1 a 2 33 ]
+"131
+[v sense_can@i_352 i `i  1 a 2 42 ]
+"105
+[v sense_can@i_351 i `i  1 a 2 40 ]
+"83
+[v sense_can@i_350 i `i  1 a 2 38 ]
+"41
+[v sense_can@i i `i  1 a 2 36 ]
 "33
-[v sense_can@H_max H_max `i  1 a 2 31 ]
-"78
+[v sense_can@H_max H_max `i  1 a 2 44 ]
+"35
+[v sense_can@conductOnFall conductOnFall `i  1 a 2 34 ]
+"34
+[v sense_can@cansize cansize `i  1 a 2 32 ]
+"153
 } 0
-"80
+"155
 [v _readLightSensor readLightSensor `(i  1 e 2 0 ]
 {
-"81
-[v readLightSensor@H_max H_max `i  1 a 2 65 ]
-"82
-[v readLightSensor@i i `i  1 a 2 63 ]
-"105
+"156
+[v readLightSensor@H_max H_max `i  1 a 2 63 ]
+"157
+[v readLightSensor@i i `i  1 a 2 61 ]
+"180
 } 0
-"39 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
-[v _get_time get_time `(v  1 e 1 0 ]
+"21
+[v _readADC readADC `(v  1 e 1 0 ]
 {
-"48
-[v get_time@i i `i  1 a 2 30 ]
-"39
-[v get_time@datime datime `*.39uc  1 p 2 27 ]
-"59
+[v readADC@channel channel `uc  1 a 1 wreg ]
+[v readADC@channel channel `uc  1 a 1 wreg ]
+[v readADC@channel channel `uc  1 a 1 23 ]
+"29
 } 0
-"117 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
+"79 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
+[v _move_can move_can `(v  1 e 1 0 ]
+{
+"123
+[v move_can@i_641 i `i  1 a 2 37 ]
+"112
+[v move_can@i_640 i `i  1 a 2 35 ]
+"97
+[v move_can@i_639 i `i  1 a 2 33 ]
+"84
+[v move_can@i i `i  1 a 2 31 ]
+"79
+[v move_can@canType canType `i  1 p 2 27 ]
+"131
+} 0
+"133
 [v _gate gate `(v  1 e 1 0 ]
 {
-"136
+"152
 } 0
-"33 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
+"35 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
 [v _initPIC initPIC `(i  1 e 2 0 ]
 {
-"79
+"80
 } 0
 "48 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
 [v _side_servo_control side_servo_control `(v  1 e 1 0 ]
 {
 "49
-[v side_servo_control@i i `i  1 a 2 28 ]
+[v side_servo_control@i i `i  1 a 2 25 ]
 "48
-[v side_servo_control@dir dir `i  1 p 2 24 ]
+[v side_servo_control@dir dir `i  1 p 2 22 ]
 "77
 } 0
 "17
 [v _main_servo_control main_servo_control `(v  1 e 1 0 ]
 {
 "18
-[v main_servo_control@i i `i  1 a 2 27 ]
+[v main_servo_control@i i `i  1 a 2 25 ]
 "17
-[v main_servo_control@dir dir `i  1 p 2 24 ]
+[v main_servo_control@dir dir `i  1 p 2 22 ]
 "46
 } 0
 "14 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
@@ -460,32 +488,148 @@
 "13 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
 {
-[v I2C_Master_Init@c c `Cul  1 p 4 37 ]
+[v I2C_Master_Init@c c `Cul  1 p 4 35 ]
 "22
 } 0
 "8 /Applications/microchip/xc8/v1.41/sources/common/lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "11
-[v ___lldiv@quotient quotient `ul  1 a 4 32 ]
+[v ___lldiv@quotient quotient `ul  1 a 4 30 ]
 "12
-[v ___lldiv@counter counter `uc  1 a 1 36 ]
+[v ___lldiv@counter counter `uc  1 a 1 34 ]
 "8
-[v ___lldiv@dividend dividend `ul  1 p 4 24 ]
-[v ___lldiv@divisor divisor `ul  1 p 4 28 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 22 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 26 ]
 "31
 } 0
-"136 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+"97 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _display_time display_time `(i  1 e 2 0 ]
 {
-"143
-[v display_time@i i `uc  1 a 1 60 ]
-"163
+"103
+[v display_time@i i `uc  1 a 1 58 ]
+"123
+} 0
+"125
+[v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
+{
+"134
+[v display_sorting_time@i_497 i `i  1 a 2 30 ]
+"131
+[v display_sorting_time@i i `i  1 a 2 28 ]
+"125
+[v display_sorting_time@int_start_time int_start_time `[7]i  1 a 14 14 ]
+[v display_sorting_time@int_end_time int_end_time `[7]i  1 a 14 0 ]
+"146
+} 0
+"43
+[v _debug debug `(i  1 e 2 0 ]
+{
+"60
+} 0
+"464 /Applications/microchip/xc8/v1.41/sources/common/doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+{
+"1500
+[v printf@idx idx `uc  1 a 1 46 ]
+"501
+[v printf@width width `i  1 a 2 53 ]
+"528
+[v printf@val val `ui  1 a 2 50 ]
+"466
+[v printf@ap ap `[1]*.39v  1 a 2 47 ]
+"499
+[v printf@c c `c  1 a 1 55 ]
+"508
+[v printf@flag flag `uc  1 a 1 52 ]
+"506
+[v printf@prec prec `c  1 a 1 49 ]
+"464
+[v printf@f f `*.25Cuc  1 p 2 34 ]
+"1541
+} 0
+"30 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+[v putch@data data `uc  1 a 1 wreg ]
+[v putch@data data `uc  1 a 1 wreg ]
+[v putch@data data `uc  1 a 1 24 ]
+"33
+} 0
+"8 /Applications/microchip/xc8/v1.41/sources/common/isdigit.c
+[v _isdigit isdigit `(b  1 e 0 0 ]
+{
+[v isdigit@c c `uc  1 a 1 wreg ]
+[v isdigit@c c `uc  1 a 1 wreg ]
+"14
+[v isdigit@c c `uc  1 a 1 24 ]
+"15
+} 0
+"15 /Applications/microchip/xc8/v1.41/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 26 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 22 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 24 ]
+"53
+} 0
+"8 /Applications/microchip/xc8/v1.41/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 33 ]
+"8
+[v ___lwmod@dividend dividend `ui  1 p 2 29 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 31 ]
+"26
+} 0
+"8 /Applications/microchip/xc8/v1.41/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 27 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 26 ]
+"8
+[v ___lwdiv@dividend dividend `ui  1 p 2 22 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 24 ]
+"31
+} 0
+"25 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
+[v _lcdInst lcdInst `(v  1 e 1 0 ]
+{
+[v lcdInst@data data `uc  1 a 1 wreg ]
+[v lcdInst@data data `uc  1 a 1 wreg ]
+[v lcdInst@data data `uc  1 a 1 24 ]
+"28
+} 0
+"35
+[v _lcdNibble lcdNibble `(v  1 e 1 0 ]
+{
+[v lcdNibble@data data `uc  1 a 1 wreg ]
+"37
+[v lcdNibble@temp temp `uc  1 a 1 22 ]
+"35
+[v lcdNibble@data data `uc  1 a 1 wreg ]
+"37
+[v lcdNibble@data data `uc  1 a 1 23 ]
+"58
+} 0
+"27 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
+[v _get_time get_time `(v  1 e 1 0 ]
+{
+"36
+[v get_time@i i `i  1 a 2 27 ]
+"27
+[v get_time@datime datime `*.39uc  1 p 2 25 ]
+"41
 } 0
 "47 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
 {
-[v I2C_Master_Write@d d `ui  1 p 2 25 ]
+[v I2C_Master_Write@d d `ui  1 p 2 23 ]
 "51
 } 0
 "41
@@ -503,11 +647,11 @@
 {
 [v I2C_Master_Read@a a `uc  1 a 1 wreg ]
 "55
-[v I2C_Master_Read@temp temp `uc  1 a 1 26 ]
+[v I2C_Master_Read@temp temp `uc  1 a 1 24 ]
 "53
 [v I2C_Master_Read@a a `uc  1 a 1 wreg ]
 "56
-[v I2C_Master_Read@a a `uc  1 a 1 25 ]
+[v I2C_Master_Read@a a `uc  1 a 1 23 ]
 "64
 } 0
 "24
@@ -515,124 +659,12 @@
 {
 "27
 } 0
-"166 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
-[v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
-{
-"170
-[v display_sorting_time@i i `i  1 a 2 60 ]
-"176
-} 0
-"42
-[v _debug debug `(i  1 e 2 0 ]
-{
-"49
-[v debug@i i `i  1 a 2 59 ]
-"79
-} 0
-"21 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
-[v _readADC readADC `(v  1 e 1 0 ]
-{
-[v readADC@channel channel `uc  1 a 1 wreg ]
-[v readADC@channel channel `uc  1 a 1 wreg ]
-[v readADC@channel channel `uc  1 a 1 25 ]
-"29
-} 0
-"464 /Applications/microchip/xc8/v1.41/sources/common/doprnt.c
-[v _printf printf `(i  1 e 2 0 ]
-{
-"1500
-[v printf@idx idx `uc  1 a 1 48 ]
-"501
-[v printf@width width `i  1 a 2 55 ]
-"528
-[v printf@val val `ui  1 a 2 52 ]
-"466
-[v printf@ap ap `[1]*.39v  1 a 2 49 ]
-"499
-[v printf@c c `c  1 a 1 57 ]
-"508
-[v printf@flag flag `uc  1 a 1 54 ]
-"506
-[v printf@prec prec `c  1 a 1 51 ]
-"464
-[v printf@f f `*.25Cuc  1 p 2 36 ]
-"1541
-} 0
-"30 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
-[v _putch putch `(v  1 e 1 0 ]
-{
-[v putch@data data `uc  1 a 1 wreg ]
-[v putch@data data `uc  1 a 1 wreg ]
-[v putch@data data `uc  1 a 1 26 ]
-"33
-} 0
-"8 /Applications/microchip/xc8/v1.41/sources/common/isdigit.c
-[v _isdigit isdigit `(b  1 e 0 0 ]
-{
-[v isdigit@c c `uc  1 a 1 wreg ]
-[v isdigit@c c `uc  1 a 1 wreg ]
-"14
-[v isdigit@c c `uc  1 a 1 26 ]
-"15
-} 0
-"15 /Applications/microchip/xc8/v1.41/sources/common/Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 28 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 24 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 26 ]
-"53
-} 0
-"8 /Applications/microchip/xc8/v1.41/sources/common/lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwmod@counter counter `uc  1 a 1 35 ]
-"8
-[v ___lwmod@dividend dividend `ui  1 p 2 31 ]
-[v ___lwmod@divisor divisor `ui  1 p 2 33 ]
-"26
-} 0
-"8 /Applications/microchip/xc8/v1.41/sources/common/lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 29 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 28 ]
-"8
-[v ___lwdiv@dividend dividend `ui  1 p 2 24 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 26 ]
-"31
-} 0
-"25 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
-[v _lcdInst lcdInst `(v  1 e 1 0 ]
-{
-[v lcdInst@data data `uc  1 a 1 wreg ]
-[v lcdInst@data data `uc  1 a 1 wreg ]
-[v lcdInst@data data `uc  1 a 1 26 ]
-"28
-} 0
-"35
-[v _lcdNibble lcdNibble `(v  1 e 1 0 ]
-{
-[v lcdNibble@data data `uc  1 a 1 wreg ]
-"37
-[v lcdNibble@temp temp `uc  1 a 1 24 ]
-"35
-[v lcdNibble@data data `uc  1 a 1 wreg ]
-"37
-[v lcdNibble@data data `uc  1 a 1 25 ]
-"58
-} 0
-"23 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
+"24 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
 [v _interrupt_handler interrupt_handler `II(v  1 e 1 0 ]
 {
-"26
-[v interrupt_handler@keypress keypress `uc  1 a 1 23 ]
-"71
+"33
+[v interrupt_handler@keypress keypress `uc  1 a 1 21 ]
+"79
 } 0
 "30 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
 [v i2_putch putch `(v  1 e 1 0 ]
@@ -660,12 +692,12 @@
 [v i2lcdNibble@data data `uc  1 a 1 1 ]
 "58
 } 0
-"39 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
+"27 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
 [v i2_get_time get_time `(v  1 e 1 0 ]
 {
-[v i2get_time@i get_time `i  1 a 2 6 ]
+[v i2get_time@i get_time `i  1 a 2 5 ]
 [v i2get_time@datime datime `*.39uc  1 p 2 3 ]
-"59
+"41
 } 0
 "47 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v i2_I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]

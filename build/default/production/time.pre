@@ -3841,18 +3841,6 @@ extern unsigned char time[7];
 extern char mode;
 
 
-void set_time(void) {
-I2C_Master_Init(10000);
-(INTCONbits.GIE = 0);
-I2C_Master_Start();
-I2C_Master_Write(0b11010000);
-I2C_Master_Write(0x00);
-for (char i = 0; i < 7; i++) {
-I2C_Master_Write(timeSetter[i]);
-}
-I2C_Master_Stop();
-(INTCONbits.GIE = 1);
-}
 
 void get_time(unsigned char datime[7]) {
 I2C_Master_Start();
@@ -3865,14 +3853,8 @@ I2C_Master_Start();
 I2C_Master_Write(0b11010001);
 for(int i = 0; i < 6; i++){
 datime[i] = I2C_Master_Read(1);
-datime[i] = (time[i] & 0x0F) + ((time[i] & 0xF0)>>4)*10;
-
 }
 datime[6] = I2C_Master_Read(0);
 I2C_Master_Stop();
-I2C_Master_Write(0b11010000);
-I2C_Master_Write(0x00);
-I2C_Master_Stop();
-
 }
 
