@@ -47,13 +47,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _readLightSensor `(i ~T0 @X0 0 ef ]
 "90 function.h
 [v _sense_can `(i ~T0 @X0 0 ef ]
+"89
+[v _move_can `(v ~T0 @X0 0 ef1`i ]
 "12 picState.c
 [v _flag `i ~T0 @X0 0 e ]
 "96 function.h
 [v _shaker `(v ~T0 @X0 0 ef ]
 "92
 [v _gate `(v ~T0 @X0 0 ef ]
-"141 picState.c
+"131 picState.c
 [v _I2C_Master_Start `(i ~T0 @X0 0 ef ]
 "2 I2C.h
 [v _I2C_Master_Write `(v ~T0 @X0 0 ef1`ui ]
@@ -3060,218 +3062,194 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;picState.c: 106: LATDbits.LATD0 = 1;
 "106
 [e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;picState.c: 109: lcdInst(0b10000000);;
-"109
+[; ;picState.c: 107: lcdInst(0b10000000);;
+"107
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;picState.c: 110: lcdInst(0b11000000);;
-"110
+[; ;picState.c: 108: lcdInst(0b11000000);;
+"108
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-"111
+"109
 [v _can `i ~T0 @X0 1 a ]
-[; ;picState.c: 111: int can = sense_can();
+[; ;picState.c: 109: int can = sense_can();
 [e = _can ( _sense_can ..  ]
-[; ;picState.c: 114: LATDbits.LATD0 = 0;
-"114
+[; ;picState.c: 110: LATDbits.LATD0 = 0;
+"110
 [e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;picState.c: 117: for (int x = 0; x< 10; x++){
-"117
-{
-[v _x `i ~T0 @X0 1 a ]
-[e = _x -> 0 `i ]
-[e $ < _x -> 10 `i 279  ]
-[e $U 280  ]
-[e :U 279 ]
-{
-[; ;picState.c: 118: main_servo_control(0);
-"118
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;picState.c: 119: side_servo_control(0);
-"119
-[e ( _side_servo_control (1 -> 0 `i ]
-[; ;picState.c: 120: _delay((unsigned long)((100)*(8000000/4000.0)));
-"120
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"121
-}
-"117
-[e ++ _x -> 1 `i ]
-[e $ < _x -> 10 `i 279  ]
-[e :U 280 ]
-"121
-}
-[; ;picState.c: 121: }
-[; ;picState.c: 123: printf("%d", can);
-"123
+[; ;picState.c: 111: move_can(can);
+"111
+[e ( _move_can (1 _can ]
+[; ;picState.c: 113: printf("%d", can);
+"113
 [e ( _printf , (. :s 10C _can ]
-[; ;picState.c: 124: flag++;
-"124
+[; ;picState.c: 114: flag++;
+"114
 [e ++ _flag -> 1 `i ]
-"125
+"115
 }
-[; ;picState.c: 125: } else {
-[e $U 282  ]
+[; ;picState.c: 115: } else {
+[e $U 279  ]
 [e :U 278 ]
 {
-[; ;picState.c: 127: shaker();
-"127
+[; ;picState.c: 117: shaker();
+"117
 [e ( _shaker ..  ]
-[; ;picState.c: 128: LATDbits.LATD0 = 0;
-"128
+[; ;picState.c: 118: LATDbits.LATD0 = 0;
+"118
 [e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;picState.c: 129: _delay((unsigned long)((500)*(8000000/4000.0)));
-"129
+[; ;picState.c: 119: _delay((unsigned long)((500)*(8000000/4000.0)));
+"119
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 130: gate();
-"130
+[; ;picState.c: 120: gate();
+"120
 [e ( _gate ..  ]
-[; ;picState.c: 131: flag = 0;
-"131
+[; ;picState.c: 121: flag = 0;
+"121
 [e = _flag -> 0 `i ]
-"132
+"122
 }
-[e :U 282 ]
-"133
+[e :U 279 ]
+"123
 }
 [e :U 275 ]
 "100
 [e $ == -> _mode `i -> 2 `i 276  ]
 [e :U 277 ]
-[; ;picState.c: 132: }
-[; ;picState.c: 133: }
-[; ;picState.c: 134: }
-"134
+[; ;picState.c: 122: }
+[; ;picState.c: 123: }
+[; ;picState.c: 124: }
+"124
 [e :UE 274 ]
 }
-"136
+"126
 [v _display_time `(v ~T0 @X0 1 ef ]
 {
-[; ;picState.c: 136: void display_time() {
+[; ;picState.c: 126: void display_time() {
 [e :U _display_time ]
 [f ]
-[; ;picState.c: 138: lcdInst(0x01);;
-"138
+[; ;picState.c: 128: lcdInst(0x01);;
+"128
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
-[; ;picState.c: 139: _delay((unsigned long)((300)*(8000000/4000.0)));
-"139
+[; ;picState.c: 129: _delay((unsigned long)((300)*(8000000/4000.0)));
+"129
 [e ( __delay (1 -> * -> -> 300 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 140: while (mode == 1) {
-"140
-[e $U 284  ]
-[e :U 285 ]
+[; ;picState.c: 130: while (mode == 1) {
+"130
+[e $U 281  ]
+[e :U 282 ]
 {
-[; ;picState.c: 141: I2C_Master_Start();
-"141
+[; ;picState.c: 131: I2C_Master_Start();
+"131
 [e ( _I2C_Master_Start ..  ]
-[; ;picState.c: 142: I2C_Master_Write(0b11010001);
-"142
+[; ;picState.c: 132: I2C_Master_Write(0b11010001);
+"132
 [e ( _I2C_Master_Write (1 -> -> 209 `i `ui ]
-[; ;picState.c: 143: for (unsigned char i = 0; i < 0x06; i++) {
-"143
+[; ;picState.c: 133: for (unsigned char i = 0; i < 0x06; i++) {
+"133
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 6 `i 287  ]
-[e $U 288  ]
-[e :U 287 ]
-{
-[; ;picState.c: 144: time[i] = I2C_Master_Read(1);
-"144
-[e = *U + &U _time * -> _i `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 1 `i `uc ]
-"145
-}
-"143
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 6 `i 287  ]
-[e :U 288 ]
-"145
-}
-[; ;picState.c: 145: }
-[; ;picState.c: 146: time[6] = I2C_Master_Read(0);
-"146
-[e = *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 0 `i `uc ]
-[; ;picState.c: 147: I2C_Master_Stop();
-"147
-[e ( _I2C_Master_Stop ..  ]
-[; ;picState.c: 148: lcdInst(0b10000000);;
-"148
-[e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;picState.c: 149: printf("%02x/%02x/%02x", time[6], time[5],
-[; ;picState.c: 150: time[4]);
-"150
-[e ( _printf , , , (. :s 11C -> *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 5 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 4 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
-[; ;picState.c: 151: lcdInst(0b11000000);;
-"151
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;picState.c: 152: printf("%02x:%02x:%02x", time[2], time[1],
-[; ;picState.c: 153: time[0]);
-"153
-[e ( _printf , , , (. :s 12C -> *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 1 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 0 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
-[; ;picState.c: 155: I2C_Master_Start();
-"155
-[e ( _I2C_Master_Start ..  ]
-[; ;picState.c: 156: I2C_Master_Write(0b11010000);
-"156
-[e ( _I2C_Master_Write (1 -> -> 208 `i `ui ]
-[; ;picState.c: 157: I2C_Master_Write(0x00);
-"157
-[e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
-[; ;picState.c: 158: I2C_Master_Stop();
-"158
-[e ( _I2C_Master_Stop ..  ]
-[; ;picState.c: 160: _delay((unsigned long)((990)*(8000000/4000.0)));
-"160
-[e ( __delay (1 -> * -> -> 990 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 161: lcdInst(0b10000000);;
-"161
-[e ( _lcdInst (1 -> -> 128 `i `uc ]
-"162
-}
+[e $ < -> _i `i -> 6 `i 284  ]
+[e $U 285  ]
 [e :U 284 ]
-"140
-[e $ == -> _mode `i -> 1 `i 285  ]
-[e :U 286 ]
-[; ;picState.c: 162: }
-[; ;picState.c: 163: }
-"163
-[e :UE 283 ]
+{
+[; ;picState.c: 134: time[i] = I2C_Master_Read(1);
+"134
+[e = *U + &U _time * -> _i `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 1 `i `uc ]
+"135
 }
-"166
+"133
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 284  ]
+[e :U 285 ]
+"135
+}
+[; ;picState.c: 135: }
+[; ;picState.c: 136: time[6] = I2C_Master_Read(0);
+"136
+[e = *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux ( _I2C_Master_Read (1 -> -> 0 `i `uc ]
+[; ;picState.c: 137: I2C_Master_Stop();
+"137
+[e ( _I2C_Master_Stop ..  ]
+[; ;picState.c: 138: lcdInst(0b10000000);;
+"138
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
+[; ;picState.c: 139: printf("%02x/%02x/%02x", time[6], time[5],
+[; ;picState.c: 140: time[4]);
+"140
+[e ( _printf , , , (. :s 11C -> *U + &U _time * -> -> -> 6 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 5 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 4 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
+[; ;picState.c: 141: lcdInst(0b11000000);;
+"141
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;picState.c: 142: printf("%02x:%02x:%02x", time[2], time[1],
+[; ;picState.c: 143: time[0]);
+"143
+[e ( _printf , , , (. :s 12C -> *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 1 `i `ui `ux -> -> # *U &U _time `ui `ux `i -> *U + &U _time * -> -> -> 0 `i `ui `ux -> -> # *U &U _time `ui `ux `i ]
+[; ;picState.c: 145: I2C_Master_Start();
+"145
+[e ( _I2C_Master_Start ..  ]
+[; ;picState.c: 146: I2C_Master_Write(0b11010000);
+"146
+[e ( _I2C_Master_Write (1 -> -> 208 `i `ui ]
+[; ;picState.c: 147: I2C_Master_Write(0x00);
+"147
+[e ( _I2C_Master_Write (1 -> -> 0 `i `ui ]
+[; ;picState.c: 148: I2C_Master_Stop();
+"148
+[e ( _I2C_Master_Stop ..  ]
+[; ;picState.c: 150: _delay((unsigned long)((990)*(8000000/4000.0)));
+"150
+[e ( __delay (1 -> * -> -> 990 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;picState.c: 151: lcdInst(0b10000000);;
+"151
+[e ( _lcdInst (1 -> -> 128 `i `uc ]
+"152
+}
+[e :U 281 ]
+"130
+[e $ == -> _mode `i -> 1 `i 282  ]
+[e :U 283 ]
+[; ;picState.c: 152: }
+[; ;picState.c: 153: }
+"153
+[e :UE 280 ]
+}
+"156
 [v _display_sorting_time `(v ~T0 @X0 1 ef ]
 {
-[; ;picState.c: 166: void display_sorting_time() {
+[; ;picState.c: 156: void display_sorting_time() {
 [e :U _display_sorting_time ]
 [f ]
-[; ;picState.c: 167: lcdInst(0x01);;
-"167
+[; ;picState.c: 157: lcdInst(0x01);;
+"157
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
-[; ;picState.c: 168: _delay((unsigned long)((10)*(8000000/4000.0)));
-"168
+[; ;picState.c: 158: _delay((unsigned long)((10)*(8000000/4000.0)));
+"158
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 169: LATCbits.LATC1 = 0;
-"169
+[; ;picState.c: 159: LATCbits.LATC1 = 0;
+"159
 [e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-"170
+"160
 [v _i `i ~T0 @X0 1 a ]
-[; ;picState.c: 170: int i = passed_time;
+[; ;picState.c: 160: int i = passed_time;
 [e = _i -> _passed_time `i ]
-[; ;picState.c: 171: printf("Time used: %d s", i);
-"171
+[; ;picState.c: 161: printf("Time used: %d s", i);
+"161
 [e ( _printf , (. :s 13C _i ]
-[; ;picState.c: 172: lcdInst(0b11000000);;
-"172
+[; ;picState.c: 162: lcdInst(0b11000000);;
+"162
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;picState.c: 173: _delay((unsigned long)((500)*(8000000/4000.0)));
-"173
+[; ;picState.c: 163: _delay((unsigned long)((500)*(8000000/4000.0)));
+"163
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;picState.c: 174: flag = 0;
-"174
+[; ;picState.c: 164: flag = 0;
+"164
 [e = _flag -> 0 `i ]
-[; ;picState.c: 175: LATDbits.LATD0 = 0;
-"175
+[; ;picState.c: 165: LATDbits.LATD0 = 0;
+"165
 [e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;picState.c: 176: }
-"176
-[e :UE 290 ]
+[; ;picState.c: 166: }
+"166
+[e :UE 287 ]
 }
 [p f _printf 12615812 ]
 [a 12C 37 48 50 120 58 37 48 50 120 58 37 48 50 120 0 ]

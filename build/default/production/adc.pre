@@ -3839,9 +3839,72 @@ while(ADCON0bits.GO_NOT_DONE){
 int sense_can() {
 
 int H_max = 0;
+int cansize = 0;
+int conductOnFall = 0;
 
-# 59
-if (0 == 0) {
+# 41
+for (int i = 0; i < 10000; i++) {
+readADC(0);
+if (ADRESH > H_max) {
+H_max = ADRESH;
+}
+
+if (ADRESH > 30){
+conductOnFall = 1;
+}
+
+if (H_max >= 0xA0) {
+conductOnFall = 1;
+}
+}
+
+
+_delay((unsigned long)((100)*(8000000/4000.0)));
+if (PORTBbits.RB0 == 1){
+cansize = 0;
+}
+else {
+cansize = 1;
+}
+
+LATDbits.LATD0 = 0;
+main_servo_control(0);
+side_servo_control(0);
+_delay((unsigned long)((500)*(8000000/4000.0)));
+main_servo_control(0);
+side_servo_control(0);
+LATDbits.LATD0 = 1;
+
+
+if (cansize == 0){
+
+# 79
+if (conductOnFall){
+return 2;
+}
+
+for (int i = 0; i < 10000; i++) {
+readADC(0);
+if (ADRESH > H_max) {
+H_max = ADRESH;
+}
+
+if (ADRESH > 30){
+return 2;
+}
+}
+
+if (H_max >= 0xA0) {
+return 2;
+} else {
+return 1;
+}
+}
+
+
+else{
+
+
 for (int i = 0; i < 10000; i++) {
 
 readADC(1);
@@ -3849,14 +3912,47 @@ if (ADRESH > H_max) {
 H_max = ADRESH;
 }
 if (ADRESH > 30){
-return 3;
+return 4;
 }
 }
 if (H_max >= 0xA0) {
-return 3;
-} else {
 return 4;
 }
+
+
+
+LATDbits.LATD0 = 0;
+main_servo_control(0);
+side_servo_control(0);
+_delay((unsigned long)((500)*(8000000/4000.0)));
+main_servo_control(0);
+side_servo_control(0);
+
+LATDbits.LATD0 = 1;
+
+
+for (int i = 0; i < 10000; i++) {
+
+readADC(1);
+if (ADRESH > H_max) {
+H_max = ADRESH;
+}
+if (ADRESH > 30){
+return 4;
+}
+}
+if (H_max >= 0xA0) {
+return 4;
+}
+
+
+else {
+return 3;
+}
+
+
+
+
 }
 
 

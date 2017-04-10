@@ -39,7 +39,7 @@
 [v _readADC readADC `(v  1 e 1 0 ]
 "31
 [v _sense_can sense_can `(i  1 e 2 0 ]
-"80
+"158
 [v _readLightSensor readLightSensor `(i  1 e 2 0 ]
 "13 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
@@ -83,22 +83,24 @@
 [v _debug debug `(i  1 e 2 0 ]
 "86
 [v _sort sort `(i  1 e 2 0 ]
-"136
+"126
 [v _display_time display_time `(i  1 e 2 0 ]
-"166
+"156
 [v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
 "17 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
 [v _main_servo_control main_servo_control `(v  1 e 1 0 ]
 "48
 [v _side_servo_control side_servo_control `(v  1 e 1 0 ]
-"117
+"79
+[v _move_can move_can `(v  1 e 1 0 ]
+"133
 [v _gate gate `(v  1 e 1 0 ]
 "39 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
 [v _get_time get_time `(v  1 e 1 0 ]
 [v i2_get_time get_time `(v  1 e 1 0 ]
 "185 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S473 . 1 `uc 1 RB0 1 0 :1:0 
+[s S222 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -108,7 +110,7 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "226
-[s S482 . 1 `uc 1 INT0 1 0 :1:0 
+[s S231 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -117,7 +119,7 @@
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S491 . 1 `uc 1 AN12 1 0 :1:0 
+[s S240 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -126,14 +128,14 @@
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S500 . 1 `uc 1 . 1 0 :3:0 
+[s S249 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S503 . 1 `S473 1 . 1 0 `S482 1 . 1 0 `S491 1 . 1 0 `S500 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES503  1 e 1 @3969 ]
+[u S252 . 1 `S222 1 . 1 0 `S231 1 . 1 0 `S240 1 . 1 0 `S249 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES252  1 e 1 @3969 ]
 "872
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-[s S411 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S518 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -143,7 +145,7 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "899
-[s S420 . 1 `uc 1 LA0 1 0 :1:0 
+[s S527 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -152,11 +154,11 @@
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S429 . 1 `S411 1 . 1 0 `S420 1 . 1 0 ]
-[v _LATAbits LATAbits `VES429  1 e 1 @3977 ]
+[u S536 . 1 `S518 1 . 1 0 `S527 1 . 1 0 ]
+[v _LATAbits LATAbits `VES536  1 e 1 @3977 ]
 "983
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
-[s S694 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S767 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -166,7 +168,7 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "1010
-[s S703 . 1 `uc 1 LB0 1 0 :1:0 
+[s S776 . 1 `uc 1 LB0 1 0 :1:0 
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -175,11 +177,11 @@
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
-[u S712 . 1 `S694 1 . 1 0 `S703 1 . 1 0 ]
-[v _LATBbits LATBbits `VES712  1 e 1 @3978 ]
+[u S785 . 1 `S767 1 . 1 0 `S776 1 . 1 0 ]
+[v _LATBbits LATBbits `VES785  1 e 1 @3978 ]
 "1094
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S272 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S383 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -189,7 +191,7 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "1121
-[s S281 . 1 `uc 1 LC0 1 0 :1:0 
+[s S392 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -198,8 +200,8 @@
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S290 . 1 `S272 1 . 1 0 `S281 1 . 1 0 ]
-[v _LATCbits LATCbits `VES290  1 e 1 @3979 ]
+[u S401 . 1 `S383 1 . 1 0 `S392 1 . 1 0 ]
+[v _LATCbits LATCbits `VES401  1 e 1 @3979 ]
 "1205
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
 [s S61 . 1 `uc 1 LATD0 1 0 :1:0 
@@ -225,17 +227,17 @@
 [v _LATDbits LATDbits `VES79  1 e 1 @3980 ]
 "1316
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
-[s S389 . 1 `uc 1 LATE0 1 0 :1:0 
+[s S496 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
 ]
 "1333
-[s S393 . 1 `uc 1 LE0 1 0 :1:0 
+[s S500 . 1 `uc 1 LE0 1 0 :1:0 
 `uc 1 LE1 1 0 :1:1 
 `uc 1 LE2 1 0 :1:2 
 ]
-[u S397 . 1 `S389 1 . 1 0 `S393 1 . 1 0 ]
-[v _LATEbits LATEbits `VES397  1 e 1 @3981 ]
+[u S504 . 1 `S496 1 . 1 0 `S500 1 . 1 0 ]
+[v _LATEbits LATEbits `VES504  1 e 1 @3981 ]
 "1367
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "1588
@@ -298,7 +300,7 @@
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
 "4966
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-[s S589 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S662 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -308,7 +310,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6298
-[s S598 . 1 `uc 1 . 1 0 :1:0 
+[s S671 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -317,12 +319,12 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S607 . 1 `uc 1 . 1 0 :6:0 
+[s S680 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S611 . 1 `S589 1 . 1 0 `S598 1 . 1 0 `S607 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES611  1 e 1 @4082 ]
+[u S684 . 1 `S662 1 . 1 0 `S671 1 . 1 0 `S680 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES684  1 e 1 @4082 ]
 "6604
 [v _ACKDT ACKDT `VEb  1 e 0 @32301 ]
 "6606
@@ -378,9 +380,7 @@
 "86
 [v _sort sort `(i  1 e 2 0 ]
 {
-"117
-[v sort@x x `i  1 a 2 10 ]
-"111
+"109
 [v sort@can can `i  1 a 2 8 ]
 "90
 [v sort@noLabel noLabel `i  1 a 2 6 ]
@@ -388,7 +388,7 @@
 [v sort@tin tin `i  1 a 2 4 ]
 "88
 [v sort@tap tap `i  1 a 2 2 ]
-"134
+"124
 } 0
 "18 /Users/jerryjia/MPLABXProjects/AER201.X/motor.c
 [v _shaker shaker `(v  1 e 1 0 ]
@@ -400,20 +400,45 @@
 "31 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
 [v _sense_can sense_can `(i  1 e 2 0 ]
 {
-"60
-[v sense_can@i i `i  1 a 2 33 ]
+"131
+[v sense_can@i_352 i `i  1 a 2 45 ]
+"105
+[v sense_can@i_351 i `i  1 a 2 43 ]
+"83
+[v sense_can@i_350 i `i  1 a 2 41 ]
+"41
+[v sense_can@i i `i  1 a 2 39 ]
 "33
-[v sense_can@H_max H_max `i  1 a 2 31 ]
-"78
+[v sense_can@H_max H_max `i  1 a 2 47 ]
+"35
+[v sense_can@conductOnFall conductOnFall `i  1 a 2 37 ]
+"34
+[v sense_can@cansize cansize `i  1 a 2 35 ]
+"156
 } 0
-"80
+"158
 [v _readLightSensor readLightSensor `(i  1 e 2 0 ]
 {
-"81
+"159
 [v readLightSensor@H_max H_max `i  1 a 2 65 ]
-"82
+"160
 [v readLightSensor@i i `i  1 a 2 63 ]
-"105
+"183
+} 0
+"79 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
+[v _move_can move_can `(v  1 e 1 0 ]
+{
+"123
+[v move_can@i_638 i `i  1 a 2 40 ]
+"112
+[v move_can@i_637 i `i  1 a 2 38 ]
+"97
+[v move_can@i_636 i `i  1 a 2 36 ]
+"84
+[v move_can@i i `i  1 a 2 34 ]
+"79
+[v move_can@canType canType `i  1 p 2 30 ]
+"131
 } 0
 "39 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
 [v _get_time get_time `(v  1 e 1 0 ]
@@ -424,10 +449,10 @@
 [v get_time@datime datime `*.39uc  1 p 2 27 ]
 "59
 } 0
-"117 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
+"133 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
 [v _gate gate `(v  1 e 1 0 ]
 {
-"136
+"152
 } 0
 "33 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
 [v _initPIC initPIC `(i  1 e 2 0 ]
@@ -475,12 +500,12 @@
 [v ___lldiv@divisor divisor `ul  1 p 4 28 ]
 "31
 } 0
-"136 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+"126 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _display_time display_time `(i  1 e 2 0 ]
 {
-"143
+"133
 [v display_time@i i `uc  1 a 1 60 ]
-"163
+"153
 } 0
 "47 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
@@ -515,12 +540,12 @@
 {
 "27
 } 0
-"166 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+"156 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
 {
-"170
+"160
 [v display_sorting_time@i i `i  1 a 2 60 ]
-"176
+"166
 } 0
 "42
 [v _debug debug `(i  1 e 2 0 ]

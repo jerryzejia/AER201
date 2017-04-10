@@ -2948,15 +2948,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 30: LATEbits.LATE0 = 1;
 "30
 [e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[; ;servo.c: 31: _delay((unsigned long)((3)*(8000000/4000.0)));
+[; ;servo.c: 31: _delay((unsigned long)((3.5)*(8000000/4000.0)));
 "31
-[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * .3.5 / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;servo.c: 33: LATEbits.LATE0 = 0;
 "33
 [e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
-[; ;servo.c: 34: _delay((unsigned long)((17)*(8000000/4000.0)));
+[; ;servo.c: 34: _delay((unsigned long)((16.5)*(8000000/4000.0)));
 "34
-[e ( __delay (1 -> * -> -> 17 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * .16.5 / -> -> 8000000 `l `d .4000.0 `ul ]
 "35
 }
 "29
@@ -3160,168 +3160,252 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 82: _delay((unsigned long)((2000)*(8000000/4000.0)));
 "82
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 83: main_servo_control(1);
-"83
-[e ( _main_servo_control (1 -> 1 `i ]
-[; ;servo.c: 84: _delay((unsigned long)((2000)*(8000000/4000.0)));
+[; ;servo.c: 84: for (int i = 0; i<5; i++){
 "84
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 85: main_servo_control(0);
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 298  ]
+[e $U 299  ]
+[e :U 298 ]
+{
+[; ;servo.c: 85: side_servo_control(1);
 "85
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;servo.c: 86: side_servo_control(0);
+[e ( _side_servo_control (1 -> 1 `i ]
+[; ;servo.c: 86: main_servo_control(1);
 "86
-[e ( _side_servo_control (1 -> 0 `i ]
-"87
-}
-[; ;servo.c: 87: }
-[e $U 298  ]
-"88
-[e :U 297 ]
-[; ;servo.c: 88: else if(canType == 1){
-[e $ ! == _canType -> 1 `i 299  ]
-{
-[; ;servo.c: 89: side_servo_control(2);
-"89
-[e ( _side_servo_control (1 -> 2 `i ]
-[; ;servo.c: 90: _delay((unsigned long)((2000)*(8000000/4000.0)));
-"90
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 92: main_servo_control(1);
-"92
 [e ( _main_servo_control (1 -> 1 `i ]
-[; ;servo.c: 93: _delay((unsigned long)((2000)*(8000000/4000.0)));
-"93
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 94: main_servo_control(0);
-"94
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;servo.c: 95: side_servo_control(0);
-"95
-[e ( _side_servo_control (1 -> 0 `i ]
-"97
+[; ;servo.c: 87: _delay((unsigned long)((10)*(8000000/4000.0)));
+"87
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"88
 }
-[; ;servo.c: 97: }
-[e $U 300  ]
-"98
+"84
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 298  ]
 [e :U 299 ]
-[; ;servo.c: 98: else if (canType == 3){
-[e $ ! == _canType -> 3 `i 301  ]
+"88
+}
+[; ;servo.c: 88: }
+[; ;servo.c: 90: main_servo_control(0);
+"90
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;servo.c: 91: side_servo_control(0);
+"91
+[e ( _side_servo_control (1 -> 0 `i ]
+"92
+}
+[; ;servo.c: 92: }
+[e $U 301  ]
+"93
+[e :U 297 ]
+[; ;servo.c: 93: else if(canType == 1){
+[e $ ! == _canType -> 1 `i 302  ]
 {
-[; ;servo.c: 100: side_servo_control(2);
-"100
+[; ;servo.c: 94: side_servo_control(2);
+"94
 [e ( _side_servo_control (1 -> 2 `i ]
-[; ;servo.c: 101: _delay((unsigned long)((2000)*(8000000/4000.0)));
+[; ;servo.c: 95: _delay((unsigned long)((2000)*(8000000/4000.0)));
+"95
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 97: for (int i = 0; i<5; i++){
+"97
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 303  ]
+[e $U 304  ]
+[e :U 303 ]
+{
+[; ;servo.c: 98: side_servo_control(2);
+"98
+[e ( _side_servo_control (1 -> 2 `i ]
+[; ;servo.c: 99: main_servo_control(1);
+"99
+[e ( _main_servo_control (1 -> 1 `i ]
+[; ;servo.c: 100: _delay((unsigned long)((10)*(8000000/4000.0)));
+"100
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "101
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 102: main_servo_control(2);
-"102
-[e ( _main_servo_control (1 -> 2 `i ]
-[; ;servo.c: 103: _delay((unsigned long)((2000)*(8000000/4000.0)));
-"103
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+}
+"97
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 303  ]
+[e :U 304 ]
+"101
+}
+[; ;servo.c: 101: }
 [; ;servo.c: 104: main_servo_control(0);
 "104
 [e ( _main_servo_control (1 -> 0 `i ]
 [; ;servo.c: 105: side_servo_control(0);
 "105
 [e ( _side_servo_control (1 -> 0 `i ]
-"106
-}
-[; ;servo.c: 106: }
-[e $U 302  ]
 "107
-[e :U 301 ]
-[; ;servo.c: 107: else if(canType == 4){
-[e $ ! == _canType -> 4 `i 303  ]
-{
-[; ;servo.c: 108: side_servo_control(1);
+}
+[; ;servo.c: 107: }
+[e $U 306  ]
 "108
-[e ( _side_servo_control (1 -> 1 `i ]
-[; ;servo.c: 109: _delay((unsigned long)((2000)*(8000000/4000.0)));
-"109
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 110: main_servo_control(2);
+[e :U 302 ]
+[; ;servo.c: 108: else if (canType == 3){
+[e $ ! == _canType -> 3 `i 307  ]
+{
+[; ;servo.c: 110: side_servo_control(2);
 "110
-[e ( _main_servo_control (1 -> 2 `i ]
+[e ( _side_servo_control (1 -> 2 `i ]
 [; ;servo.c: 111: _delay((unsigned long)((2000)*(8000000/4000.0)));
 "111
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 112: main_servo_control(0);
+[; ;servo.c: 112: for (int i = 0; i<5; i++){
 "112
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;servo.c: 113: side_servo_control(0);
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 308  ]
+[e $U 309  ]
+[e :U 308 ]
+{
+[; ;servo.c: 113: side_servo_control(2);
 "113
-[e ( _side_servo_control (1 -> 0 `i ]
+[e ( _side_servo_control (1 -> 2 `i ]
+[; ;servo.c: 114: main_servo_control(2);
 "114
-}
-[e :U 303 ]
+[e ( _main_servo_control (1 -> 2 `i ]
+[; ;servo.c: 115: _delay((unsigned long)((10)*(8000000/4000.0)));
 "115
-[e :U 302 ]
-[e :U 300 ]
-[e :U 298 ]
-[; ;servo.c: 114: }
-[; ;servo.c: 115: }
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"116
+}
+"112
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 308  ]
+[e :U 309 ]
+"116
+}
+[; ;servo.c: 116: }
+[; ;servo.c: 117: main_servo_control(0);
+"117
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;servo.c: 118: side_servo_control(0);
+"118
+[e ( _side_servo_control (1 -> 0 `i ]
+"119
+}
+[; ;servo.c: 119: }
+[e $U 311  ]
+"120
+[e :U 307 ]
+[; ;servo.c: 120: else if(canType == 4){
+[e $ ! == _canType -> 4 `i 312  ]
+{
+[; ;servo.c: 121: side_servo_control(1);
+"121
+[e ( _side_servo_control (1 -> 1 `i ]
+[; ;servo.c: 122: _delay((unsigned long)((2000)*(8000000/4000.0)));
+"122
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 123: for (int i = 0; i<5; i++){
+"123
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 313  ]
+[e $U 314  ]
+[e :U 313 ]
+{
+[; ;servo.c: 124: side_servo_control(1);
+"124
+[e ( _side_servo_control (1 -> 1 `i ]
+[; ;servo.c: 125: main_servo_control(2);
+"125
+[e ( _main_servo_control (1 -> 2 `i ]
+[; ;servo.c: 126: _delay((unsigned long)((10)*(8000000/4000.0)));
+"126
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"127
+}
+"123
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 313  ]
+[e :U 314 ]
+"127
+}
+[; ;servo.c: 127: }
+[; ;servo.c: 128: main_servo_control(0);
+"128
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;servo.c: 129: side_servo_control(0);
+"129
+[e ( _side_servo_control (1 -> 0 `i ]
+"130
+}
+[e :U 312 ]
+"131
+[e :U 311 ]
+[e :U 306 ]
+[e :U 301 ]
+[; ;servo.c: 130: }
+[; ;servo.c: 131: }
 [e :UE 296 ]
 }
-"117
+"133
 [v _gate `(v ~T0 @X0 1 ef ]
 {
-[; ;servo.c: 117: void gate(){
+[; ;servo.c: 133: void gate(){
 [e :U _gate ]
 [f ]
-"118
+"134
 [v _i `i ~T0 @X0 1 a ]
-[; ;servo.c: 118: int i;
-[; ;servo.c: 119: while(PORTBbits.RB3 == 1) {
-"119
-[e $U 305  ]
-[e :U 306 ]
+[; ;servo.c: 134: int i;
+[; ;servo.c: 135: while(PORTBbits.RB3 == 1) {
+"135
+[e $U 317  ]
+[e :U 318 ]
 {
-[; ;servo.c: 120: LATCbits.LATC2 = 1;
-"120
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-[; ;servo.c: 121: _delay((unsigned long)((1.68)*(8000000/4000.0)));
-"121
-[e ( __delay (1 -> * .1.68 / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 122: LATCbits.LATC2 = 0;
-"122
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;servo.c: 123: _delay((unsigned long)((18.32)*(8000000/4000.0)));
-"123
-[e ( __delay (1 -> * .18.32 / -> -> 8000000 `l `d .4000.0 `ul ]
-"125
-}
-[e :U 305 ]
-"119
-[e $ == -> . . _PORTBbits 0 3 `i -> 1 `i 306  ]
-[e :U 307 ]
-[; ;servo.c: 125: }
-[; ;servo.c: 126: while(PORTBbits.RB3 != 1){
-"126
-[e $U 308  ]
-[e :U 309 ]
-{
-[; ;servo.c: 127: LATCbits.LATC2 = 1;
-"127
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-[; ;servo.c: 128: _delay((unsigned long)((1.68)*(8000000/4000.0)));
-"128
-[e ( __delay (1 -> * .1.68 / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 130: LATCbits.LATC2 = 0;
-"130
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;servo.c: 131: _delay((unsigned long)((18.32)*(8000000/4000.0)));
-"131
-[e ( __delay (1 -> * .18.32 / -> -> 8000000 `l `d .4000.0 `ul ]
-"132
-}
-[e :U 308 ]
-"126
-[e $ != -> . . _PORTBbits 0 3 `i -> 1 `i 309  ]
-[e :U 310 ]
-[; ;servo.c: 132: }
-[; ;servo.c: 136: }
+[; ;servo.c: 136: LATCbits.LATC2 = 1;
 "136
-[e :UE 304 ]
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 137: _delay((unsigned long)((1.68)*(8000000/4000.0)));
+"137
+[e ( __delay (1 -> * .1.68 / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 138: LATCbits.LATC2 = 0;
+"138
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 139: _delay((unsigned long)((18.32)*(8000000/4000.0)));
+"139
+[e ( __delay (1 -> * .18.32 / -> -> 8000000 `l `d .4000.0 `ul ]
+"141
+}
+[e :U 317 ]
+"135
+[e $ == -> . . _PORTBbits 0 3 `i -> 1 `i 318  ]
+[e :U 319 ]
+[; ;servo.c: 141: }
+[; ;servo.c: 142: while(PORTBbits.RB3 != 1){
+"142
+[e $U 320  ]
+[e :U 321 ]
+{
+[; ;servo.c: 143: LATCbits.LATC2 = 1;
+"143
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 144: _delay((unsigned long)((1.68)*(8000000/4000.0)));
+"144
+[e ( __delay (1 -> * .1.68 / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 146: LATCbits.LATC2 = 0;
+"146
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 147: _delay((unsigned long)((18.32)*(8000000/4000.0)));
+"147
+[e ( __delay (1 -> * .18.32 / -> -> 8000000 `l `d .4000.0 `ul ]
+"148
+}
+[e :U 320 ]
+"142
+[e $ != -> . . _PORTBbits 0 3 `i -> 1 `i 321  ]
+[e :U 322 ]
+[; ;servo.c: 148: }
+[; ;servo.c: 152: }
+"152
+[e :UE 316 ]
 }

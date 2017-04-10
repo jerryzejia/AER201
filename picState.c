@@ -104,21 +104,11 @@ void sort() {
     if (readLightSensor() == 1) {
       // Everything here should be activated by a switch
       LATDbits.LATD0 = 1;
-      
-     
         __lcd_home();
         __lcd_newline();
         int can = sense_can();
-       
-
         LATDbits.LATD0 = 0;
-       // move_can(can);
-        
-        for (int x = 0; x< 10; x++){
-        main_servo_control(NEUTRAL);
-        side_servo_control(NEUTRAL);
-        __delay_ms(100);
-        }
+        move_can(can);
 
         printf("%d", can);
         flag++;
