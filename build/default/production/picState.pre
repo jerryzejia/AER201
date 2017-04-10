@@ -3901,11 +3901,21 @@ side_servo_control(0);
 if (readLightSensor() == 1) {
 
 LATDbits.LATD0 = 1;
+
+
 lcdInst(0b10000000);;
 lcdInst(0b11000000);;
 int can = sense_can();
+
+
 LATDbits.LATD0 = 0;
-move_can(can);
+
+
+for (int x = 0; x< 10; x++){
+main_servo_control(0);
+side_servo_control(0);
+_delay((unsigned long)((100)*(8000000/4000.0)));
+}
 
 printf("%d", can);
 flag++;

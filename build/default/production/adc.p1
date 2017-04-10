@@ -34,46 +34,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON0bits `VS173 ~T0 @X0 0 e@4034 ]
 "4604
 [v _ADRESH `Vuc ~T0 @X0 0 e@4036 ]
-[v F2878 `(v ~T0 @X0 1 tf1`ul ]
-"161 /Applications/microchip/xc8/v1.41/include/pic18.h
-[v __delay `JF2878 ~T0 @X0 0 e ]
-[p i __delay ]
-"191 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
-[s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S11 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"201
-[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S12 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
-"211
-[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S13 . AN12 AN10 AN8 AN9 AN11 PGM PGC PGD ]
-"221
-[s S14 :3 `uc 1 :1 `uc 1 ]
-[n S14 . . CCP2_PA2 ]
-"190
-[u S10 `S11 1 `S12 1 `S13 1 `S14 1 ]
-[n S10 . . . . . ]
-"226
-[v _PORTBbits `VS10 ~T0 @X0 0 e@3969 ]
-"1211
-[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S47 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"1221
-[s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S48 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
-"1210
-[u S46 `S47 1 `S48 1 ]
-[n S46 . . . ]
-"1232
-[v _LATDbits `VS46 ~T0 @X0 0 e@3980 ]
-"100 function.h
-[v _main_servo_control `(v ~T0 @X0 0 ef1`i ]
-"101
-[v _side_servo_control `(v ~T0 @X0 0 ef1`i ]
 "11 lcd.h
 [v _lcdInst `(v ~T0 @X0 0 ef1`uc ]
 "195 /Applications/microchip/xc8/v1.41/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+[v F2878 `(v ~T0 @X0 1 tf1`ul ]
+"161 /Applications/microchip/xc8/v1.41/include/pic18.h
+[v __delay `JF2878 ~T0 @X0 0 e ]
+[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2946,448 +2914,175 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _H_max `i ~T0 @X0 1 a ]
 [; ;adc.c: 33: int H_max = 0;
 [e = _H_max -> 0 `i ]
-"34
-[v _cansize `i ~T0 @X0 1 a ]
-[; ;adc.c: 34: int cansize = 0;
-[e = _cansize -> 0 `i ]
-"35
-[v _conductOnFall `i ~T0 @X0 1 a ]
-[; ;adc.c: 35: int conductOnFall = 0;
-[e = _conductOnFall -> 0 `i ]
-[; ;adc.c: 41: for (int i = 0; i < 10000; i++) {
-"41
+[; ;adc.c: 59: if (0 == 0) {
+"59
+[e $ ! == -> 0 `i -> 0 `i 271  ]
+{
+[; ;adc.c: 60: for (int i = 0; i < 10000; i++) {
+"60
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 10000 `i 271  ]
-[e $U 272  ]
-[e :U 271 ]
+[e $ < _i -> 10000 `i 272  ]
+[e $U 273  ]
+[e :U 272 ]
 {
-[; ;adc.c: 42: readADC(0);
-"42
-[e ( _readADC (1 -> -> 0 `i `uc ]
-[; ;adc.c: 43: if (ADRESH > H_max) {
-"43
-[e $ ! > -> _ADRESH `i _H_max 274  ]
+[; ;adc.c: 62: readADC(1);
+"62
+[e ( _readADC (1 -> -> 1 `i `uc ]
+[; ;adc.c: 63: if (ADRESH > H_max) {
+"63
+[e $ ! > -> _ADRESH `i _H_max 275  ]
 {
-[; ;adc.c: 44: H_max = ADRESH;
-"44
+[; ;adc.c: 64: H_max = ADRESH;
+"64
 [e = _H_max -> _ADRESH `i ]
-"45
-}
-[e :U 274 ]
-[; ;adc.c: 45: }
-[; ;adc.c: 47: if (ADRESH > 30){
-"47
-[e $ ! > -> _ADRESH `i -> 30 `i 275  ]
-{
-[; ;adc.c: 48: conductOnFall = 1;
-"48
-[e = _conductOnFall -> 1 `i ]
-"49
+"65
 }
 [e :U 275 ]
-[; ;adc.c: 49: }
-[; ;adc.c: 51: if (H_max >= 0xA0) {
-"51
-[e $ ! >= _H_max -> 160 `i 276  ]
-{
-[; ;adc.c: 52: conductOnFall = 1;
-"52
-[e = _conductOnFall -> 1 `i ]
-"53
-}
-[e :U 276 ]
-"54
-}
-"41
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10000 `i 271  ]
-[e :U 272 ]
-"54
-}
-[; ;adc.c: 53: }
-[; ;adc.c: 54: }
-[; ;adc.c: 57: _delay((unsigned long)((100)*(8000000/4000.0)));
-"57
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;adc.c: 58: if (PORTBbits.RB0 == 1){
-"58
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 277  ]
-{
-[; ;adc.c: 59: cansize = 0;
-"59
-[e = _cansize -> 0 `i ]
-"60
-}
-[; ;adc.c: 60: }
-[e $U 278  ]
-"61
-[e :U 277 ]
-[; ;adc.c: 61: else {
-{
-[; ;adc.c: 62: cansize = 1;
-"62
-[e = _cansize -> 1 `i ]
-"63
-}
-[e :U 278 ]
-[; ;adc.c: 63: }
-[; ;adc.c: 65: LATDbits.LATD0 = 0;
-"65
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;adc.c: 66: main_servo_control(0);
+[; ;adc.c: 65: }
+[; ;adc.c: 66: if (ADRESH > 30){
 "66
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;adc.c: 67: side_servo_control(0);
+[e $ ! > -> _ADRESH `i -> 30 `i 276  ]
+{
+[; ;adc.c: 67: return 3;
 "67
-[e ( _side_servo_control (1 -> 0 `i ]
-[; ;adc.c: 68: _delay((unsigned long)((500)*(8000000/4000.0)));
-"68
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;adc.c: 69: main_servo_control(0);
-"69
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;adc.c: 70: side_servo_control(0);
-"70
-[e ( _side_servo_control (1 -> 0 `i ]
-[; ;adc.c: 71: LATDbits.LATD0 = 1;
-"71
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;adc.c: 74: if (cansize == 0){
-"74
-[e $ ! == _cansize -> 0 `i 279  ]
-{
-[; ;adc.c: 79: if (conductOnFall){
-"79
-[e $ ! != _conductOnFall -> 0 `i 280  ]
-{
-[; ;adc.c: 80: return 2;
-"80
-[e ) -> 2 `i ]
-[e $UE 270  ]
-"81
-}
-[e :U 280 ]
-[; ;adc.c: 81: }
-[; ;adc.c: 83: for (int i = 0; i < 10000; i++) {
-"83
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 10000 `i 281  ]
-[e $U 282  ]
-[e :U 281 ]
-{
-[; ;adc.c: 84: readADC(0);
-"84
-[e ( _readADC (1 -> -> 0 `i `uc ]
-[; ;adc.c: 85: if (ADRESH > H_max) {
-"85
-[e $ ! > -> _ADRESH `i _H_max 284  ]
-{
-[; ;adc.c: 86: H_max = ADRESH;
-"86
-[e = _H_max -> _ADRESH `i ]
-"87
-}
-[e :U 284 ]
-[; ;adc.c: 87: }
-[; ;adc.c: 89: if (ADRESH > 30){
-"89
-[e $ ! > -> _ADRESH `i -> 30 `i 285  ]
-{
-[; ;adc.c: 90: return 2;
-"90
-[e ) -> 2 `i ]
-[e $UE 270  ]
-"91
-}
-[e :U 285 ]
-"92
-}
-"83
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10000 `i 281  ]
-[e :U 282 ]
-"92
-}
-[; ;adc.c: 91: }
-[; ;adc.c: 92: }
-[; ;adc.c: 94: if (H_max >= 0xA0) {
-"94
-[e $ ! >= _H_max -> 160 `i 286  ]
-{
-[; ;adc.c: 95: return 2;
-"95
-[e ) -> 2 `i ]
-[e $UE 270  ]
-"96
-}
-[; ;adc.c: 96: } else {
-[e $U 287  ]
-[e :U 286 ]
-{
-[; ;adc.c: 97: return 1;
-"97
-[e ) -> 1 `i ]
-[e $UE 270  ]
-"98
-}
-[e :U 287 ]
-"99
-}
-[; ;adc.c: 98: }
-[; ;adc.c: 99: }
-[e $U 288  ]
-"102
-[e :U 279 ]
-[; ;adc.c: 102: else{
-{
-[; ;adc.c: 105: for (int i = 0; i < 10000; i++) {
-"105
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 10000 `i 289  ]
-[e $U 290  ]
-[e :U 289 ]
-{
-[; ;adc.c: 107: readADC(1);
-"107
-[e ( _readADC (1 -> -> 1 `i `uc ]
-[; ;adc.c: 108: if (ADRESH > H_max) {
-"108
-[e $ ! > -> _ADRESH `i _H_max 292  ]
-{
-[; ;adc.c: 109: H_max = ADRESH;
-"109
-[e = _H_max -> _ADRESH `i ]
-"110
-}
-[e :U 292 ]
-[; ;adc.c: 110: }
-[; ;adc.c: 111: if (ADRESH > 30){
-"111
-[e $ ! > -> _ADRESH `i -> 30 `i 293  ]
-{
-[; ;adc.c: 112: return 4;
-"112
-[e ) -> 4 `i ]
-[e $UE 270  ]
-"113
-}
-[e :U 293 ]
-"114
-}
-"105
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10000 `i 289  ]
-[e :U 290 ]
-"114
-}
-[; ;adc.c: 113: }
-[; ;adc.c: 114: }
-[; ;adc.c: 115: if (H_max >= 0xA0) {
-"115
-[e $ ! >= _H_max -> 160 `i 294  ]
-{
-[; ;adc.c: 116: return 4;
-"116
-[e ) -> 4 `i ]
-[e $UE 270  ]
-"117
-}
-[e :U 294 ]
-[; ;adc.c: 117: }
-[; ;adc.c: 121: LATDbits.LATD0 = 0;
-"121
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;adc.c: 122: main_servo_control(0);
-"122
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;adc.c: 123: side_servo_control(0);
-"123
-[e ( _side_servo_control (1 -> 0 `i ]
-[; ;adc.c: 124: _delay((unsigned long)((500)*(8000000/4000.0)));
-"124
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;adc.c: 125: main_servo_control(0);
-"125
-[e ( _main_servo_control (1 -> 0 `i ]
-[; ;adc.c: 126: side_servo_control(0);
-"126
-[e ( _side_servo_control (1 -> 0 `i ]
-[; ;adc.c: 128: LATDbits.LATD0 = 1;
-"128
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;adc.c: 131: for (int i = 0; i < 10000; i++) {
-"131
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 10000 `i 295  ]
-[e $U 296  ]
-[e :U 295 ]
-{
-[; ;adc.c: 133: readADC(1);
-"133
-[e ( _readADC (1 -> -> 1 `i `uc ]
-[; ;adc.c: 134: if (ADRESH > H_max) {
-"134
-[e $ ! > -> _ADRESH `i _H_max 298  ]
-{
-[; ;adc.c: 135: H_max = ADRESH;
-"135
-[e = _H_max -> _ADRESH `i ]
-"136
-}
-[e :U 298 ]
-[; ;adc.c: 136: }
-[; ;adc.c: 137: if (ADRESH > 30){
-"137
-[e $ ! > -> _ADRESH `i -> 30 `i 299  ]
-{
-[; ;adc.c: 138: return 4;
-"138
-[e ) -> 4 `i ]
-[e $UE 270  ]
-"139
-}
-[e :U 299 ]
-"140
-}
-"131
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10000 `i 295  ]
-[e :U 296 ]
-"140
-}
-[; ;adc.c: 139: }
-[; ;adc.c: 140: }
-[; ;adc.c: 141: if (H_max >= 0xA0) {
-"141
-[e $ ! >= _H_max -> 160 `i 300  ]
-{
-[; ;adc.c: 142: return 4;
-"142
-[e ) -> 4 `i ]
-[e $UE 270  ]
-"143
-}
-[; ;adc.c: 143: }
-[e $U 301  ]
-"146
-[e :U 300 ]
-[; ;adc.c: 146: else {
-{
-[; ;adc.c: 147: return 3;
-"147
 [e ) -> 3 `i ]
 [e $UE 270  ]
-"148
+"68
 }
-[e :U 301 ]
-"153
+[e :U 276 ]
+"69
 }
-[e :U 288 ]
-[; ;adc.c: 148: }
-[; ;adc.c: 153: }
-[; ;adc.c: 156: }
-"156
+"60
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10000 `i 272  ]
+[e :U 273 ]
+"69
+}
+[; ;adc.c: 68: }
+[; ;adc.c: 69: }
+[; ;adc.c: 70: if (H_max >= 0xA0) {
+"70
+[e $ ! >= _H_max -> 160 `i 277  ]
+{
+[; ;adc.c: 71: return 3;
+"71
+[e ) -> 3 `i ]
+[e $UE 270  ]
+"72
+}
+[; ;adc.c: 72: } else {
+[e $U 278  ]
+[e :U 277 ]
+{
+[; ;adc.c: 73: return 4;
+"73
+[e ) -> 4 `i ]
+[e $UE 270  ]
+"74
+}
+[e :U 278 ]
+"75
+}
+[e :U 271 ]
+[; ;adc.c: 74: }
+[; ;adc.c: 75: }
+[; ;adc.c: 78: }
+"78
 [e :UE 270 ]
 }
-"158
+"80
 [v _readLightSensor `(i ~T0 @X0 1 ef ]
 {
-[; ;adc.c: 158: int readLightSensor(){
+[; ;adc.c: 80: int readLightSensor(){
 [e :U _readLightSensor ]
 [f ]
-"159
+"81
 [v _H_max `i ~T0 @X0 1 a ]
-[; ;adc.c: 159: int H_max = 0;
+[; ;adc.c: 81: int H_max = 0;
 [e = _H_max -> 0 `i ]
-"160
+"82
 [v _i `i ~T0 @X0 1 a ]
-[; ;adc.c: 160: int i = 0;
+[; ;adc.c: 82: int i = 0;
 [e = _i -> 0 `i ]
-[; ;adc.c: 161: while(i < 50){
-"161
-[e $U 303  ]
-[e :U 304 ]
+[; ;adc.c: 83: while(i < 50){
+"83
+[e $U 280  ]
+[e :U 281 ]
 {
-[; ;adc.c: 162: lcdInst(0b10000000);;
-"162
+[; ;adc.c: 84: lcdInst(0b10000000);;
+"84
 [e ( _lcdInst (1 -> -> 128 `i `uc ]
-[; ;adc.c: 164: readADC(2);
-"164
+[; ;adc.c: 86: readADC(2);
+"86
 [e ( _readADC (1 -> -> 2 `i `uc ]
-[; ;adc.c: 165: if (ADRESH > H_max) {
-"165
-[e $ ! > -> _ADRESH `i _H_max 306  ]
+[; ;adc.c: 87: if (ADRESH > H_max) {
+"87
+[e $ ! > -> _ADRESH `i _H_max 283  ]
 {
-[; ;adc.c: 166: H_max = ADRESH;
-"166
+[; ;adc.c: 88: H_max = ADRESH;
+"88
 [e = _H_max -> _ADRESH `i ]
-"167
+"89
 }
-[e :U 306 ]
-[; ;adc.c: 167: }
-[; ;adc.c: 168: if (ADRESH < 0x20){
-"168
-[e $ ! < -> _ADRESH `i -> 32 `i 307  ]
+[e :U 283 ]
+[; ;adc.c: 89: }
+[; ;adc.c: 90: if (ADRESH < 0x20){
+"90
+[e $ ! < -> _ADRESH `i -> 32 `i 284  ]
 {
-[; ;adc.c: 169: return 1;
-"169
+[; ;adc.c: 91: return 1;
+"91
 [e ) -> 1 `i ]
-[e $UE 302  ]
-"170
+[e $UE 279  ]
+"92
 }
-[e :U 307 ]
-[; ;adc.c: 170: }
-[; ;adc.c: 171: printf("%x", ADRESH);
-"171
+[e :U 284 ]
+[; ;adc.c: 92: }
+[; ;adc.c: 93: printf("%x", ADRESH);
+"93
 [e ( _printf , (. :s 1C -> _ADRESH `i ]
-[; ;adc.c: 172: _delay((unsigned long)((5)*(8000000/4000.0)));
-"172
+[; ;adc.c: 94: _delay((unsigned long)((5)*(8000000/4000.0)));
+"94
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;adc.c: 173: i++;
-"173
+[; ;adc.c: 95: i++;
+"95
 [e ++ _i -> 1 `i ]
-"174
+"96
 }
-[e :U 303 ]
-"161
-[e $ < _i -> 50 `i 304  ]
-[e :U 305 ]
-[; ;adc.c: 174: }
-[; ;adc.c: 176: if(H_max >= 0x20){
-"176
-[e $ ! >= _H_max -> 32 `i 308  ]
+[e :U 280 ]
+"83
+[e $ < _i -> 50 `i 281  ]
+[e :U 282 ]
+[; ;adc.c: 96: }
+[; ;adc.c: 98: if(H_max >= 0x20){
+"98
+[e $ ! >= _H_max -> 32 `i 285  ]
 {
-[; ;adc.c: 177: return 0;
-"177
+[; ;adc.c: 99: return 0;
+"99
 [e ) -> 0 `i ]
-[e $UE 302  ]
-"178
+[e $UE 279  ]
+"100
 }
-[; ;adc.c: 178: }
-[e $U 309  ]
-"179
-[e :U 308 ]
-[; ;adc.c: 179: else{
+[; ;adc.c: 100: }
+[e $U 286  ]
+"101
+[e :U 285 ]
+[; ;adc.c: 101: else{
 {
-[; ;adc.c: 180: return 1;
-"180
+[; ;adc.c: 102: return 1;
+"102
 [e ) -> 1 `i ]
-[e $UE 302  ]
-"182
+[e $UE 279  ]
+"104
 }
-[e :U 309 ]
-[; ;adc.c: 182: }
-[; ;adc.c: 183: }
-"183
-[e :UE 302 ]
+[e :U 286 ]
+[; ;adc.c: 104: }
+[; ;adc.c: 105: }
+"105
+[e :UE 279 ]
 }
 [p f _printf 12582912 ]
 [a 1C 37 120 0 ]
