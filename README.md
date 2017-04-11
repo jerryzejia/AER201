@@ -17,6 +17,7 @@
 ### Motor
 - RC1: Blocker
 - RB0: Shaker
+- RD1: Launcher
 
 ### Solonoid
 - RD0: Platform Solonoid
