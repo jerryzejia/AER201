@@ -3855,7 +3855,11 @@ if (mode == 0) {
 mode = 1;
 }
 } else if (keypress == 0x3) {
+<<<<<<< HEAD
 get_time(start_time);
+=======
+if (mode == 0) {
+>>>>>>> parent of ff33206... 。
 mode = 2;
 }
 else if (keypress == 0x1) {
@@ -3868,6 +3872,10 @@ mode = 4;
 }
 INT1IF = 0;
 
+<<<<<<< HEAD
 # 79
+=======
+# 70
+>>>>>>> parent of ff33206... 。
 }
 

@@ -2927,6 +2927,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 270 ]
 [e $ ! == -> _keypress `i -> 3 `i 273  ]
 {
+<<<<<<< HEAD
 [; ;interrupt.c: 48: get_time(start_time);
 "48
 [e ( _get_time (1 &U _start_time ]
@@ -2957,6 +2958,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mode -> -> 4 `i `uc ]
 "55
 }
+=======
+[; ;interrupt.c: 42: if (mode == 0) {
+"42
+[e $ ! == -> _mode `i -> 0 `i 274  ]
+{
+[; ;interrupt.c: 43: mode = 2;
+"43
+[e = _mode -> -> 2 `i `uc ]
+"44
+}
+[e :U 274 ]
+"45
+}
+[; ;interrupt.c: 44: }
+[; ;interrupt.c: 45: }
+[e $U 275  ]
+"47
+[e :U 273 ]
+[; ;interrupt.c: 47: else if (keypress == 0x1) {
+[e $ ! == -> _keypress `i -> 1 `i 276  ]
+{
+[; ;interrupt.c: 48: mode = 0;
+"48
+[e = _mode -> -> 0 `i `uc ]
+"50
+}
+[; ;interrupt.c: 50: }else if (keypress == 0x2) {
+[e $U 277  ]
+[e :U 276 ]
+[e $ ! == -> _keypress `i -> 2 `i 278  ]
+{
+[; ;interrupt.c: 51: mode = 99;
+"51
+[e = _mode -> -> 99 `i `uc ]
+"52
+}
+[e :U 278 ]
+"53
+>>>>>>> parent of ff33206... 。
 [e :U 277 ]
 "58
 [e :U 276 ]
@@ -2965,6 +3005,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 269 ]
 }
 [e :U 267 ]
+<<<<<<< HEAD
 [; ;interrupt.c: 55: }
 [; ;interrupt.c: 58: }
 [; ;interrupt.c: 59: INT1IF = 0;
@@ -2972,5 +3013,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _INT1IF -> -> 0 `i `b ]
 [; ;interrupt.c: 79: }
 "79
+=======
+[; ;interrupt.c: 52: }
+[; ;interrupt.c: 53: }
+[; ;interrupt.c: 54: INT1IF = 0;
+"54
+[e = _INT1IF -> -> 0 `i `b ]
+[; ;interrupt.c: 70: }
+"70
+>>>>>>> parent of ff33206... 。
 [e :UE 266 ]
 }

@@ -19,7 +19,6 @@
 //Channel 1 = RA1
 //Channel 2 = RA2
 void readADC(char channel){
-    ADCON0 = 0x00;
     ADCON0 = (ADCON0 & 0X3C)|((channel & 0x0F)<<2);
     ADON = 1;
     ADCON0bits.GO = 1;
@@ -35,6 +34,7 @@ int sense_can() {
   int conductOnFall = 0;
   /* First, check if it is a tin or pop can */
 
+<<<<<<< HEAD
   /* But before, we want to see if the can triggers the sensor as it falls
      Do this because sometimes the fall gives conductivity on the no label 
      but sometimes it doesn't work as it's sitting there    */
@@ -81,10 +81,18 @@ int sense_can() {
       }
       
     for (int i = 0; i < 10000; i++) { // Check a bunch of times, see if MAX is FF
+=======
+  if (PORTBbits.RB0 == 1){ // This might be wrong - assuming B1 is connected to
+                            // a switch that is 1 when it is a tin can
+                            /* TIN CAN */
+    for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
+      /* Read ADC */
+>>>>>>> parent of ff33206... 。
       readADC(0); // Channel 0 for label detector?
       if (ADRESH > H_max) {
         H_max = ADRESH;
       }
+<<<<<<< HEAD
       
       if (ADRESH > 30){
           count(TIN_NOLAB);
@@ -97,10 +105,20 @@ int sense_can() {
       return TIN_NOLAB;
     } else {
       count(TIN_LAB);
+=======
+    }
+
+    if (H_max >= 0x4) { // Is this the max?
+      /* No Label */
+      return TIN_NOLAB;
+    } else {
+      /* Label */
+>>>>>>> parent of ff33206... 。
       return TIN_LAB;
     }
   }
 
+<<<<<<< HEAD
   /* POP CAN SORTING AREA */
   else{
     
@@ -157,6 +175,23 @@ int sense_can() {
     
   // WARNING: this method is poop if you can get a false positive on conductivity if there is a tab
   // So, hardware must make sure that tab NEVER conducts.
+=======
+  else {
+    for (int i = 0; i < 100; i++) { // Check a bunch of times, see if MAX is FF
+      /* Read ADC */
+      readADC(1); // Channel 0 for label detector?
+      if (ADRESH > H_max) {
+        H_max = ADRESH;
+      }
+    }
+    if (H_max == 0xFF) { // Is this the max?
+      /* Tab */
+      return POP_TAB;
+    } else {
+      /* No Tab */
+      return POP_NOTAB;
+    }
+>>>>>>> parent of ff33206... 。
   }
 }
 
@@ -166,19 +201,16 @@ int readLightSensor(){
     while(i < 50){
         __lcd_home();
         //int i = readLightSensor();
-        readADC(2);
+        readADC(5);
         if (ADRESH > H_max) {
             H_max = ADRESH;
-        }
-        if (ADRESH < 0x20){
-            return 1;
         }
         printf("%x", ADRESH);
         __delay_ms(5);
         i++;
     }
     
-    if(H_max >= 0x20){
+    if(H_max >= 0x50){
         return 0;
     }
     else{

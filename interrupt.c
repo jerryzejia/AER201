@@ -45,7 +45,11 @@ void interrupt interrupt_handler(void) {
         mode = 1;
       }
     } else if (keypress == 0x3) { // sort
+<<<<<<< HEAD
         get_time(start_time);
+=======
+      if (mode == 0) {
+>>>>>>> parent of ff33206... 。
         mode = 2;
     }
     else if (keypress == 0x1) { // back

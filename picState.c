@@ -41,6 +41,7 @@ void welcome() {
 }
 
 void debug() {
+<<<<<<< HEAD
     /*__lcd_home();
     get_time(start_time);
     printf("%02x/%02x/%02x", start_time[6], start_time[5],
@@ -48,6 +49,52 @@ void debug() {
     __lcd_newline();
     printf("%02x:%02x:%02x", start_time[2], start_time[1],
            start_time[0]);
+=======
+   //side_servo_control(NEUTRAL);
+    //main_servo_control(NEUTRAL);
+    //LATDbits.LATD0 = 1;
+    //int i = sense_can();
+    //printf("%d", i);
+    /*int i = 0; 
+    while(i < 50){
+        __lcd_home();
+        //int i = readLightSensor();
+        readADC(5);
+
+        printf("%x%x", ADRESH,ADRESL);
+        __delay_ms(5);
+        i++;
+    }
+    */ 
+    
+    int H_max = 0;
+    int i = 0;
+    while(1){
+        __lcd_home();
+        //int i = readLightSensor();
+        readADC(0);
+        printf("%x%x", ADRESH, ADRESL);
+
+        /*if (ADRESH > H_max) {
+            H_max = ADRESH;
+        }
+        printf("%x", ADRESH);
+        __delay_ms(5);
+        i++;
+    }
+    
+    if(H_max >= 0x50){
+       __lcd_home();
+       printf("HI HI %x", H_max);
+       __delay_ms(500);
+    }
+    else{
+       __lcd_home();
+       printf("LO LO %x",H_max);
+       __delay_ms(500);
+
+  */
+>>>>>>> parent of ff33206... 。
     }
      */
     get_time(end_time);
@@ -57,7 +104,15 @@ void debug() {
     printf("%02x:%02x:%02x", end_time[2], end_time[1],
            end_time[0]);
     
+<<<<<<< HEAD
 }
+=======
+    
+    //gate();
+
+}
+
+>>>>>>> parent of ff33206... 。
 void sort() {
   int tap = 0;
   int tin = 0;
@@ -70,26 +125,41 @@ void sort() {
   get_time(start_time);
   __lcd_home();
   // 1 = yes, 0 = no
-  while (mode == 2){
-    main_servo_control(NEUTRAL);
-    side_servo_control(NEUTRAL);
-
+  while (mode == 2) {
     if (readLightSensor() == 1) {
       // Everything here should be activated by a switch
       LATDbits.LATD0 = 1;
+<<<<<<< HEAD
+=======
+      main_servo_control(NEUTRAL);
+      __delay_ms(1000);
+     
+>>>>>>> parent of ff33206... 。
         __lcd_home();
         __lcd_newline();
         int can = sense_can();
         LATDbits.LATD0 = 0;
         move_can(can);
+<<<<<<< HEAD
 
         printf("%d", can);
+=======
+        printf("%d", can);
+        flag++;
+      
+>>>>>>> parent of ff33206... 。
     } else {
       // move_can(sense_can());
       shaker();
+      main_servo_control(NEUTRAL);
       LATDbits.LATD0 = 0;
       __delay_ms(500);      
       gate();
+<<<<<<< HEAD
+=======
+      
+      flag = 0;
+>>>>>>> parent of ff33206... 。
     }
   }
 }

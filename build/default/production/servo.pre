@@ -3837,29 +3837,37 @@ void main_servo_control(int dir){
 int i;
 if( dir == 0){
 for (i = 0; i < 10; i++) {
-LATEbits.LATE0 = 1;
-_delay((unsigned long)((1.5)*(8000000/4000.0)));
+LATAbits.LATA2 = 1;
+_delay((unsigned long)((1)*(8000000/4000.0)));
 
-LATEbits.LATE0 = 0;
-_delay((unsigned long)((18.5)*(8000000/4000.0)));
+LATAbits.LATA2 = 0;
+_delay((unsigned long)((19)*(8000000/4000.0)));
 }
 }
 else if(dir == 1){
 for (i = 0; i < 10; i++) {
+<<<<<<< HEAD
 LATEbits.LATE0 = 1;
 _delay((unsigned long)((3.5)*(8000000/4000.0)));
 
 LATEbits.LATE0 = 0;
 _delay((unsigned long)((16.5)*(8000000/4000.0)));
+=======
+LATAbits.LATA2 = 1;
+_delay((unsigned long)((2.5)*(8000000/4000.0)));
+
+LATAbits.LATA2 = 0;
+_delay((unsigned long)((17.5)*(8000000/4000.0)));
+>>>>>>> parent of ff33206... 。
 }
 }
 else if (dir == 2){
 for (i = 0; i < 10; i++) {
-LATEbits.LATE0 = 1;
-_delay((unsigned long)((0.15)*(8000000/4000.0)));
+LATAbits.LATA2 = 1;
+_delay((unsigned long)((1)*(8000000/4000.0)));
 
-LATEbits.LATE0 = 0;
-_delay((unsigned long)((19.85)*(8000000/4000.0)));
+LATAbits.LATA2 = 0;
+_delay((unsigned long)((19)*(8000000/4000.0)));
 }
 }
 }
@@ -3869,10 +3877,10 @@ int i;
 if( dir == 0){
 for (i = 0; i < 10; i++) {
 LATAbits.LATA3 = 1;
-_delay((unsigned long)((1.5)*(8000000/4000.0)));
+_delay((unsigned long)((1)*(8000000/4000.0)));
 
 LATAbits.LATA3 = 0;
-_delay((unsigned long)((18.5)*(8000000/4000.0)));
+_delay((unsigned long)((19)*(8000000/4000.0)));
 }
 }
 else if(dir == 1){
@@ -3887,17 +3895,18 @@ _delay((unsigned long)((18)*(8000000/4000.0)));
 else if (dir == 2){
 for (i = 0; i < 10; i++) {
 LATAbits.LATA3 = 1;
-_delay((unsigned long)((1.3)*(8000000/4000.0)));
+_delay((unsigned long)((0.5)*(8000000/4000.0)));
 
 LATAbits.LATA3 = 0;
-_delay((unsigned long)((18.7)*(8000000/4000.0)));
+_delay((unsigned long)((19.5)*(8000000/4000.0)));
 }
 }
 }
 
 void move_can(int canType){
-if(canType == 2){
+if(canType == 1){
 side_servo_control(1);
+<<<<<<< HEAD
 _delay((unsigned long)((2000)*(8000000/4000.0)));
 
 for (int i = 0; i<5; i++){
@@ -3906,11 +3915,15 @@ main_servo_control(1);
 _delay((unsigned long)((10)*(8000000/4000.0)));
 }
 
+=======
+main_servo_control(1);
+>>>>>>> parent of ff33206... 。
 main_servo_control(0);
 side_servo_control(0);
 }
-else if(canType == 1){
+else if(canType == 2){
 side_servo_control(2);
+<<<<<<< HEAD
 _delay((unsigned long)((2000)*(8000000/4000.0)));
 
 for (int i = 0; i<5; i++){
@@ -3920,11 +3933,15 @@ _delay((unsigned long)((10)*(8000000/4000.0)));
 }
 
 
+=======
+main_servo_control(1);
+>>>>>>> parent of ff33206... 。
 main_servo_control(0);
 side_servo_control(0);
 
 }
 else if (canType == 3){
+<<<<<<< HEAD
 
 side_servo_control(2);
 _delay((unsigned long)((2000)*(8000000/4000.0)));
@@ -3933,17 +3950,25 @@ side_servo_control(2);
 main_servo_control(2);
 _delay((unsigned long)((10)*(8000000/4000.0)));
 }
+=======
+main_servo_control(2);
+side_servo_control(2);
+>>>>>>> parent of ff33206... 。
 main_servo_control(0);
 side_servo_control(0);
 }
-else if(canType == 4){
+else{
 side_servo_control(1);
+<<<<<<< HEAD
 _delay((unsigned long)((2000)*(8000000/4000.0)));
 for (int i = 0; i<5; i++){
 side_servo_control(1);
 main_servo_control(2);
 _delay((unsigned long)((10)*(8000000/4000.0)));
 }
+=======
+main_servo_control(2);
+>>>>>>> parent of ff33206... 。
 main_servo_control(0);
 side_servo_control(0);
 }
@@ -3951,21 +3976,22 @@ side_servo_control(0);
 
 void gate(){
 int i;
-while(PORTBbits.RB3 == 1) {
+for (i = 0; i < 20; i++) {
+if(PORTBbits.RB3 == 1){
 LATCbits.LATC2 = 1;
-_delay((unsigned long)((1.68)*(8000000/4000.0)));
+_delay((unsigned long)((1.67)*(8000000/4000.0)));
 LATCbits.LATC2 = 0;
-_delay((unsigned long)((18.32)*(8000000/4000.0)));
+_delay((unsigned long)((18.33)*(8000000/4000.0)));
 
 }
-while(PORTBbits.RB3 != 1){
+else{
 LATCbits.LATC2 = 1;
 _delay((unsigned long)((1.68)*(8000000/4000.0)));
 
 LATCbits.LATC2 = 0;
 _delay((unsigned long)((18.32)*(8000000/4000.0)));
 }
-
+}
 
 
 }

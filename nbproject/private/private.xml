@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/motor.c</file>
+=======
+>>>>>>> parent of ff33206... 。
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/main.c</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/function.h</file>
             <file>file:/Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c</file>

@@ -1,19 +1,4 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"1322 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
-[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S50 . LATE0 LATE1 LATE2 ]
-"1327
-[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S51 . LE0 LE1 LE2 ]
-"1321
-[u S49 `S50 1 `S51 1 ]
-[n S49 . . . ]
-"1333
-[v _LATEbits `VS49 ~T0 @X0 0 e@3981 ]
-[v F2878 `(v ~T0 @X0 1 tf1`ul ]
-"161 /Applications/microchip/xc8/v1.41/include/pic18.h
-[v __delay `JF2878 ~T0 @X0 0 e ]
-[p i __delay ]
 "878 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
 [s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S38 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
@@ -25,18 +10,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S37 . . . ]
 "899
 [v _LATAbits `VS37 ~T0 @X0 0 e@3977 ]
-"1100
-[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"1110
-[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S45 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
-"1099
-[u S43 `S44 1 `S45 1 ]
-[n S43 . . . ]
-"1121
-[v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
-"191
+[v F2878 `(v ~T0 @X0 1 tf1`ul ]
+"161 /Applications/microchip/xc8/v1.41/include/pic18.h
+[v __delay `JF2878 ~T0 @X0 0 e ]
+[p i __delay ]
+"191 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
 [s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S11 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
 "201
@@ -53,6 +31,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S10 . . . . . ]
 "226
 [v _PORTBbits `VS10 ~T0 @X0 0 e@3969 ]
+"1100
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1110
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"1099
+[u S43 `S44 1 `S45 1 ]
+[n S43 . . . ]
+"1121
+[v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2907,18 +2896,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 269  ]
 [e :U 268 ]
 {
-[; ;servo.c: 21: LATEbits.LATE0 = 1;
+[; ;servo.c: 21: LATAbits.LATA2 = 1;
 "21
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[; ;servo.c: 22: _delay((unsigned long)((1.5)*(8000000/4000.0)));
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 22: _delay((unsigned long)((1)*(8000000/4000.0)));
 "22
-[e ( __delay (1 -> * .1.5 / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 24: LATEbits.LATE0 = 0;
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 24: LATAbits.LATA2 = 0;
 "24
-[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
-[; ;servo.c: 25: _delay((unsigned long)((18.5)*(8000000/4000.0)));
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 25: _delay((unsigned long)((19)*(8000000/4000.0)));
 "25
-[e ( __delay (1 -> * .18.5 / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 19 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "26
 }
 "20
@@ -2945,8 +2934,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 274  ]
 [e :U 273 ]
 {
-[; ;servo.c: 30: LATEbits.LATE0 = 1;
+[; ;servo.c: 30: LATAbits.LATA2 = 1;
 "30
+<<<<<<< HEAD
 [e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
 [; ;servo.c: 31: _delay((unsigned long)((3.5)*(8000000/4000.0)));
 "31
@@ -2957,6 +2947,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 34: _delay((unsigned long)((16.5)*(8000000/4000.0)));
 "34
 [e ( __delay (1 -> * .16.5 / -> -> 8000000 `l `d .4000.0 `ul ]
+=======
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 31: _delay((unsigned long)((2.5)*(8000000/4000.0)));
+"31
+[e ( __delay (1 -> * .2.5 / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 33: LATAbits.LATA2 = 0;
+"33
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 34: _delay((unsigned long)((17.5)*(8000000/4000.0)));
+"34
+[e ( __delay (1 -> * .17.5 / -> -> 8000000 `l `d .4000.0 `ul ]
+>>>>>>> parent of ff33206... 。
 "35
 }
 "29
@@ -2983,18 +2985,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 279  ]
 [e :U 278 ]
 {
-[; ;servo.c: 39: LATEbits.LATE0 = 1;
+[; ;servo.c: 39: LATAbits.LATA2 = 1;
 "39
-[e = . . _LATEbits 0 0 -> -> 1 `i `uc ]
-[; ;servo.c: 40: _delay((unsigned long)((0.15)*(8000000/4000.0)));
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 40: _delay((unsigned long)((1)*(8000000/4000.0)));
 "40
-[e ( __delay (1 -> * .0.15 / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;servo.c: 42: LATEbits.LATE0 = 0;
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 42: LATAbits.LATA2 = 0;
 "42
-[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
-[; ;servo.c: 43: _delay((unsigned long)((19.85)*(8000000/4000.0)));
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 43: _delay((unsigned long)((19)*(8000000/4000.0)));
 "43
-[e ( __delay (1 -> * .19.85 / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 19 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "44
 }
 "38
@@ -3039,15 +3041,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 52: LATAbits.LATA3 = 1;
 "52
 [e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
-[; ;servo.c: 53: _delay((unsigned long)((1.5)*(8000000/4000.0)));
+[; ;servo.c: 53: _delay((unsigned long)((1)*(8000000/4000.0)));
 "53
-[e ( __delay (1 -> * .1.5 / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;servo.c: 55: LATAbits.LATA3 = 0;
 "55
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
-[; ;servo.c: 56: _delay((unsigned long)((18.5)*(8000000/4000.0)));
+[; ;servo.c: 56: _delay((unsigned long)((19)*(8000000/4000.0)));
 "56
-[e ( __delay (1 -> * .18.5 / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 19 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "57
 }
 "51
@@ -3115,15 +3117,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 70: LATAbits.LATA3 = 1;
 "70
 [e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
-[; ;servo.c: 71: _delay((unsigned long)((1.3)*(8000000/4000.0)));
+[; ;servo.c: 71: _delay((unsigned long)((0.5)*(8000000/4000.0)));
 "71
-[e ( __delay (1 -> * .1.3 / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * .0.5 / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;servo.c: 73: LATAbits.LATA3 = 0;
 "73
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
-[; ;servo.c: 74: _delay((unsigned long)((18.7)*(8000000/4000.0)));
+[; ;servo.c: 74: _delay((unsigned long)((19.5)*(8000000/4000.0)));
 "74
-[e ( __delay (1 -> * .18.7 / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * .19.5 / -> -> 8000000 `l `d .4000.0 `ul ]
 "75
 }
 "69
@@ -3150,15 +3152,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _move_can ]
 [v _canType `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;servo.c: 80: if(canType == 2){
+[; ;servo.c: 80: if(canType == 1){
 "80
-[e $ ! == _canType -> 2 `i 297  ]
+[e $ ! == _canType -> 1 `i 297  ]
 {
 [; ;servo.c: 81: side_servo_control(1);
 "81
 [e ( _side_servo_control (1 -> 1 `i ]
-[; ;servo.c: 82: _delay((unsigned long)((2000)*(8000000/4000.0)));
+[; ;servo.c: 82: main_servo_control(1);
 "82
+<<<<<<< HEAD
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;servo.c: 84: for (int i = 0; i<5; i++){
 "84
@@ -3192,10 +3195,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _main_servo_control (1 -> 0 `i ]
 [; ;servo.c: 91: side_servo_control(0);
 "91
+=======
+[e ( _main_servo_control (1 -> 1 `i ]
+[; ;servo.c: 83: main_servo_control(0);
+"83
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;servo.c: 84: side_servo_control(0);
+"84
+[e ( _side_servo_control (1 -> 0 `i ]
+"85
+}
+[; ;servo.c: 85: }
+[e $U 298  ]
+"86
+[e :U 297 ]
+[; ;servo.c: 86: else if(canType == 2){
+[e $ ! == _canType -> 2 `i 299  ]
+{
+[; ;servo.c: 87: side_servo_control(2);
+"87
+[e ( _side_servo_control (1 -> 2 `i ]
+[; ;servo.c: 88: main_servo_control(1);
+"88
+[e ( _main_servo_control (1 -> 1 `i ]
+[; ;servo.c: 89: main_servo_control(0);
+"89
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;servo.c: 90: side_servo_control(0);
+"90
+>>>>>>> parent of ff33206... 。
 [e ( _side_servo_control (1 -> 0 `i ]
 "92
 }
 [; ;servo.c: 92: }
+<<<<<<< HEAD
 [e $U 301  ]
 "93
 [e :U 297 ]
@@ -3237,10 +3270,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 101: }
 [; ;servo.c: 104: main_servo_control(0);
 "104
+=======
+[e $U 300  ]
+"93
+[e :U 299 ]
+[; ;servo.c: 93: else if (canType == 3){
+[e $ ! == _canType -> 3 `i 301  ]
+{
+[; ;servo.c: 94: main_servo_control(2);
+"94
+[e ( _main_servo_control (1 -> 2 `i ]
+[; ;servo.c: 95: side_servo_control(2);
+"95
+[e ( _side_servo_control (1 -> 2 `i ]
+[; ;servo.c: 96: main_servo_control(0);
+"96
+>>>>>>> parent of ff33206... 。
 [e ( _main_servo_control (1 -> 0 `i ]
-[; ;servo.c: 105: side_servo_control(0);
-"105
+[; ;servo.c: 97: side_servo_control(0);
+"97
 [e ( _side_servo_control (1 -> 0 `i ]
+<<<<<<< HEAD
 "107
 }
 [; ;servo.c: 107: }
@@ -3408,4 +3458,105 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;servo.c: 152: }
 "152
 [e :UE 316 ]
+=======
+"98
+}
+[; ;servo.c: 98: }
+[e $U 302  ]
+"99
+[e :U 301 ]
+[; ;servo.c: 99: else{
+{
+[; ;servo.c: 100: side_servo_control(1);
+"100
+[e ( _side_servo_control (1 -> 1 `i ]
+[; ;servo.c: 101: main_servo_control(2);
+"101
+[e ( _main_servo_control (1 -> 2 `i ]
+[; ;servo.c: 102: main_servo_control(0);
+"102
+[e ( _main_servo_control (1 -> 0 `i ]
+[; ;servo.c: 103: side_servo_control(0);
+"103
+[e ( _side_servo_control (1 -> 0 `i ]
+"104
+}
+[e :U 302 ]
+[e :U 300 ]
+[e :U 298 ]
+[; ;servo.c: 104: }
+[; ;servo.c: 105: }
+"105
+[e :UE 296 ]
+}
+"107
+[v _gate `(v ~T0 @X0 1 ef ]
+{
+[; ;servo.c: 107: void gate(){
+[e :U _gate ]
+[f ]
+"108
+[v _i `i ~T0 @X0 1 a ]
+[; ;servo.c: 108: int i;
+[; ;servo.c: 109: for (i = 0; i < 20; i++) {
+"109
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 20 `i 304  ]
+[e $U 305  ]
+[e :U 304 ]
+{
+[; ;servo.c: 110: if(PORTBbits.RB3 == 1){
+"110
+[e $ ! == -> . . _PORTBbits 0 3 `i -> 1 `i 307  ]
+{
+[; ;servo.c: 111: LATCbits.LATC2 = 1;
+"111
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 112: _delay((unsigned long)((1.67)*(8000000/4000.0)));
+"112
+[e ( __delay (1 -> * .1.67 / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 113: LATCbits.LATC2 = 0;
+"113
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 114: _delay((unsigned long)((18.33)*(8000000/4000.0)));
+"114
+[e ( __delay (1 -> * .18.33 / -> -> 8000000 `l `d .4000.0 `ul ]
+"116
+}
+[; ;servo.c: 116: }
+[e $U 308  ]
+"117
+[e :U 307 ]
+[; ;servo.c: 117: else{
+{
+[; ;servo.c: 118: LATCbits.LATC2 = 1;
+"118
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;servo.c: 119: _delay((unsigned long)((1.68)*(8000000/4000.0)));
+"119
+[e ( __delay (1 -> * .1.68 / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;servo.c: 121: LATCbits.LATC2 = 0;
+"121
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;servo.c: 122: _delay((unsigned long)((18.32)*(8000000/4000.0)));
+"122
+[e ( __delay (1 -> * .18.32 / -> -> 8000000 `l `d .4000.0 `ul ]
+"123
+}
+[e :U 308 ]
+"124
+}
+"109
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 20 `i 304  ]
+[e :U 305 ]
+"124
+}
+[; ;servo.c: 123: }
+[; ;servo.c: 124: }
+[; ;servo.c: 127: }
+"127
+[e :UE 303 ]
+>>>>>>> parent of ff33206... 。
 }

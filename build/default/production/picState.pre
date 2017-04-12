@@ -3867,6 +3867,7 @@ while (mode == 0) {
 
 void debug() {
 
+<<<<<<< HEAD
 # 53
 get_time(end_time);
 printf("%02x/%02x/%02x", end_time[6], end_time[5],
@@ -3876,6 +3877,25 @@ printf("%02x:%02x:%02x", end_time[2], end_time[1],
 end_time[0]);
 
 }
+=======
+# 60
+int H_max = 0;
+int i = 0;
+while(1){
+lcdInst(0b10000000);;
+
+readADC(0);
+printf("%x%x", ADRESH, ADRESL);
+
+# 87
+}
+
+
+
+
+}
+
+>>>>>>> parent of ff33206... 。
 void sort() {
 int tap = 0;
 int tin = 0;
@@ -3888,26 +3908,41 @@ printf("Press 1/2/A to stop");
 get_time(start_time);
 lcdInst(0b10000000);;
 
-while (mode == 2){
-main_servo_control(0);
-side_servo_control(0);
-
+while (mode == 2) {
 if (readLightSensor() == 1) {
 
 LATDbits.LATD0 = 1;
+<<<<<<< HEAD
+=======
+main_servo_control(0);
+_delay((unsigned long)((1000)*(8000000/4000.0)));
+
+>>>>>>> parent of ff33206... 。
 lcdInst(0b10000000);;
 lcdInst(0b11000000);;
 int can = sense_can();
 LATDbits.LATD0 = 0;
 move_can(can);
+<<<<<<< HEAD
 
 printf("%d", can);
+=======
+printf("%d", can);
+flag++;
+
+>>>>>>> parent of ff33206... 。
 } else {
 
 shaker();
+main_servo_control(0);
 LATDbits.LATD0 = 0;
 _delay((unsigned long)((500)*(8000000/4000.0)));
 gate();
+<<<<<<< HEAD
+=======
+
+flag = 0;
+>>>>>>> parent of ff33206... 。
 }
 }
 }

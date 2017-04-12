@@ -7,8 +7,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
 "1588
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"2251
-[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
 "872
 [v _LATA `Vuc ~T0 @X0 0 e@3977 ]
 "983
@@ -2934,10 +2932,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;initPic.c: 35: void initPIC() {
 [e :U _initPIC ]
 [f ]
+<<<<<<< HEAD
 [; ;initPic.c: 36: TRISA = 0b11100111;
 "36
 [e = _TRISA -> -> 231 `i `uc ]
 [; ;initPic.c: 37: TRISC = 0x11100110;
+=======
+[; ;initPic.c: 34: TRISA = 0b11110011;
+"34
+[e = _TRISA -> -> 243 `i `uc ]
+[; ;initPic.c: 35: TRISC = 0x11100110;
+"35
+[e = _TRISC -> -> 286261520 `l `uc ]
+[; ;initPic.c: 37: TRISC = 0x11100100;
+>>>>>>> parent of ff33206... 。
 "37
 [e = _TRISC -> -> 286261520 `l `uc ]
 [; ;initPic.c: 39: TRISC = 0x11100100;
@@ -2949,11 +2957,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;initPic.c: 41: TRISB = 0b11111011;
 "41
 [e = _TRISB -> -> 251 `i `uc ]
+<<<<<<< HEAD
 [; ;initPic.c: 42: TRISE = 0x00;
 "42
 [e = _TRISE -> -> 0 `i `uc ]
 [; ;initPic.c: 45: LATA = 0x00;
 "45
+=======
+[; ;initPic.c: 43: LATA = 0x00;
+"43
+>>>>>>> parent of ff33206... 。
 [e = _LATA -> -> 0 `i `uc ]
 [; ;initPic.c: 46: LATB = 0x00;
 "46
@@ -2970,11 +2983,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;initPic.c: 51: ADCON0 = 0x00;
 "51
 [e = _ADCON0 -> -> 0 `i `uc ]
+<<<<<<< HEAD
 [; ;initPic.c: 52: ADCON1 = 0x0C;
 "52
 [e = _ADCON1 -> -> 12 `i `uc ]
 [; ;initPic.c: 55: ADCON2 = 0b00110001;
 "55
+=======
+[; ;initPic.c: 50: ADCON1 = 0x09;
+"50
+[e = _ADCON1 -> -> 9 `i `uc ]
+[; ;initPic.c: 53: ADCON2 = 0b00110001;
+"53
+>>>>>>> parent of ff33206... 。
 [e = _ADCON2 -> -> 49 `i `uc ]
 [; ;initPic.c: 56: INT1IE = 1;
 "56

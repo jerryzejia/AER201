@@ -37,9 +37,13 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "21 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
 [v _readADC readADC `(v  1 e 1 0 ]
-"31
+"30
 [v _sense_can sense_can `(i  1 e 2 0 ]
+<<<<<<< HEAD
 "155
+=======
+"73
+>>>>>>> parent of ff33206... 。
 [v _readLightSensor readLightSensor `(i  1 e 2 0 ]
 "13 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
@@ -81,11 +85,19 @@
 [v _welcome welcome `(i  1 e 2 0 ]
 "43
 [v _debug debug `(i  1 e 2 0 ]
+<<<<<<< HEAD
 "61
 [v _sort sort `(i  1 e 2 0 ]
 "97
 [v _display_time display_time `(i  1 e 2 0 ]
 "125
+=======
+"94
+[v _sort sort `(i  1 e 2 0 ]
+"135
+[v _display_time display_time `(i  1 e 2 0 ]
+"165
+>>>>>>> parent of ff33206... 。
 [v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
 "17 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
 [v _main_servo_control main_servo_control `(v  1 e 1 0 ]
@@ -93,14 +105,22 @@
 [v _side_servo_control side_servo_control `(v  1 e 1 0 ]
 "79
 [v _move_can move_can `(v  1 e 1 0 ]
+<<<<<<< HEAD
 "133
+=======
+"107
+>>>>>>> parent of ff33206... 。
 [v _gate gate `(v  1 e 1 0 ]
 "27 /Users/jerryjia/MPLABXProjects/AER201.X/time.c
 [v _get_time get_time `(v  1 e 1 0 ]
 [v i2_get_time get_time `(v  1 e 1 0 ]
 "185 /Applications/microchip/xc8/v1.41/include/pic18f4620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+<<<<<<< HEAD
 [s S222 . 1 `uc 1 RB0 1 0 :1:0 
+=======
+[s S219 . 1 `uc 1 RB0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -110,7 +130,11 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "226
+<<<<<<< HEAD
 [s S231 . 1 `uc 1 INT0 1 0 :1:0 
+=======
+[s S228 . 1 `uc 1 INT0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -119,7 +143,11 @@
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [s S240 . 1 `uc 1 AN12 1 0 :1:0 
+=======
+[s S237 . 1 `uc 1 AN12 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -128,6 +156,7 @@
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [s S249 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
@@ -136,6 +165,16 @@
 "872
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
 [s S521 . 1 `uc 1 LATA0 1 0 :1:0 
+=======
+[s S246 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S249 . 1 `S219 1 . 1 0 `S228 1 . 1 0 `S237 1 . 1 0 `S246 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES249  1 e 1 @3969 ]
+"872
+[v _LATA LATA `VEuc  1 e 1 @3977 ]
+[s S464 . 1 `uc 1 LATA0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -145,7 +184,11 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "899
+<<<<<<< HEAD
 [s S530 . 1 `uc 1 LA0 1 0 :1:0 
+=======
+[s S473 . 1 `uc 1 LA0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -154,11 +197,19 @@
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [u S539 . 1 `S521 1 . 1 0 `S530 1 . 1 0 ]
 [v _LATAbits LATAbits `VES539  1 e 1 @3977 ]
 "983
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
 [s S737 . 1 `uc 1 LATB0 1 0 :1:0 
+=======
+[u S482 . 1 `S464 1 . 1 0 `S473 1 . 1 0 ]
+[v _LATAbits LATAbits `VES482  1 e 1 @3977 ]
+"983
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+[s S708 . 1 `uc 1 LATB0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -168,7 +219,11 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "1010
+<<<<<<< HEAD
 [s S746 . 1 `uc 1 LB0 1 0 :1:0 
+=======
+[s S717 . 1 `uc 1 LB0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 LB1 1 0 :1:1 
 `uc 1 LB2 1 0 :1:2 
 `uc 1 LB3 1 0 :1:3 
@@ -177,11 +232,19 @@
 `uc 1 LB6 1 0 :1:6 
 `uc 1 LB7 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [u S755 . 1 `S737 1 . 1 0 `S746 1 . 1 0 ]
 [v _LATBbits LATBbits `VES755  1 e 1 @3978 ]
 "1094
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
 [s S383 . 1 `uc 1 LATC0 1 0 :1:0 
+=======
+[u S726 . 1 `S708 1 . 1 0 `S717 1 . 1 0 ]
+[v _LATBbits LATBbits `VES726  1 e 1 @3978 ]
+"1094
+[v _LATC LATC `VEuc  1 e 1 @3979 ]
+[s S347 . 1 `uc 1 LATC0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -191,7 +254,11 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "1121
+<<<<<<< HEAD
 [s S392 . 1 `uc 1 LC0 1 0 :1:0 
+=======
+[s S356 . 1 `uc 1 LC0 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -200,8 +267,13 @@
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [u S401 . 1 `S383 1 . 1 0 `S392 1 . 1 0 ]
 [v _LATCbits LATCbits `VES401  1 e 1 @3979 ]
+=======
+[u S365 . 1 `S347 1 . 1 0 `S356 1 . 1 0 ]
+[v _LATCbits LATCbits `VES365  1 e 1 @3979 ]
+>>>>>>> parent of ff33206... 。
 "1205
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
 [s S61 . 1 `uc 1 LATD0 1 0 :1:0 
@@ -227,6 +299,7 @@
 [v _LATDbits LATDbits `VES79  1 e 1 @3980 ]
 "1316
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
+<<<<<<< HEAD
 [s S499 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
@@ -238,6 +311,8 @@
 ]
 [u S507 . 1 `S499 1 . 1 0 `S503 1 . 1 0 ]
 [v _LATEbits LATEbits `VES507  1 e 1 @3981 ]
+=======
+>>>>>>> parent of ff33206... 。
 "1367
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "1588
@@ -246,8 +321,6 @@
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 "2030
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-"2251
-[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
 "4320
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
 "4390
@@ -298,7 +371,11 @@
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
 "4966
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+<<<<<<< HEAD
 [s S665 . 1 `uc 1 RBIF 1 0 :1:0 
+=======
+[s S603 . 1 `uc 1 RBIF 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -308,7 +385,11 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6298
+<<<<<<< HEAD
 [s S674 . 1 `uc 1 . 1 0 :1:0 
+=======
+[s S612 . 1 `uc 1 . 1 0 :1:0 
+>>>>>>> parent of ff33206... 。
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -317,12 +398,21 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
+<<<<<<< HEAD
 [s S683 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
 [u S687 . 1 `S665 1 . 1 0 `S674 1 . 1 0 `S683 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES687  1 e 1 @4082 ]
+=======
+[s S621 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S625 . 1 `S603 1 . 1 0 `S612 1 . 1 0 `S621 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES625  1 e 1 @4082 ]
+>>>>>>> parent of ff33206... 。
 "6604
 [v _ACKDT ACKDT `VEb  1 e 0 @32301 ]
 "6606
@@ -381,6 +471,7 @@
 {
 "41
 } 0
+<<<<<<< HEAD
 "61
 [v _sort sort `(i  1 e 2 0 ]
 {
@@ -393,6 +484,20 @@
 "62
 [v sort@tap tap `i  1 a 2 67 ]
 "95
+=======
+"94
+[v _sort sort `(i  1 e 2 0 ]
+{
+"116
+[v sort@can can `i  1 a 2 8 ]
+"98
+[v sort@noLabel noLabel `i  1 a 2 6 ]
+"97
+[v sort@tin tin `i  1 a 2 4 ]
+"96
+[v sort@tap tap `i  1 a 2 2 ]
+"133
+>>>>>>> parent of ff33206... 。
 } 0
 "18 /Users/jerryjia/MPLABXProjects/AER201.X/motor.c
 [v _shaker shaker `(v  1 e 1 0 ]
@@ -401,9 +506,10 @@
 [v shaker@i i `i  1 a 2 23 ]
 "37
 } 0
-"31 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
+"30 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
 [v _sense_can sense_can `(i  1 e 2 0 ]
 {
+<<<<<<< HEAD
 "131
 [v sense_can@i_352 i `i  1 a 2 42 ]
 "105
@@ -428,6 +534,30 @@
 "157
 [v readLightSensor@i i `i  1 a 2 61 ]
 "180
+=======
+"56
+[v sense_can@i_316 i `i  1 a 2 33 ]
+"38
+[v sense_can@i i `i  1 a 2 31 ]
+"32
+[v sense_can@H_max H_max `i  1 a 2 35 ]
+"71
+} 0
+"73
+[v _readLightSensor readLightSensor `(i  1 e 2 0 ]
+{
+"74
+[v readLightSensor@H_max H_max `i  1 a 2 65 ]
+"75
+[v readLightSensor@i i `i  1 a 2 63 ]
+"95
+} 0
+"79 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
+[v _move_can move_can `(v  1 e 1 0 ]
+{
+[v move_can@canType canType `i  1 p 2 29 ]
+"105
+>>>>>>> parent of ff33206... 。
 } 0
 "21
 [v _readADC readADC `(v  1 e 1 0 ]
@@ -452,10 +582,19 @@
 [v move_can@canType canType `i  1 p 2 27 ]
 "131
 } 0
+<<<<<<< HEAD
 "133
 [v _gate gate `(v  1 e 1 0 ]
 {
 "152
+=======
+"107 /Users/jerryjia/MPLABXProjects/AER201.X/servo.c
+[v _gate gate `(v  1 e 1 0 ]
+{
+"108
+[v gate@i i `i  1 a 2 25 ]
+"127
+>>>>>>> parent of ff33206... 。
 } 0
 "35 /Users/jerryjia/MPLABXProjects/AER201.X/initPic.c
 [v _initPIC initPIC `(i  1 e 2 0 ]
@@ -466,7 +605,11 @@
 [v _side_servo_control side_servo_control `(v  1 e 1 0 ]
 {
 "49
+<<<<<<< HEAD
 [v side_servo_control@i i `i  1 a 2 25 ]
+=======
+[v side_servo_control@i i `i  1 a 2 27 ]
+>>>>>>> parent of ff33206... 。
 "48
 [v side_servo_control@dir dir `i  1 p 2 22 ]
 "77
@@ -503,6 +646,7 @@
 [v ___lldiv@divisor divisor `ul  1 p 4 26 ]
 "31
 } 0
+<<<<<<< HEAD
 "97 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
 [v _display_time display_time `(i  1 e 2 0 ]
 {
@@ -526,6 +670,71 @@
 [v _debug debug `(i  1 e 2 0 ]
 {
 "60
+=======
+"135 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+[v _display_time display_time `(i  1 e 2 0 ]
+{
+"142
+[v display_time@i i `uc  1 a 1 60 ]
+"162
+} 0
+"47 /Users/jerryjia/MPLABXProjects/AER201.X/I2C.c
+[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+{
+[v I2C_Master_Write@d d `ui  1 p 2 25 ]
+"51
+} 0
+"41
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+{
+"45
+} 0
+"29
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+{
+"33
+} 0
+"53
+[v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
+{
+[v I2C_Master_Read@a a `uc  1 a 1 wreg ]
+"55
+[v I2C_Master_Read@temp temp `uc  1 a 1 26 ]
+"53
+[v I2C_Master_Read@a a `uc  1 a 1 wreg ]
+"56
+[v I2C_Master_Read@a a `uc  1 a 1 25 ]
+"64
+} 0
+"24
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+{
+"27
+} 0
+"165 /Users/jerryjia/MPLABXProjects/AER201.X/picState.c
+[v _display_sorting_time display_sorting_time `(i  1 e 2 0 ]
+{
+"169
+[v display_sorting_time@i i `i  1 a 2 60 ]
+"175
+} 0
+"42
+[v _debug debug `(i  1 e 2 0 ]
+{
+"61
+[v debug@i i `i  1 a 2 60 ]
+"60
+[v debug@H_max H_max `i  1 a 2 58 ]
+"92
+} 0
+"21 /Users/jerryjia/MPLABXProjects/AER201.X/adc.c
+[v _readADC readADC `(v  1 e 1 0 ]
+{
+[v readADC@channel channel `uc  1 a 1 wreg ]
+[v readADC@channel channel `uc  1 a 1 wreg ]
+[v readADC@channel channel `uc  1 a 1 25 ]
+"28
+>>>>>>> parent of ff33206... 。
 } 0
 "464 /Applications/microchip/xc8/v1.41/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -662,9 +871,15 @@
 "24 /Users/jerryjia/MPLABXProjects/AER201.X/interrupt.c
 [v _interrupt_handler interrupt_handler `II(v  1 e 1 0 ]
 {
+<<<<<<< HEAD
 "33
 [v interrupt_handler@keypress keypress `uc  1 a 1 21 ]
 "79
+=======
+"26
+[v interrupt_handler@keypress keypress `uc  1 a 1 23 ]
+"70
+>>>>>>> parent of ff33206... 。
 } 0
 "30 /Users/jerryjia/MPLABXProjects/AER201.X/lcd.c
 [v i2_putch putch `(v  1 e 1 0 ]

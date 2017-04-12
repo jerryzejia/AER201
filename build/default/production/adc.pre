@@ -3827,7 +3827,6 @@ void side_servo_control(int dir);
 
 # 21 "adc.c"
 void readADC(char channel){
-ADCON0 = 0x00;
 ADCON0 = (ADCON0 & 0X3C)|((channel & 0x0F)<<2);
 ADON = 1;
 ADCON0bits.GO = 1;
@@ -3842,6 +3841,7 @@ int H_max = 0;
 int cansize = 0;
 int conductOnFall = 0;
 
+<<<<<<< HEAD
 # 41
 for (int i = 0; i < 10000; i++) {
 readADC(0);
@@ -3884,10 +3884,19 @@ return 2;
 }
 
 for (int i = 0; i < 10000; i++) {
+=======
+
+if (PORTBbits.RB0 == 1){
+
+
+for (int i = 0; i < 100; i++) {
+
+>>>>>>> parent of ff33206... 。
 readADC(0);
 if (ADRESH > H_max) {
 H_max = ADRESH;
 }
+<<<<<<< HEAD
 
 if (ADRESH > 30){
 return 2;
@@ -3953,6 +3962,35 @@ return 3;
 
 
 }
+=======
+}
+
+if (H_max >= 0x4) {
+
+return 2;
+} else {
+
+return 1;
+}
+}
+
+else {
+for (int i = 0; i < 100; i++) {
+
+readADC(1);
+if (ADRESH > H_max) {
+H_max = ADRESH;
+}
+}
+if (H_max == 0xFF) {
+
+return 3;
+} else {
+
+return 4;
+}
+}
+>>>>>>> parent of ff33206... 。
 }
 
 int readLightSensor(){
@@ -3961,19 +3999,16 @@ int i = 0;
 while(i < 50){
 lcdInst(0b10000000);;
 
-readADC(2);
+readADC(5);
 if (ADRESH > H_max) {
 H_max = ADRESH;
-}
-if (ADRESH < 0x20){
-return 1;
 }
 printf("%x", ADRESH);
 _delay((unsigned long)((5)*(8000000/4000.0)));
 i++;
 }
 
-if(H_max >= 0x20){
+if(H_max >= 0x50){
 return 0;
 }
 else{
