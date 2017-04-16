@@ -8,7 +8,12 @@
 #include <stdio.h>
 #include <xc.h>
 
+<<<<<<< HEAD
 char mode;
+=======
+extern char mode;
+extern int flag;
+>>>>>>> parent of 567e986... .
 extern unsigned char start_time[7];
 extern unsigned char end_time[7];
 extern unsigned int passed_time; 
@@ -18,11 +23,11 @@ int displayFlag = 0;
 int int_end_time[7];
 int int_start_time[7];
 
+
 void welcome() {
   __lcd_clear();
   __lcd_home();
   __delay_ms(200);
-  
   printf("Welcome!");
   printf("            ");
   printf("2 Back to start menu");
@@ -30,17 +35,12 @@ void welcome() {
   printf("1 Time");
   printf("              ");
   printf("A Sorting");
-  LATDbits.LATD0 = 0;
-  LATCbits.LATC1 = 0;
-
-  //main_servo_control(NEUTRAL);
-  //side_servo_control(NEUTRAL);
-
   while (mode == 0) {
   }
 }
 
 void debug() {
+<<<<<<< HEAD
 <<<<<<< HEAD
     /*__lcd_home();
     get_time(start_time);
@@ -113,6 +113,12 @@ void debug() {
 }
 
 >>>>>>> parent of ff33206... 。
+=======
+    __lcd_home();
+    int i = canOn();
+    printf("%d", i);
+}
+>>>>>>> parent of 567e986... .
 void sort() {
   int tap = 0;
   int tin = 0;
@@ -122,23 +128,30 @@ void sort() {
   printf("Sorting Started");
   __lcd_newline();
   printf("Press 1/2/A to stop");
+  
   get_time(start_time);
   __lcd_home();
   // 1 = yes, 0 = no
+
   while (mode == 2) {
-    if (readLightSensor() == 1) {
+    if (PORTBbits.RB2 == 1) {
       // Everything here should be activated by a switch
       LATDbits.LATD0 = 1;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
       main_servo_control(NEUTRAL);
       __delay_ms(1000);
      
 >>>>>>> parent of ff33206... 。
+=======
+      __delay_ms(500);
+
+      if (flag == 0) {
+>>>>>>> parent of 567e986... .
         __lcd_home();
         __lcd_newline();
         int can = sense_can();
-        LATDbits.LATD0 = 0;
         move_can(can);
 <<<<<<< HEAD
 
@@ -146,18 +159,24 @@ void sort() {
 =======
         printf("%d", can);
         flag++;
+<<<<<<< HEAD
       
 >>>>>>> parent of ff33206... 。
+=======
+      }
+>>>>>>> parent of 567e986... .
     } else {
       // move_can(sense_can());
-      shaker();
-      main_servo_control(NEUTRAL);
       LATDbits.LATD0 = 0;
+<<<<<<< HEAD
       __delay_ms(500);      
       gate();
 <<<<<<< HEAD
 =======
       
+=======
+      __delay_ms(500);
+>>>>>>> parent of 567e986... .
       flag = 0;
 >>>>>>> parent of ff33206... 。
     }
@@ -190,6 +209,8 @@ void display_time() {
     __delay_ms(990);
     __lcd_home();
   }
+  while (mode == 3) {
+  }
 }
 
 void display_sorting_time() {
@@ -210,7 +231,15 @@ void display_sorting_time() {
     }
 
   LATCbits.LATC1 = 0;
+<<<<<<< HEAD
   printf("Time used: %d s", passed_time);
   __delay_ms(500);
+=======
+  int i = passed_time;
+  printf("Time used: %d s", i);
+  __lcd_newline();
+
+  flag = 0;
+>>>>>>> parent of 567e986... .
   LATDbits.LATD0 = 0;
 }

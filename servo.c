@@ -17,7 +17,7 @@
 void main_servo_control(int dir){
   int i;
   if( dir == 0){ 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 500; i++) {
         LATAbits.LATA2 = 1;
         __delay_ms(1);
 
@@ -26,6 +26,7 @@ void main_servo_control(int dir){
     }    
   }
   else if(dir == 1){
+<<<<<<< HEAD
       for (i = 0; i < 10; i++) {
 <<<<<<< HEAD
         LATEbits.LATE0 = 1;
@@ -34,6 +35,9 @@ void main_servo_control(int dir){
         LATEbits.LATE0 = 0;
         __delay_ms(16.5);
 =======
+=======
+      for (i = 0; i < 500; i++) {
+>>>>>>> parent of 567e986... .
         LATAbits.LATA2 = 1;
         __delay_ms(2.5);
 
@@ -43,12 +47,12 @@ void main_servo_control(int dir){
     }
   }
   else if (dir == 2){
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 500; i++) {
         LATAbits.LATA2 = 1;
-        __delay_ms(1);
+        __delay_ms(0.4);
 
         LATAbits.LATA2 = 0;
-        __delay_ms(19);
+        __delay_ms(19.6);
     }
   }
 }
@@ -56,7 +60,7 @@ void main_servo_control(int dir){
 void side_servo_control(int dir){
   int i;
   if( dir == 0){ 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 500; i++) {
         LATAbits.LATA3 = 1;
         __delay_ms(1);
 
@@ -65,23 +69,24 @@ void side_servo_control(int dir){
     }    
   }
   else if(dir == 1){
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 500; i++) {
         LATAbits.LATA3 = 1;
-        __delay_ms(2);
+        __delay_ms(2.5);
 
         LATAbits.LATA3 = 0;
-        __delay_ms(18);
+        __delay_ms(17.5);
     }
   }
   else if (dir == 2){
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 500; i++) {
         LATAbits.LATA3 = 1;
-        __delay_ms(0.5);
+        __delay_ms(0.4);
 
         LATAbits.LATA3 = 0;
-        __delay_ms(19.5);
+        __delay_ms(19.6);
     }
   }
+<<<<<<< HEAD
 }
 
 void move_can(int canType){
@@ -178,3 +183,6 @@ void gate(){
         
 }
 
+=======
+}
+>>>>>>> parent of 567e986... .
